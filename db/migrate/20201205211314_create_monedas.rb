@@ -5,6 +5,5 @@ class CreateMonedas < ActiveRecord::Migration[6.0]
       t.string :nombre_moneda
       t.timestamps
     end
-    /SystemSetting.create :simbolo_moneda => "C$", :nombre_moneda => "NIO"/
   end
 end

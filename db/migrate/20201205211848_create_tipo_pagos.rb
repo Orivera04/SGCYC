@@ -5,6 +5,5 @@ class CreateTipoPagos < ActiveRecord::Migration[6.0]
       t.timestamps
       t.references :monedas
     end
-    /SystemSetting.create :nombre => "Cordoba" , :monedas => "NIO"/
   end
 end

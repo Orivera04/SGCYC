@@ -1,7 +1,7 @@
 class CreateClientes < ActiveRecord::Migration[6.0]
   def change
     create_table :clientes do |t|
-      t.string :codigo_socio
+      t.string :codigo_cliente
       t.string :tipo_entidad_id
       t.string :nombre
       t.string :apellido
