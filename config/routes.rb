@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :usuarios
-  
+
   # Rutas de la aplicación
-  resource :login
+  resource :logins, default: {action: :index }
 end

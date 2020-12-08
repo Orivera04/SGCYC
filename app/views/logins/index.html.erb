@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>NICACENTRO - LOGIN</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <%= stylesheet_link_tag "login" %>
+    </head>
+    <body>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <%= image_tag("logo-login", class: "imagelogo") %>
+                    <span class="login100-form-title p-b-43">
+                        Iniciar Sesión
+                    </span>
+                    <div class="wrap-input100 validate-input">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Usuario</span>
+                    </div>
+                    <div class="wrap-input100 validate-input Normalizador">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Contraseña</span>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <select class="input100 has-val" name="Rol">
+                            <option value="1">Administrador / Usuario</option>
+                            <option value="2">Tecnico</option>
+                        </select> <span class="focus-input100"></span>
+                        <span class="label-input100">Rol</span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Autenticar
+                        </button>
+                    </div>
+                    <div class="login100-more">
+                        <%= image_tag("left-logo-detail.svg", class: "leftimagelogo") %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
