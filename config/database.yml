@@ -17,13 +17,9 @@ default: &default
   password: root12345
   host: fenicotaxi.cvqrnzci6iiw.us-east-2.rds.amazonaws.com
 
-development_oscar:
+development:
   <<: *default
-  database: nicacentro_oscar_development
-
-development_josue:
-  <<: *default
-  database: nicacentro_josue_development
+  database: nicacentro_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
