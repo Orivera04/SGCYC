@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :usuarios
-
-  # Rutas de la aplicación
-  resource :logins, default: {action: :index }
+  resources :home
+  root to: 'home#index'
+  devise_for :usuarios, controllers: { sessions: "usuarios/sessions" }
 end
