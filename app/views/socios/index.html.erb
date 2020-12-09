@@ -1,0 +1,47 @@
+<style>
+   table {
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+   }
+   td, th {
+   border: 1px solid #dddddd;
+   text-align: left;
+   padding: 8px;
+   }
+   tr:nth-child(even) {
+   background-color: #dddddd;
+   }
+</style>
+</head>
+<body>
+   <h2>Socios</h2>
+   <table>
+      <tr>
+      <% @socios.each do |socio| %>
+         <thead>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Cedula</th>
+            <th>RUC</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Estado</th>
+         </thead>
+      </tr>
+      <tr>
+         <td> <%= socio.codigo_socio%> </td>
+         <td> <%= socio.nombre%> </td>
+         <td> <%= socio.apellido%> </td>
+         <td> <%= socio.numero_cedula%> </td>
+         <td> <%= socio.numero_ruc%> </td>
+         <td> <%= socio.direccion%> </td>
+         <td> <%= socio.telefono%> </td>
+         <td> <%= socio.correo%> </td>
+         <td> <%= socio.estado%> </td>
+      </tr>
+      <% end %>
+   </table>
+</body>

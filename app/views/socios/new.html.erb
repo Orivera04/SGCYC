@@ -1,0 +1,41 @@
+<%= form_for @socio do |s| %>
+    <div>
+        <%= s.label :codigo_socio %>
+        <%= s.text_field :codigo_socio %>
+    </div>
+    <div>
+        <%= s.label :nombre %>
+        <%= s.text_field :nombre %>
+    </div>
+    <div>
+        <%= s.label :apellido %>
+        <%= s.text_field :apellido %>
+    </div>
+    <div>
+        <%= s.label :numero_cedula %>
+        <%= s.text_field :numero_cedula %>
+    </div>
+    <div>
+        <%= s.label :numero_ruc %>
+        <%= s.text_field :numero_ruc %>
+    </div>
+    <div>
+        <%= s.label :direccion %>
+        <%= s.text_field :direccion %>
+    </div>
+    <div>
+        <%= s.label :telefono %>
+        <%= s.text_field :telefono %>
+    </div>
+    <div>
+        <%= s.label :correo %>
+        <%= s.text_field :correo %>
+    </div>
+    <div>
+        <%= s.label :estado %>
+        <%= s.select  :estado, ["alta", "baja"] %>
+    </div>
+
+    <%= s.submit %>
+
+<% end %>

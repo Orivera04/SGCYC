@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_221429) do
+ActiveRecord::Schema.define(version: 2020_12_08_202659) do
 
   create_table "clientes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "codigo_socio"
+    t.string "codigo_cliente"
     t.string "tipo_entidad_id"
     t.string "nombre"
     t.string "apellido"
