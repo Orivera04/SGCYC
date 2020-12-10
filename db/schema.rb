@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.integer "telefono"
     t.string "correo"
     t.boolean "estado"
+ActiveRecord::Schema.define(version: 2020_12_03_034454) do
+
+  create_table "empleados", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,6 +39,9 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.string "actividad_comercial"
     t.string "numero_ruc"
     t.string "logo_imagen"
+  create_table "posicions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.string "descripcion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,6 +49,9 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
   create_table "monedas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "simbolo_moneda"
     t.string "nombre_moneda"
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.string "direccion"
     t.integer "telefono"
     t.string "correo"
+  create_table "rols", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
     t.boolean "estado"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -74,6 +86,22 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "monedas_id"
     t.index ["monedas_id"], name: "index_tipo_pagos_on_monedas_id"
+  create_table "usuarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "roles_id"
+    t.bigint "posicions_id"
+    t.string "nombre"
+    t.boolean "estado"
+    t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["posicions_id"], name: "index_usuarios_on_posicions_id"
+    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+    t.index ["roles_id"], name: "index_usuarios_on_roles_id"
   end
 
 end

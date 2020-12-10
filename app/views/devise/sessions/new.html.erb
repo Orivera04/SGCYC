@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>NICACENTRO - Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <%= favicon_link_tag asset_path('favicon.ico') %>
+        <%= stylesheet_link_tag "/special/login" %>
+        <%= stylesheet_link_tag "application", :media => "all" %>
+    </head>
+    <body>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login100-form validate-form"}) do |formulario| %>
+                    <%= image_tag("logo-login", class: "imagelogo") %>
+                    <span class="login100-form-title p-b-43">
+                      Iniciar Sesión
+                    </span>
+                    <% if alert %>
+                      <div class="alert alert-warning" role="alert">
+                        <%= alert %>
+                      </div>
+                    <% end %>
+                    <div class="wrap-input100 validate-input">
+                      <%= formulario.email_field :email, :class => "input100 has-val", :placeholder => 'Ingresa tu correo electrónico' %>
+                      <span class="focus-input100"></span>
+                      <span class="label-input100">Correo</span>
+                    </div>
+                    <div class="wrap-input100 validate-input Normalizador">
+                      <%= formulario.password_field :password, :class => "input100 has-val", :placeholder => 'Ingresa tu correo contraseña' %>
+                      <span class="focus-input100"></span>
+                      <span class="label-input100">Contraseña</span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                      <%= formulario.submit("Autenticar", class: "login100-form-btn") %>
+                    </div>
+                  <% end %>
+                  <div class="login100-more">
+                    <%= image_tag("left-logo-detail.svg", class: "leftimagelogo") %>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
