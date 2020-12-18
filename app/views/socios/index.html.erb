@@ -18,7 +18,6 @@
    <h2>Socios</h2>
    <table>
       <tr>
-      <% @socios.each do |socio| %>
          <thead>
             <th>Codigo</th>
             <th>Nombre</th>
@@ -31,6 +30,7 @@
             <th>Estado</th>
          </thead>
       </tr>
+      <% @socios.each do |socio| %>
       <tr>
          <td> <%= socio.codigo_socio%> </td>
          <td> <%= socio.nombre%> </td>
