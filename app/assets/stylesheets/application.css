@@ -12,4 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap/bootstrap-grid.css
+ *= require bootstrap/bootstrap-grid.min.css
+ *= require bootstrap/bootstrap-reboot.css
+ *= require bootstrap/bootstrap-reboot.min.css
+ *= require bootstrap/bootstrap.css
+ *= require bootstrap/bootstrap.min.css
+ *= require vendor/nucleo/css/nucleo.css
+ *= require vendor/@fortawesome/fontawesome-free/css/all.min.css
  */
+
+
+
+
