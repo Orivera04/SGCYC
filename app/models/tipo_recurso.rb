@@ -1,0 +1,2 @@
+class TipoRecurso < ApplicationRecord
+end

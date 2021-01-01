@@ -1,0 +1,14 @@
+class ComprobanteController < ApplicationController
+  before_action :authenticate_usuario!
+  load_and_authorize_resource
+
+  def index
+    render template: "comprobante/index",  layout: 'layouts/application'
+  end
+
+  def show
+  end
+
+  def form
+  end
+end

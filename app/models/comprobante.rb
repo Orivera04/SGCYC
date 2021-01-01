@@ -1,0 +1,2 @@
+class Comprobante < ApplicationRecord
+end

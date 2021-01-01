@@ -1,0 +1,2 @@
+class RolAccion < ApplicationRecord
+end
