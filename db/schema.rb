@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_221429) do
+ActiveRecord::Schema.define(version: 2021_01_01_042942) do
+
+  create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.string "descripcion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "clientes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "codigo_cliente"
@@ -23,6 +30,11 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.integer "telefono"
     t.string "correo"
     t.boolean "estado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,6 +63,26 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.string "descripcion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "modelo"
+    t.string "descripcion"
+    t.bigint "tipo_recurso_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tipo_recurso_id"], name: "index_recursos_on_tipo_recurso_id"
+  end
+
+  create_table "rol_accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "rols_id"
+    t.bigint "recursos_id"
+    t.bigint "accion_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accion_id"], name: "index_rol_accions_on_accion_id"
+    t.index ["recursos_id"], name: "index_rol_accions_on_recursos_id"
+    t.index ["rols_id"], name: "index_rol_accions_on_rols_id"
   end
 
   create_table "rols", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -90,6 +122,12 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.index ["monedas_id"], name: "index_tipo_pagos_on_monedas_id"
   end
 
+  create_table "tipo_recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "usuarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -108,4 +146,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_221429) do
     t.index ["roles_id"], name: "index_usuarios_on_roles_id"
   end
 
+  add_foreign_key "recursos", "tipo_recursos"
+  add_foreign_key "rol_accions", "accions"
+  add_foreign_key "rol_accions", "recursos", column: "recursos_id"
+  add_foreign_key "rol_accions", "rols", column: "rols_id"
 end

@@ -3,7 +3,7 @@ class CreateTipoEntidads < ActiveRecord::Migration[6.0]
     create_table :tipo_entidads do |t|
       t.string :nombre
       t.timestamps
-      t.references :socios
+      t.references :socios, index: true
     end
   end
 end

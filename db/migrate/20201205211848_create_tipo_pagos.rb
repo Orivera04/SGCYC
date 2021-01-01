@@ -3,7 +3,7 @@ class CreateTipoPagos < ActiveRecord::Migration[6.0]
     create_table :tipo_pagos do |t|
       t.string :nombre
       t.timestamps
-      t.references :monedas
+      t.references :monedas, index: true
     end
   end
 end
