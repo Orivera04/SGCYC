@@ -9,6 +9,12 @@ class ComprobanteController < ApplicationController
   def show
   end
 
-  def form
+  def new
+    render template: "comprobante/form",  layout: 'layouts/application'
   end
+
+  private
+    def model_name
+      "Comprobante"
+    end
 end
