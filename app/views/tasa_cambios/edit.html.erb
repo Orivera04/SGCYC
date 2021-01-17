@@ -1,0 +1,17 @@
+<%= form_for @tasa_cambio do |s| %>
+    <div>
+        <%= s.label :fecha %>
+        <%= s.date_field :fecha %>
+    </div>
+    <div>
+        <%= s.label :dolar %>
+        <%= s.number_field :dolar %>
+    </div>
+    <div>
+        <%= s.label :cordoba %>
+        <%= s.number_field :cordoba %>
+    </div>
+
+    <%= s.submit %>
+
+<% end %>

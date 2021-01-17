@@ -11,7 +11,7 @@ $( document ).ready(function() {
 
 			// Store the sidenav state in a cookie session
 			Cookies.set('sidenav-state', 'pinned');
-		}
+		}		
 
 		function unpinSidenav() {
 			$('.sidenav-toggler').removeClass('active');
@@ -26,6 +26,9 @@ $( document ).ready(function() {
 		// Set sidenav state from cookie
 
 		var $sidenavState = Cookies.get('sidenav-state') ? Cookies.get('sidenav-state') : 'pinned';
+
+		$('#sandbox-container .input-daterange').datepicker({
+		});
 
 		if($(window).width() > 1200) {
 			if($sidenavState == 'pinned') {

@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 2021_01_01_042942) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tasa_cambios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "fecha"
+    t.string "dolar"
+    t.string "cordoba"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tipo_entidads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false

@@ -1,0 +1,128 @@
+<head>
+<title>Tasa de Cambio</title>
+
+
+
+</head>
+
+<body>
+
+<!--
+  <form class="col-4">
+    <%= search_form_for @search, url: root_path, html: {class: "form-inline col-md-8 col-md-offset-1", method: :post} do |f| %>
+      <div class="input-daterange input-group" id="datepicker">
+        <div class="col-md-4">
+          <%= f.text_field :fecha_gteq,   class: "form-control imput-sm datepicker", placeholder: "Fecha Inicio" %>
+        </div>
+        <span class="input-group-addon">hasta</span>
+        <div class="col-md-4">
+          <%= f.text_field :fecha_lteq, class: "form-control imput-sm datepicker", placeholder: "Fecha Final"  %>
+        </div>
+        <br>
+      </div>
+
+      <div class="col-md-2 form-actions">
+        <%= f.submit "Buscar", class:"btn btn-success"%>
+      </div>
+    <% end %>
+  </form>
+
+<br><br><br><br>
+
+-->
+
+<br><br><br><br>
+
+ <div class="header bg-white pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-black d-inline-block mb-0">Filtrar Fecha</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+
+
+                  <form class="col-12">
+                    <%= search_form_for @search, url: search_tasa_cambios_path, html: {class: "form-inline col-md-8 col-md-offset-1", method: :post} do |f| %>
+                      <div class="input-daterange input-group" id="datepicker">
+                        <div class="col-md-4">
+                          <%= f.text_field :fecha_gteq,   class: "form-control imput-sm datepicker", placeholder: "Fecha Inicio" %>
+                        </div>
+                        <span class="input-group-addon">hasta</span>
+                        <div class="col-md-4">
+                          <%= f.text_field :fecha_lteq, class: "form-control imput-sm datepicker", placeholder: "Fecha Fin"  %>
+                        </div>
+                      <div class="col-md-2 form-actions">
+                        <%= f.submit "Buscar", class:"btn btn-success"%>
+                      </div>
+                    <% end %>
+                  </form>    
+                  
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <!-- Card header -->
+            <div class="card-header border-0">
+              <h3 class="mb-0">Light table</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                      <th scope="col" class="sort" data-sort="name">#</th>
+                      <th scope="col" class="sort" data-sort="name">Fecha</th>
+                      <th scope="col" class="sort" data-sort="name">Dólar</th>
+                      <th scope="col" class="sort" data-sort="name">Córdoba</th>
+                      <th scope="col">Accion</th>
+                    </tr>
+                  </thead>
+                  <% @tasa_cambios.each do |tcambio| %>
+                    <tbody class="list">
+                      <tr>
+                        <td scope="row" >1</td>
+                        <th scope="row">
+                          <div class="media align-items-center">
+                            <div class="media-body">
+                              <span class="name mb-0 text-sm"><%= tcambio.fecha%></span>
+                            </div>
+                          </div>
+                        </th>
+                        <td class="budget"><%= tcambio.dolar%></td>
+                        <td class="budget"><%= tcambio.cordoba%></td>
+                        <td class="text-right">
+                          <div class="dropdown">
+                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                              <a class="dropdown-item" href="#">Visualizar</a>
+                              <a class="dropdown-item"><%= link_to 'Edit', edit_tasa_path(tcambio) %></a>
+                              <a class="dropdown-item" href="#">Actualizar</a>
+                              <a class="dropdown-item" href="#">Eliminar</a>
+                              <a class="dropdown-item"><%= link_to 'delete', tasa_cambio_path(tcambio), method: :delete, data: { confirm: "Desea Eliminar el Registro?"} %></a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <button type="button" class="btn btn-outline-primary" href="new.html">Agregar</button>
+    <button type="button" class="btn btn-outline-primary">Carga Masiva</button>
+
+</body>
