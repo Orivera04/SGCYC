@@ -1,0 +1,15 @@
+<li class="nav-item">
+    <a class="nav-link" href="<%= ruta["Ruta"] %>" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="<%=  ruta["Ruta"].gsub("#","") %>">
+        <i class="<%= clase_icono["Icono"] %>"></i>
+        <span class="nav-link-text"><%= titulo %></span>
+    </a>
+    <div class="collapse" id="<%= ruta["Ruta"].gsub("#","") %>">
+        <ul class="nav nav-sm flex-column">
+            <% items.each do |sub_seccion| %>
+                <li class="nav-item">
+                      <a href="<%= eval(sub_seccion.values.first["Ruta"]) %>" class="nav-link"><%= sub_seccion.keys.first %></a>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</li>

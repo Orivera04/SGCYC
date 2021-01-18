@@ -1,0 +1,70 @@
+- Dashboards:
+    - Items:
+        - Información General:
+            Recurso: "InformacionGeneral"
+            Ruta: "informacion_general_index_path"
+        - Graficos:
+            Recurso: "Graficos"
+            Ruta: "graficos_path"
+    - Ruta: "#navbar-dashboards"
+    - Icono: "ni ni-shop text-primary"
+- Realizar Pagaré:
+    - Recurso: "Pagare"
+    - Ruta: "pagare_index_path"
+    - Icono: "ni ni-archive-2 text-green"
+- Comprobantes:
+    - Recurso: "Comprobante"
+    - Ruta: "comprobante_index_path"
+    - Icono: "ni ni-ungroup text-orange"
+- Socios:
+    - Recurso: "Socios"
+    - Ruta: "socios_path"
+    - Icono: "ni ni-circle-08 text-primary"
+- Informes:
+    - Items:
+        - Clientes Morosos:
+            Recurso: "ClientesMorosos"
+            Ruta: "clientes_morosos_path"
+        - Clientes Con Cuotas Vencidas:
+            Recurso: "ClientesCuotasVencidas"
+            Ruta: "clientes_cuotas_vencidas_path"
+        - Clientes Nuevos:
+            Recurso: "ClientesNuevos"
+            Ruta: "clientes_nuevos_path"
+        - Exceden Prestamos:
+            Recurso: "ExcedenPrestamos"
+            Ruta: "exceden_prestamos_path"
+    - Ruta: "#navbar-forms"
+    - Icono: "ni ni-single-copy-04 text-pink"
+- Catálogos:
+  - Items:
+    - Bancos:
+        Recurso: "Bancos"
+        Ruta: "bancos_path"
+    - Formas de Pago:
+        Recurso: "FormasPago"
+        Ruta: "formas_pagos_path"
+    - Empresa:
+        Recurso: "Empresa"
+        Ruta: "empresa_index_path"
+    - Cargos:
+        Recurso: "Cargos"
+        Ruta: "cargos_path"
+    - Tasa De Cambio:
+        Recurso: "TasaCambio"
+        Ruta: "tasa_cambio_index_path"
+    - Valor De La Leche:
+        Recurso: "ValorLeche"
+        Ruta: "valor_leche_index_path"
+  - Ruta: "#navbar-tables"
+  - Icono: "ni ni-align-left-2 text-default"
+- Configuración:
+  - Items:
+    - Usuarios:
+        Recurso: "Usuario"
+        Ruta: "informacion_general_index_path"
+    - Roles:
+        Recurso: "Roles"
+        Ruta: "roles_path"
+  - Ruta: "#navbar-users"
+  - Icono: "ni ni-settings-gear-65 text-default"
