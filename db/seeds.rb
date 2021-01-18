@@ -15,12 +15,30 @@ begin
     TipoRecurso.create!(id: 1, nombre: "Documentos")
     TipoRecurso.create!(id: 2, nombre: "Catalogo")
     TipoRecurso.create!(id: 3, nombre: "Dashboard")
-    TipoRecurso.create!(id: 4, nombre: "Configuración")
+    TipoRecurso.create!(id: 4, nombre: "Informes")
+    TipoRecurso.create!(id: 5, nombre: "Configuración")
     puts ': Realizado con exito.'
 
     puts '==> Creando Recursos por Defecto'
-    Recurso.create!(id: 1, modelo: "Comprobante", descripcion: "Documento Comprobante", tipo_recurso_id: 1)
-    Recurso.create!(id: 2, modelo: "Pagare", descripcion: "Documento Pagare", tipo_recurso_id: 1)
+
+    Recurso.create!(id: 1, nombre: "InformacionGeneral", descripcion: "Información General Dashboard", tipo_recurso_id: 3)
+    Recurso.create!(id: 2, nombre: "Graficos", descripcion: "Graficos del Dashboard", tipo_recurso_id: 3)
+    Recurso.create!(id: 3, nombre: "Pagare", descripcion: "Documento Pagare", tipo_recurso_id: 1)
+    Recurso.create!(id: 4, nombre: "Comprobante", descripcion: "Documento Comprobante", tipo_recurso_id: 1)
+    Recurso.create!(id: 5, nombre: "Socios", descripcion: "Socio Catalogo", tipo_recurso_id: 2)
+    Recurso.create!(id: 6, nombre: "ClientesMorosos", descripcion: "Informe Clientes Morosos", tipo_recurso_id: 4)
+    Recurso.create!(id: 7, nombre: "ClientesCuotasVencidas", descripcion: "Informe Clientes Cuotas Vencidas", tipo_recurso_id: 4)
+    Recurso.create!(id: 8, nombre: "ClientesNuevos", descripcion: "Informe Clientes Nuevos", tipo_recurso_id: 4)
+    Recurso.create!(id: 9, nombre: "ExcedenPrestamos", descripcion: "Informe Clientes Exceden Prestamos", tipo_recurso_id: 4)
+    Recurso.create!(id: 10, nombre: "Bancos", descripcion: "Catalogo Bancos", tipo_recurso_id: 2)
+    Recurso.create!(id: 11, nombre: "FormasPago", descripcion: "Catalogo Formas de Pago", tipo_recurso_id: 2)
+    Recurso.create!(id: 12, nombre: "Empresa", descripcion: "Catalogo Empresa", tipo_recurso_id: 2)
+    Recurso.create!(id: 13, nombre: "Cargos", descripcion: "Catalogo Cargos", tipo_recurso_id: 2)
+    Recurso.create!(id: 14, nombre: "TasaCambio", descripcion: "Catalogo TasaCambio", tipo_recurso_id: 2)
+    Recurso.create!(id: 15, nombre: "ValorLeche", descripcion: "Catalogo Valor Leche", tipo_recurso_id: 2)
+    Recurso.create!(id: 16, nombre: "Usuario", descripcion: "Configuración Usuarios", tipo_recurso_id: 5)
+    Recurso.create!(id: 17, nombre: "Roles", descripcion: "Configuración Roles", tipo_recurso_id: 5)
+
     puts ': Realizado con exito.'
 
     puts '==> Creando Acciones por Defecto'

@@ -1,0 +1,18 @@
+<%
+    menu_items = contruir_menu
+%>
+
+<% menu_items.each do |seccion| %>
+    <% if seccion.values.flatten.first.key?("Items") %>
+        <%= render 'menu/menu_dropdown', titulo: seccion.keys.first,
+            clase_icono: seccion.values.flatten[Ability::ICONO],
+            ruta: seccion.values.flatten[Ability::RUTA],
+            items: seccion.values.flatten.first["Items"]
+        %>
+    <% else %>
+        <%= render 'menu/menu_simple', titulo: seccion.keys.first,
+            clase_icono: seccion.values.flatten[Ability::ICONO],
+            ruta: seccion.values.flatten[Ability::RUTA]
+        %>
+    <% end %>
+<% end %>

@@ -1,8 +1,23 @@
 Rails.application.routes.draw do
-  resources :home
-  root to: 'home#index'
-
   devise_for :usuarios, controllers: { sessions: "usuarios/sessions" }
 
+  resources :home
+  resources :informacion_general
+  resources :graficos
+  resources :pagare
   resources :comprobante
+  resources :socios
+  resources :cargos
+  resources :roles
+  resources :tasa_cambio
+  resources :empresa
+  resources :bancos
+  resources :exceden_prestamos
+  resources :clientes_nuevos
+  resources :clientes_cuotas_vencidas
+  resources :clientes_morosos
+  resources :formas_pagos
+  resources :valor_leche
+
+  root to: 'home#index'
 end
