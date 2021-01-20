@@ -23151,8 +23151,8 @@ textarea[resize='horizontal']
 
     display: flex;
 
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     margin: 0 3px;
     padding: 0;
 
@@ -29639,4 +29639,11 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 .swal2-popup .swal2-image
 {
     max-width: 200px;
+}
+
+.paginacion_menu {
+    float: right;
+}
+.card-footer b {
+    line-height: 35px;
 }

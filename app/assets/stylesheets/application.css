@@ -10,8 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  *= require bootstrap/bootstrap-grid.css
  *= require bootstrap/bootstrap-grid.min.css
  *= require bootstrap/bootstrap-reboot.css
@@ -20,6 +18,7 @@
  *= require bootstrap/bootstrap.min.css
  *= require vendor/nucleo/css/nucleo.css
  *= require vendor/@fortawesome/fontawesome-free/css/all.min.css
+ *= require argon.css
  */
 
 
