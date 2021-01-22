@@ -7,7 +7,7 @@ class CreateEmpresas < ActiveRecord::Migration[6.0]
       t.string :direccion
       t.string :actividad_comercial
       t.string :numero_ruc
-      t.string :logo_imagen
+      t.text :logo_imagen, limit: 4294967295
       t.timestamps
     end
   end

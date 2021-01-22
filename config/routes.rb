@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :usuarios, controllers: { sessions: "usuarios/sessions" }
 
-  resources :home
   resources :informacion_general
   resources :graficos
   resources :pagare
@@ -19,5 +18,5 @@ Rails.application.routes.draw do
   resources :formas_pagos
   resources :valor_leche
 
-  root to: 'home#index'
+  root to: 'informacion_general#index'
 end

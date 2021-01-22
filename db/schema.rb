@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_042942) do
     t.string "direccion"
     t.string "actividad_comercial"
     t.string "numero_ruc"
-    t.string "logo_imagen"
+    t.text "logo_imagen", size: :long
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

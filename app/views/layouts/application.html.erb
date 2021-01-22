@@ -1,9 +1,11 @@
+<% presenter = EmpresaPresenter.new(Empresa.first) %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nicacentro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= content_for :titulo_seccion %></title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,8 +15,8 @@
     <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
       <div class="scrollbar-inner">
         <div class="sidenav-header d-flex align-items-center">
-          <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
-            <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <a class="navbar-brand" href="<%= empresa_index_path %>">
+            <%= image_tag "data:image/jpeg;base64,#{presenter.logo_empresa}", class:"navbar-brand-img" %>
           </a>
           <div class="ml-auto">
             <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
@@ -39,7 +41,12 @@
     <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul id="titulo_seccion" class="ml-auto ml-md-0 mb-0 pl-0 text-white display-4">
+            <%= content_for :titulo_seccion %>
+          </ul>
           <ul class="navbar-nav align-items-center ml-md-auto">
+            <li>
+            </li>
             <li class="nav-item d-xl-none">
               <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
                 <div class="sidenav-toggler-inner">
@@ -54,7 +61,7 @@
                 <i class="ni ni-zoom-split-in"></i>
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li id="notificaciones" class="nav-item dropdown">
               <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="ni ni-bell-55"></i>
               </a>
@@ -144,7 +151,6 @@
                   <a href="#!" class="list-group-item list-group-item-action">
                     <div class="row align-items-center">
                       <div class="col-auto">
-                        <!-- Avatar -->
                         <img alt="Image placeholder" src="./assets/img/theme/team-5.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
@@ -170,20 +176,20 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./assets/img/theme/team-4.jpg">
+                    <%= image_tag "user.png", class:"navbar-brand-img" %>
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                    <span class="mb-0 text-sm  font-weight-bold"><%= current_usuario.email %></span>
                   </div>
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="#!" class="dropdown-item">
+                <a href="<%= edit_usuario_registration_url(current_usuario) %>" class="dropdown-item">
                   <i class="ni ni-single-02 text-primary"></i>
                   <span>Mi Usuario</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="<%= destroy_usuario_session_path %>" data-method="delete" class="dropdown-item">
                   <i class="ni ni-user-run text-orange"></i>
                   <span>Cerrar Sesión</span>
                 </a>
@@ -195,10 +201,16 @@
     </nav>
     <div class="container-fluid mt-2">
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+        <div class="alert alert-success" role="alert">
+          <span class="alert-icon"><i class="ni ni-check-bold"></i></span>
+          <span class="alert-text"><%= notice %></span>
+        </div>
       <% end %>
       <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+        <div class="alert alert-danger" role="alert">
+          <span class="alert-icon"><i class="ni ni-sound-wave"></i></span>
+          <span class="alert-text"><%= alert %></span>
+        </div>
       <% end %>
       <%= yield %>
     </div>

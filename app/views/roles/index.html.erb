@@ -1,5 +1,10 @@
-<div class="col-lg-12 col-12 text-right mt-4">
-    <%= link_to "Crear", new_role_path, class: "btn btn-sm btn-neutral" %>
+<% content_for :titulo_seccion do %>
+  Roles
+<% end %>
+
+<div class="col-lg-12 col-12 text-right mt-4 alineador_botones">
+    <%= link_to "Descargar Excel", new_role_path, class: "btn btn-sm btn-neutral" %>
+    <%= link_to "Crear Recurso", new_role_path, class: "btn btn-sm btn-neutral" %>
 </div>
 
 <div class="container-fluid mt-3">

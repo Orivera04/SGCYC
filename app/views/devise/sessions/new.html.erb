@@ -2,10 +2,10 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title>NICACENTRO - Login</title>
+        <title>SGCYC - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <%= favicon_link_tag asset_path('favicon.ico') %>
-        <%= stylesheet_link_tag "/special/login" %>
+        <%= stylesheet_link_tag "login" %>
         <%= stylesheet_link_tag "application", :media => "all" %>
     </head>
     <body>
@@ -19,7 +19,8 @@
                     </span>
                     <% if alert %>
                       <div class="alert alert-warning" role="alert">
-                        <%= alert %>
+                        <span class="alert-icon"><i class="ni ni-sound-wave"></i></span>
+                        <span class="alert-text"><%= alert %></span>
                       </div>
                     <% end %>
                     <div class="wrap-input100 validate-input">
@@ -44,4 +45,3 @@
         </div>
     </body>
 </html>
-
