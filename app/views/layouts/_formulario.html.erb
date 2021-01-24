@@ -1,0 +1,4 @@
+<%= form_for(registro, url: url, html: { multipart: true }) do |formulario| %>
+  <%= yield %>
+  <%= formulario.submit "Guardar", class: "btn btn-primary btn-lg" %>
+<% end %>

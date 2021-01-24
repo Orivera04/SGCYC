@@ -2,14 +2,19 @@
   Roles
 <% end %>
 
-<div class="col-lg-12 col-12 text-right mt-4 alineador_botones">
-    <%= link_to "Descargar Excel", new_role_path, class: "btn btn-sm btn-neutral" %>
-    <%= link_to "Crear Recurso", new_role_path, class: "btn btn-sm btn-neutral" %>
+<div class="col-lg-12 col-12">
+   <div class="row">
+      <%= render 'roles/filtros' %>
+      <div class="col-lg-6 text-right">
+         <%= link_to "Descargar Excel", excel_index_roles_path(@params_permit), class: "btn btn-lg btn-success" %>
+         <%= link_to "Crear Recurso", new_role_path, class: "btn btn-lg btn-neutral" %>
+      </div>
+   </div>
 </div>
 
 <div class="container-fluid mt-3">
    <div class="row">
-      <div class="col">
+      <div class="col pl-0 pr-0">
          <div class="card">
             <div class="card-header">
                <h3 class="mb-0">Roles registrados</h3>

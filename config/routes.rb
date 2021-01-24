@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   devise_for :usuarios, controllers: { sessions: "usuarios/sessions" }
 
+  resources :home
   resources :informacion_general
   resources :graficos
   resources :pagare
   resources :comprobante
   resources :socios
   resources :cargos
-  resources :roles
+
+  resources :roles do
+    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+  end
+
   resources :tasa_cambio
   resources :empresa
   resources :bancos
@@ -18,5 +23,5 @@ Rails.application.routes.draw do
   resources :formas_pagos
   resources :valor_leche
 
-  root to: 'informacion_general#index'
+  root to: 'home#index'
 end

@@ -29666,5 +29666,5 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 }
 
 .alineador_botones {
-    padding-right: 30px;
+    padding-right: 15px !important;
 }
