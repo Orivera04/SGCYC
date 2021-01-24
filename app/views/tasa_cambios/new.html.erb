@@ -1,17 +1,72 @@
+
+<br><br><br><br>
+
 <%= form_for @tasa_cambio do |s| %>
-    <div>
-        <%= s.label :fecha %>
-        <%= s.date_field :fecha %>
+    <div class="header bg-white pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">  
+                <h6 class="h2 text-black d-inline-block mb-0">Registrar por Día</h6>              
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                            <%= s.label :fecha %>
+                            <%= s.date_field :fecha %>
+                            </div>
+                            <div class="input-group col-sm">                                
+                                <%= s.label :dolar %>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                    <%= s.number_field :dolar, class:"input-group-text" %>                                
+                                </div>
+                            </div>
+                            <div class="input-group col-sm">  
+                                <%= s.label :cordoba %>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">C$</span>
+                                    <%= s.number_field :cordoba, class:"input-group-text" %>
+                                </div>
+                            </div>
+                            <div class="col-sm"> 
+                                <br>
+                                <%= s.submit "Aceptar", class:"btn btn-outline-primary" %>
+                            </div>
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <%= s.label :dolar %>
-        <%= s.number_field :dolar %>
-    </div>
-    <div>
-        <%= s.label :cordoba %>
-        <%= s.number_field :cordoba %>
-    </div>
+<% end %>
 
-    <%= s.submit %>
+<h6 class="h2 text-black d-inline-block mb-0">Registrar por Mes</h6>  
 
+<%= form_tag :action => 'new' do %>
+    <div class="header bg-white pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+
+                    <form class="col-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Ingrese el Año</span>
+                            <%= text_field_tag :year, params[:year] %>
+                        </div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Ingrese el Mes</span>
+                            <%= text_field_tag :month, params[:month] %>
+                        </div>  
+
+                        <%= submit_tag "Aceptar", class:"btn btn-outline-primary" %>
+
+                    </form>    
+                    
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 <% end %>

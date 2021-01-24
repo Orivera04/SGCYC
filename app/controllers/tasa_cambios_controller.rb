@@ -19,6 +19,12 @@ class TasaCambiosController < ApplicationController
       #agregar
      def new
           @tasa_cambio = TasaCambio.new
+
+          #anio = "#params[:year]"
+          #mes = "#params[:month]"
+
+          #@wstasa = @wstasa_cambio.new(anio,mes)
+
      end
 
      def create
@@ -65,4 +71,32 @@ class TasaCambiosController < ApplicationController
      def tcambio_params 
           params.require(:tasa_cambio).permit(:fecha, :dolar, :cordoba)
      end
+
+     def masivo
+          binding.pry
+          @tasa_cambios = TasaCambio.new
+          render :masivo
+     end
+
+     def self.post_webservice(year, month)
+          date = { Ano: year, Mes: month }
+          begin
+            client = Savon.client(log: true, ssl_verify_mode: :none, ssl_version: :TLSv1) do
+              wsdl 'https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx?WSDL'
+              convert_request_keys_to :camelcase
+            end
+      
+            client.call(:recupera_tc_mes, message: date).body
+          rescue StandardError => e
+            logger.error '*******************'
+            logger.error e.message
+            logger.error e.backtrace.join('\n')
+            logger.error '*******************'
+            raise e.message
+          end
+        end
+
+     def respuesta
+     end
+
 end

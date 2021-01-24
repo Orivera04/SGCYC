@@ -34,6 +34,9 @@ gem 'devise'
 # Gema de Permisos
 gem 'cancancan'
 
+# Gema para consumo de WS
+gem 'savon'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
