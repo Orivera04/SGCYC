@@ -44,7 +44,7 @@ es:
       locked: Tu cuenta está bloqueada.
       not_found_in_database: "%{authentication_keys} o contraseña inválidos."
       timeout: Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar.
-      unauthenticated: Tienes que iniciar sesión o registrarte para poder continuar.
+      unauthenticated: Tienes que iniciar sesión para poder continuar.
       unconfirmed: Tienes que confirmar tu cuenta para poder continuar.
     mailer:
       confirmation_instructions:
@@ -55,7 +55,7 @@ es:
       email_changed:
         greeting: "¡Hola %{recipient}! "
         message: Estamos contactando contigo para notificarte que tu email ha sido cambiado a %{email}.
-        message_unconfirmed: 
+        message_unconfirmed:
         subject: Email cambiado
       password_change:
         greeting: "¡Hola %{recipient}!"

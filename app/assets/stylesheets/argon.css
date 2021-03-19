@@ -18881,6 +18881,20 @@ a.btn-icon-only
     }
 }
 
+@media (max-width: 768px)
+{
+    #titulo_seccion {
+       display: none;
+    }
+
+    #notificaciones {
+       display: none;
+    }
+}
+
+.titulo_seccion {
+    display: none;
+}
 .card-pricing .card-header
 {
     padding-top: 1.25rem;
@@ -21606,8 +21620,11 @@ textarea[resize='horizontal']
 .navbar-vertical .navbar-brand > img
 {
     max-width: 100%;
-    max-height: 2rem;
+    max-height: 4rem;
+    border-radius: 10px;
+    image-rendering: -webkit-optimize-contrast;
 }
+
 @media (min-width: 768px)
 {
     .navbar-vertical .navbar-collapse
@@ -23151,8 +23168,8 @@ textarea[resize='horizontal']
 
     display: flex;
 
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     margin: 0 3px;
     padding: 0;
 
@@ -29639,4 +29656,15 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 .swal2-popup .swal2-image
 {
     max-width: 200px;
+}
+
+.paginacion_menu {
+    float: right;
+}
+.card-footer b {
+    line-height: 35px;
+}
+
+.alineador_botones {
+    padding-right: 15px !important;
 }

@@ -1,0 +1,60 @@
+empresa = Empresa.first
+@columnas_excel = 'A'.upto('Z').to_a
+
+primer_columna = 0
+
+wb.styles do |hoja|
+  @header_cell_border = hoja.add_style(b: true, sz: 14, border: { style: :thin, color: '00'} , alignment: { horizontal: :center, vertical: :center}, wrap_text: true)
+  @header_cell = hoja.add_style(b: true, sz: 14, alignment: { horizontal: :center, vertical: :center}, wrap_text: true)
+  @bold_cell_without_border = hoja.add_style(b: true, sz: 8, alignment: { horizontal: :center, vertical: :center}, wrap_text: true)
+  @title_cell = hoja.add_style(b: true, sz: 8, alignment: { horizontal: :center, vertical: :center}, border: { style: :thin, color: '00'})
+  @wraped_title_cell = hoja.add_style(b: true, sz: 8, alignment: { horizontal: :center, wrap_text: :true}, border: { style: :thin, color: '00'})
+  @sub_title_cell = hoja.add_style(b: true, sz: 8, bg_color: 'fffacd', border: { style: :thin, color: '00'}, alignment: { horizontal: :left})
+  @title_cell_left = hoja.add_style(b: true, sz: 8, bg_color: '4d4d50' , fg_color: 'ffffff', alignment: { horizontal: :left, vertical: :center}, border: { style: :thin, color: '00'})
+  @title_cell_center = hoja.add_style(b: true, sz: 8, bg_color: '4d4d50' , fg_color: 'ffffff', alignment: { horizontal: :center, vertical: :center}, border: { style: :thin, color: '00'})
+  @monto_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :right},  num_fmt: 39)
+  @default_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :left, wrap_text: :true})
+  @default_cell_center = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center, vertical: :center, wrap_text: :true})
+  @default_centered_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center, wrap_text: :true})
+  @string_center_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center})
+  @wraped_text = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center, wrap_text: :true})
+  @wraped_left_text = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { vertical: :center, horizontal: :left, wrap_text: :true})
+  @date_cell = string_center_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center}, format_code: 'DD-MM-YYYY')
+  @date_cell_vets = string_center_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center}, format_code: 'DD/MM/YYYY')
+  @total_cell_small_center = hoja.add_style(b: true, sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center}, num_fmt: 39)
+  @total_cell_small = hoja.add_style(b: true, sz: 8, border: { style: :thin, color: '00'},  num_fmt: 39)
+  @total_cell_right = hoja.add_style(b: true, sz: 10, border: { style: :thin, color: '00'}, alignment: { horizontal: :right},  num_fmt: 39)
+  @total_cell = hoja.add_style(b: true, sz: 12, border: { style: :thin, color: '00'},  num_fmt: 39)
+  @bold_cell = hoja.add_style(b: true, sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :left, vertical: :center, wrap_text: :true})
+  @porcentaje_cell = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :right},  num_fmt: 9)
+  @string_center_cell_zeros = hoja.add_style(sz: 8, border: { style: :thin, color: '00'}, alignment: { horizontal: :center}, format_code: "@")
+
+  sheet.add_row([""])
+  fila_actual = sheet.rows.last.row_index + 1
+  sheet.merge_cells("A#{fila_actual}:#{@columnas_excel[merge]}#{fila_actual}")
+  sheet.rows[fila_actual - 1].cells[primer_columna].style = @header_cell
+  sheet.rows[fila_actual - 1].cells[primer_columna].value = empresa.nombre_comercial
+  sheet.add_row([""])
+
+  fila_actual = sheet.rows.last.row_index + 1
+  sheet.merge_cells("A#{fila_actual}:#{@columnas_excel[merge]}#{fila_actual}")
+  sheet.rows[fila_actual - 1].cells[primer_columna].style = @header_cell
+  sheet.rows[fila_actual - 1].cells[primer_columna].value = empresa.actividad_comercial
+  sheet.add_row([""])
+
+  fila_actual = sheet.rows.last.row_index + 1
+  sheet.merge_cells("A#{fila_actual}:#{@columnas_excel[merge]}#{fila_actual}")
+  sheet.rows[fila_actual - 1].cells[primer_columna].style = @header_cell
+  sheet.rows[fila_actual - 1].cells[primer_columna].value = empresa.numero_ruc
+  sheet.add_row([""])
+
+  fila_actual = sheet.rows.last.row_index + 1
+  sheet.merge_cells("A#{fila_actual}:#{@columnas_excel[merge]}#{fila_actual}")
+  sheet.rows[fila_actual - 1].cells[primer_columna].style = @header_cell
+  sheet.rows[fila_actual - 1].cells[primer_columna].value = empresa.direccion.to_s
+  sheet.add_row([""])
+
+  fila_actual = sheet.rows.last.row_index + 1
+  sheet.merge_cells("A#{fila_actual}:#{@columnas_excel[merge]}#{fila_actual}")
+  sheet.rows[fila_actual - 1].cells[primer_columna].style = @header_cell
+end

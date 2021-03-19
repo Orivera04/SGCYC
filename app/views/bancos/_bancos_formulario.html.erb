@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Información del Banco</h3>
+                </div>
+                <div class="card-body">
+                    <%= hidden_field(:bancos, :id, :value => @registro.id) %>
+                    <div class="form-group">
+                        <label class="form-control-label" for="nombre">Nombre</label>
+                        <%= text_field(:bancos, :nombre, class: "form-control", id: "nombre", value: @registro.nombre) %>
+                        <p class="text-danger"><%= @registro.errors[:nombre].first %></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="nombre">Siglas</label>
+                        <%= text_field(:bancos, :siglas, class: "form-control", id: "siglas", value: @registro.siglas) %>
+                        <p class="text-danger"><%= @registro.errors[:siglas].first %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

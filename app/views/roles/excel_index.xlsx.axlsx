@@ -1,0 +1,16 @@
+wb = xlsx_package.workbook
+numero_columnas = 4
+encabezados = ["ID", "Nombre", "Estado", "Creado El", "Actualizado El"]
+wb.add_worksheet(name: "Roles") do |hoja|
+  render partial: "shared/cabecera_excel",
+    locals: {
+      wb: wb, sheet: hoja, merge: numero_columnas
+    }
+
+  hoja.add_row(encabezados, style: @title_cell)
+  @registros.each do |rol|
+    fila = [rol.id, rol.nombre, I18n.t(rol.estado), rol.created_at.strftime("%F %T"), rol.updated_at.strftime("%F %T")]
+    estilos = [@default_cell, @default_cell, @default_cell, @date_cell, @date_cell]
+    hoja.add_row(fila, style: estilos)
+  end
+end

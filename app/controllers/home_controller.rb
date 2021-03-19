@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
- before_action :authenticate_usuario!
+  include Controleable
 
-  def new
+  def index
     render template: "home/index",  layout: 'layouts/application'
   end
 

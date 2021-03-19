@@ -8,10 +8,18 @@ Rails.application.routes.draw do
   resources :comprobante
   resources :socios
   resources :cargos
-  resources :roles
+
+  resources :roles do
+    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+  end
+
   resources :tasa_cambio
   resources :empresa
-  resources :bancos
+
+  resources :bancos do
+    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+  end
+
   resources :exceden_prestamos
   resources :clientes_nuevos
   resources :clientes_cuotas_vencidas

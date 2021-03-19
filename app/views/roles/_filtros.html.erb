@@ -1,0 +1,17 @@
+<div class="col-lg-6 text-left">
+    <button class="btn btn-lg btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="btn-inner--icon"><i class="fas fa-search"></i></span>
+            <span class="btn-inner--text">Filtros</span>
+    </button>
+
+    <div class="dropdown-menu w-60">
+        <%= search_form_for @coleccion, url: roles_path, class: "px-4 py-3 text-center" do |formulario| %>
+            <div class="form-group text-left">
+                <%= label_tag(:nombre_eq, "Nombre:") %>
+                <%= text_field_tag "q[nombre_eq]", params[:q][:nombre_eq], class: "form-control" %>
+            </div>
+            <%= formulario.submit class: "btn btn-primary text-center" %>
+            <%= link_to "Quitar Filtros", roles_path, class: "btn btn-danger text-center" %>
+        <% end %>
+     </div>
+</div>

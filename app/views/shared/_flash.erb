@@ -1,0 +1,11 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <% flash.each do |nombre, mensaje| %>
+        <div class="alert alert-danger" role="alert">
+            <span class="alert-icon"><i class="ni ni-sound-wave"></i></span>
+            <span class="alert-text"><%= mensaje %></span>
+        </div>
+    <% end %>
+  </div>
+</div>

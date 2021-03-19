@@ -1,5 +1,11 @@
+require 'base64'
 begin
     puts '==> Creando Seeds'
+
+    puts '==> Creando Empresa'
+    Empresa.create!(id: 1, nombre_comercial: "NicaCentro", numero_telefono: "89438943",
+                    correo: "admin@nicacentro.com", direccion: "Barrio 24 de Junio, del Puente Central 1 ½ cuadra al Este Matiguás Matagalpa",
+                    actividad_comercial: "Cooperativa de Leche", numero_ruc: "J89342989", logo_imagen: Base64.encode64(File.open("#{Rails.root}/app/assets/images/logo_empresa_default.png", "rb").read))
 
     puts '==> Creando Posiciones por defecto'
     Posicion.create!(id: 1, nombre: "Administrador del Sistema", descripcion: "Encargado de administrar el sistema")
@@ -46,6 +52,15 @@ begin
     Accion.create!(id: 2, nombre: "Escritura", descripcion: "Permite generar el recurso")
     Accion.create!(id: 3, nombre: "Actualizar", descripcion: "Permite actualizar el recurso")
     Accion.create!(id: 4, nombre: "Eliminar", descripcion: "Permite eliminar el recurso")
+    puts ': Realizado con exito.'
+
+    puts '==> Creando Bancos por Defecto'
+    Banco.create!(id: 1, nombre: "BAC Credomatic", siglas: "BAC")
+    Banco.create!(id: 2, nombre: "Banco de Finanzas", siglas: "BDF")
+    Banco.create!(id: 3, nombre: "Banco Ficohsa", siglas: "Ficohsa")
+    Banco.create!(id: 4, nombre: "Banco Lafise Bancentro", siglas: "Lafise")
+    Banco.create!(id: 5, nombre: "Banco de la Producción", siglas: "Banpro")
+    Banco.create!(id: 6, nombre: "Banco Atlantida", siglas: "Atlantida")
     puts ': Realizado con exito.'
 
     puts '==> Creando Usuarios por defecto'
