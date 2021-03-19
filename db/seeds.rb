@@ -54,6 +54,15 @@ begin
     Accion.create!(id: 4, nombre: "Eliminar", descripcion: "Permite eliminar el recurso")
     puts ': Realizado con exito.'
 
+    puts '==> Creando Bancos por Defecto'
+    Banco.create!(id: 1, nombre: "BAC Credomatic", siglas: "BAC")
+    Banco.create!(id: 2, nombre: "Banco de Finanzas", siglas: "BDF")
+    Banco.create!(id: 3, nombre: "Banco Ficohsa", siglas: "Ficohsa")
+    Banco.create!(id: 4, nombre: "Banco Lafise Bancentro", siglas: "Lafise")
+    Banco.create!(id: 5, nombre: "Banco de la Producción", siglas: "Banpro")
+    Banco.create!(id: 6, nombre: "Banco Atlantida", siglas: "Atlantida")
+    puts ': Realizado con exito.'
+
     puts '==> Creando Usuarios por defecto'
     if Usuario.all.blank?
         Usuario.create!(email: 'admin@nicacentro.com', password: 'root12345',

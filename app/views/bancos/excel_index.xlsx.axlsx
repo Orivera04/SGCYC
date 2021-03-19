@@ -1,0 +1,16 @@
+wb = xlsx_package.workbook
+numero_columnas = 3
+encabezados = ["ID", "Nombre", "Siglas"]
+wb.add_worksheet(name: "Bancos") do |hoja|
+  render partial: "shared/cabecera_excel",
+    locals: {
+      wb: wb, sheet: hoja, merge: numero_columnas
+    }
+
+  hoja.add_row(encabezados, style: @title_cell)
+  @registros.each do |rol|
+    fila = [rol.id, rol.nombre, rol.siglas]
+    estilos = [@default_cell, @default_cell, @default_cell]
+    hoja.add_row(fila, style: estilos)
+  end
+end

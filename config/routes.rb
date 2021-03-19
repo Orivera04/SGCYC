@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
   resources :tasa_cambio
   resources :empresa
-  resources :bancos
+
+  resources :bancos do
+    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+  end
+
   resources :exceden_prestamos
   resources :clientes_nuevos
   resources :clientes_cuotas_vencidas

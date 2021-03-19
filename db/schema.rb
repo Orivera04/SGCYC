@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_012054) do
 
   create_table "bancos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
+    t.string "siglas"
   end
 
   create_table "clientes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

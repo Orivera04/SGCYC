@@ -6,7 +6,7 @@
    <div class="row">
       <%= render 'bancos/filtros' %>
       <div class="col-lg-6 text-right">
-         <%= link_to "Descargar Excel", excel_index_roles_path(@params_permit), class: "btn btn-lg btn-success" %>
+         <%= link_to "Descargar Excel", excel_index_bancos_path(@params_permit), class: "btn btn-lg btn-success" %>
          <%= link_to "Crear Recurso", new_banco_path, class: "btn btn-lg btn-neutral" %>
       </div>
    </div>
@@ -25,6 +25,7 @@
                      <tr>
                         <th class="sort"><%= sort_link(@coleccion, :id, "ID") %></th>
                         <th class="sort"><%= sort_link(@coleccion, :nombre, "Nombre") %></th>
+                        <th>Siglas</th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                      </tr>
@@ -34,11 +35,16 @@
                      <tr>
                         <td><%= banco.id %></td>
                         <td><%= banco.nombre %></td>
+                        <td><%= banco.siglas %></td>
                         <td>
-                           <%= link_to 'Editar', edit_banco_path(banco), class: "btn btn-icon btn-primary" %>
+                           <%= link_to edit_banco_path(banco), class: "btn btn-icon btn-primary" do %>
+                              <i class="ni ni-align-left-2"></i>
+                           <% end %>
                         </td>
                         <td>
-                           <%= link_to 'Eliminar', banco_path(banco), class: "btn btn-icon btn-danger", method: :delete %>
+                           <%= link_to banco_path(banco), class: "btn btn-icon btn-danger", method: :delete do %>
+                              <i class="ni ni-scissors"></i>
+                           <% end %>
                         </td>
                      </tr>
                     <% end %>

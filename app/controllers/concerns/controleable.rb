@@ -19,8 +19,9 @@ module Controleable
 
     def actualizar_crear_registro
         if params[:id].present?
-          @registro = class_name.find(params[:id])
+          @registro = nombre_recurso.constantize.find(params[:id])
           @url = send([controller_name.singularize, "path"].join("_"), @registro)
+          @registro.attributes = params_permit || {}
         else
           @registro =  nombre_recurso.constantize.new(params_permit || {})
           @url = send([controller_name, "path"].join("_"), @registro)

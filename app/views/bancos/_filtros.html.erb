@@ -7,8 +7,12 @@
     <div class="dropdown-menu w-60">
         <%= search_form_for @coleccion, url: bancos_path, class: "px-4 py-3 text-center" do |formulario| %>
             <div class="form-group text-left">
-                <%= label_tag(:nombre_eq, "Nombre:") %>
-                <%= text_field_tag "q[nombre_eq]", params[:q][:nombre_eq], class: "form-control" %>
+                <%= label_tag(:nombre_cont, "Nombre:") %>
+                <%= text_field_tag "q[nombre_cont]", params[:q][:nombre_cont], class: "form-control" %>
+            </div>
+            <div class="form-group text-left">
+                <%= label_tag(:siglas_eq, "Siglas:") %>
+                <%= text_field_tag "q[siglas_cont]", params[:q][:siglas_cont], class: "form-control" %>
             </div>
             <%= formulario.submit class: "btn btn-primary text-center" %>
             <%= link_to "Quitar Filtros", bancos_path, class: "btn btn-danger text-center" %>
