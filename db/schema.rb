@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_022541) do
+ActiveRecord::Schema.define(version: 2021_03_20_031643) do
 
   create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 2021_03_19_022541) do
     t.text "logo_imagen", size: :long
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "forma_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.bigint "tipo_moneda_id"
+    t.index ["tipo_moneda_id"], name: "index_forma_pagos_on_tipo_moneda_id"
   end
 
   create_table "monedas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -123,6 +129,13 @@ ActiveRecord::Schema.define(version: 2021_03_19_022541) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "socios_id"
     t.index ["socios_id"], name: "index_tipo_entidads_on_socios_id"
+  end
+
+  create_table "tipo_monedas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.string "simbolo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tipo_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

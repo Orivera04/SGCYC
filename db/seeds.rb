@@ -69,6 +69,12 @@ begin
     Cargo.create!(id: 3, nombre: "Cobrador")
     puts ': Realizado con exito.'
 
+    puts '==> Creando Monedas por Defecto'
+    TipoMoneda.create!(id: 1, nombre: "Cordoba", simbolo: "C$")
+    TipoMoneda.create!(id: 2, nombre: "Dolar", simbolo: "USD")
+    puts ': Realizado con exito.'
+
+
     puts '==> Creando Usuarios por defecto'
     if Usuario.all.blank?
         Usuario.create!(email: 'admin@nicacentro.com', password: 'root12345',

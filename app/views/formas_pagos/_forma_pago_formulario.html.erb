@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Información de la forma de pago</h3>
+                </div>
+                <div class="card-body">
+                    <%= hidden_field(:forma_pagos, :id, :value => @registro.id) %>
+                    <div class="form-group">
+                        <label class="form-control-label" for="nombre">Nombre</label>
+                        <%= text_field(:forma_pagos, :nombre, class: "form-control", id: "nombre", value: @registro.nombre) %>
+                        <p class="text-danger"><%= @registro.errors[:nombre].first %></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="nombre">Tipo de moneda</label>
+                        <%= select_tag "forma_pagos[tipo_moneda_id]", options_from_collection_for_select(TipoMoneda.all, :id, :simbolo, @registro.tipo_moneda_id ),
+                            class: "form-control selectpicker", "data-live-search": "true" %>
+                        <p class="text-danger"><%= @registro.errors[:tipo_moneda_id].first %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

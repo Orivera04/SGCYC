@@ -1,13 +1,13 @@
 <% content_for :titulo_seccion do %>
-  Valor De La Leche
+   Formas de Pago
 <% end %>
 
 <div class="col-lg-12 col-12">
    <div class="row">
-      <%= render 'valor_leches/filtros' %>
+      <%= render "formas_pagos/filtros" %>
       <div class="col-lg-6 text-right">
-         <%= link_to "Descargar Excel", excel_index_valor_leches_path(@params_permit), class: "btn btn-lg btn-success" %>
-         <%= link_to "Crear Recurso", new_valor_lech_path, class: "btn btn-lg btn-neutral" %>
+         <%= link_to "Descargar Excel", excel_index_formas_pagos_path(@params_permit), class: "btn btn-lg btn-success" %>
+         <%= link_to "Crear Recurso", new_formas_pago_path, class: "btn btn-lg btn-neutral" %>
       </div>
    </div>
 </div>
@@ -17,30 +17,32 @@
       <div class="col pl-0 pr-0">
          <div class="card">
             <div class="card-header">
-               <h3 class="mb-0">Valores de la leche registrados</h3>
+               <h3 class="mb-0">Formas de pago registradas</h3>
             </div>
             <div class="table-responsive">
                <table class="table align-items-center table-flush">
                   <thead class="thead-light">
                      <tr>
-                        <th class="sort"><%= sort_link(@coleccion, :id, "Fecha") %></th>
-                        <th class="sort"><%= sort_link(@coleccion, :nombre, "Tasa de Cambio") %></th>
+                        <th class="sort"><%= sort_link(@coleccion, :id, "ID") %></th>
+                        <th class="sort"><%= sort_link(@coleccion, :nombre, "Nombre") %></th>
+                        <th class="sort"><%= sort_link(@coleccion, :tipo_moneda_id, "Moneda") %></th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                      </tr>
                   </thead>
                   <tbody class="list">
-                    <% @registros.each do |valor_leches| %>
+                    <% @registros.each do |forma_pago| %>
                      <tr>
-                        <td><%= valor_leches.fecha.strftime("%d-%m-%Y") %></td>
-                        <td><%= [valor_leches.tasa_cambio, TipoMoneda.obtener_simbolo_moneda(TipoMoneda::CORDOBA)].join(" ") %></td>
+                        <td><%= forma_pago.id %></td>
+                        <td><%= forma_pago.nombre %></td>
+                        <td><%= forma_pago.tipo_moneda.simbolo %></td>
                         <td>
-                           <%= link_to edit_valor_lech_path(valor_leches), class: "btn btn-icon btn-primary" do %>
+                           <%= link_to edit_formas_pago_path(forma_pago), class: "btn btn-icon btn-primary" do %>
                               <i class="ni ni-align-left-2"></i>
                            <% end %>
                         </td>
                         <td>
-                           <%= link_to valor_lech_path(valor_leches), class: "btn btn-icon btn-danger", method: :delete do %>
+                           <%= link_to formas_pago_path(forma_pago), class: "btn btn-icon btn-danger", method: :delete do %>
                               <i class="ni ni-scissors"></i>
                            <% end %>
                         </td>

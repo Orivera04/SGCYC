@@ -1,0 +1,16 @@
+wb = xlsx_package.workbook
+numero_columnas = 3
+encabezados = ["ID", "Nombre", "Moneda"]
+wb.add_worksheet(name: "Formas de pagos") do |hoja|
+  render partial: "shared/cabecera_excel",
+    locals: {
+      wb: wb, sheet: hoja, merge: numero_columnas
+    }
+
+  hoja.add_row(encabezados, style: @title_cell)
+  @registros.each do |forma_pago|
+    fila = [forma_pago.id, forma_pago.nombre, forma_pago.tipo_moneda.simbolo]
+    estilos = [@default_cell, @default_cell, @default_cell]
+    hoja.add_row(fila, style: estilos)
+  end
+end
