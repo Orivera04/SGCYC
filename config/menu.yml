@@ -55,7 +55,7 @@
         Ruta: "tasa_cambio_index_path"
     - Valor De La Leche:
         Recurso: "ValorLeche"
-        Ruta: "valor_leche_index_path"
+        Ruta: "valor_leches_path"
   - Ruta: "#navbar-tables"
   - Icono: "ni ni-align-left-2 text-default"
 - Configuración:

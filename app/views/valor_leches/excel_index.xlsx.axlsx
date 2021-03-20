@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 numero_columnas = 2
-encabezados = ["ID", "Nombre"]
+encabezados = ["Fecha", "Valor"]
 wb.add_worksheet(name: "Cargos") do |hoja|
   render partial: "shared/cabecera_excel",
     locals: {
@@ -8,8 +8,8 @@ wb.add_worksheet(name: "Cargos") do |hoja|
     }
 
   hoja.add_row(encabezados, style: @title_cell)
-  @registros.each do |cargo|
-    fila = [cargo.id, cargo.nombre]
+  @registros.each do |valor_leche|
+    fila = [valor_leche.fecha.strftime("%d-%m-%Y"), valor_leche.tasa_cambio]
     estilos = [@default_cell, @default_cell]
     hoja.add_row(fila, style: estilos)
   end

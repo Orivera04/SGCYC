@@ -1,5 +1,5 @@
 module Controleable
-    extend ActiveSupport::Concern
+        extend ActiveSupport::Concern
 
     included do
         before_action :authenticate_usuario!
@@ -12,7 +12,7 @@ module Controleable
             @registro =  nombre_recurso.constantize.find(params[:id])
             @url = send([controller_name.singularize, "path"].join("_"), @registro)
         else
-            @registro =  nombre_recurso.constantize.new
+            @registro = nombre_recurso.constantize.new
             @url = send([controller_name, "path"].join("_"), @registro)
         end
     end

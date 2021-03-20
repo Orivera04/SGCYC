@@ -1,13 +1,13 @@
 <% content_for :titulo_seccion do %>
-  Cargos
+  Valor De La Leche
 <% end %>
 
 <div class="col-lg-12 col-12">
    <div class="row">
-      <%= render 'cargos/filtros' %>
+      <%= render 'valor_leches/filtros' %>
       <div class="col-lg-6 text-right">
-         <%= link_to "Descargar Excel", excel_index_cargos_path(@params_permit), class: "btn btn-lg btn-success" %>
-         <%= link_to "Crear Recurso", new_cargo_path, class: "btn btn-lg btn-neutral" %>
+         <%= link_to "Descargar Excel", excel_index_valor_leches_path(@params_permit), class: "btn btn-lg btn-success" %>
+         <%= link_to "Crear Recurso", new_valor_lech_path, class: "btn btn-lg btn-neutral" %>
       </div>
    </div>
 </div>
@@ -17,30 +17,30 @@
       <div class="col pl-0 pr-0">
          <div class="card">
             <div class="card-header">
-               <h3 class="mb-0">Cargos registrados</h3>
+               <h3 class="mb-0">Valores de la leche registrados</h3>
             </div>
             <div class="table-responsive">
                <table class="table align-items-center table-flush">
                   <thead class="thead-light">
                      <tr>
-                        <th class="sort"><%= sort_link(@coleccion, :id, "ID") %></th>
-                        <th class="sort"><%= sort_link(@coleccion, :nombre, "Nombre") %></th>
+                        <th class="sort"><%= sort_link(@coleccion, :id, "Fecha") %></th>
+                        <th class="sort"><%= sort_link(@coleccion, :nombre, "Tasa de Cambio") %></th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                      </tr>
                   </thead>
                   <tbody class="list">
-                    <% @registros.each do |cargo| %>
+                    <% @registros.each do |valor_leches| %>
                      <tr>
-                        <td><%= cargo.id %></td>
-                        <td><%= cargo.nombre %></td>
+                        <td><%= valor_leches.fecha.strftime("%d-%m-%Y") %></td>
+                        <td><%= valor_leches.tasa_cambio %></td>
                         <td>
-                           <%= link_to edit_cargo_path(cargo), class: "btn btn-icon btn-primary" do %>
+                           <%= link_to edit_valor_lech_path(valor_leches), class: "btn btn-icon btn-primary" do %>
                               <i class="ni ni-align-left-2"></i>
                            <% end %>
                         </td>
                         <td>
-                           <%= link_to cargo_path(cargo), class: "btn btn-icon btn-danger", method: :delete do %>
+                           <%= link_to valor_lech_path(valor_leches), class: "btn btn-icon btn-danger", method: :delete do %>
                               <i class="ni ni-scissors"></i>
                            <% end %>
                         </td>

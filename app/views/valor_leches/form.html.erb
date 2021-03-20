@@ -1,9 +1,9 @@
 <% content_for :titulo_seccion do %>
-  Bancos
+  Valor De La Leche
 <% end %>
 
 <%= render "shared/flash", flash: flash %>
-<%= render partial: 'cargos/cargos_formulario', layout: "layouts/formulario",
+<%= render partial: 'valor_leches/valores_leches_formulario', layout: "layouts/formulario",
     locals: {
         registro: @registro,
         url: @url

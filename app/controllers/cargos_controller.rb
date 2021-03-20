@@ -75,7 +75,7 @@ class CargosController < ApplicationController
   end
 
   def destroy
-    authorize!(:destroy, :Bancos)
+    authorize!(:destroy, :Cargos)
     begin
       flash[:notice] = "El registro ha sido eliminado exitosamente" if @registro.destroy
     rescue StandardError => e

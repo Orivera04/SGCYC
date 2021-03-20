@@ -1,11 +1,11 @@
-class BancosController < ApplicationController
+class ValorLechesController < ApplicationController
   include Controleable
   before_action :authenticate_usuario!
   before_action :coleccion_inicial, only: %i[index excel_index]
 
   def coleccion_inicial
     params[:q] ||= {}
-    @coleccion = Banco.ransack(params[:q])
+    @coleccion = ValorLeche.ransack(params[:q])
     respond_to do |formato|
       formato.html do
         @registros = @coleccion.result.page(params[:page])
@@ -17,24 +17,24 @@ class BancosController < ApplicationController
   end
 
   def index
-    authorize!(:read, :Bancos)
+    authorize!(:read, :ValorLeche)
     @params_permit = params[:q].present? ? {q: params[:q] .permit! } : {}
-    render template: "bancos/index",  layout: "layouts/application"
+    render template: "valor_leches/index",  layout: "layouts/application"
   end
 
   def new
-    authorize!(:create, :Bancos)
-    render template: "bancos/form", layout: "layouts/application"
+    authorize!(:create, :ValorLeche)
+    render template: "valor_leches/form", layout: "layouts/application"
   end
 
   def show
-    authorize!(:update, :Bancos)
-    render template: "bancos/form", layout: "layouts/application"
+    authorize!(:update, :ValorLeche)
+    render template: "valor_leches/form", layout: "layouts/application"
   end
 
   def edit
-    authorize!(:update, :Bancos)
-    render template: "bancos/form", layout: "layouts/application"
+    authorize!(:update, :ValorLeche)
+    render template: "valor_leches/form", layout: "layouts/application"
   end
 
   def excel_index
@@ -42,7 +42,7 @@ class BancosController < ApplicationController
       formato.xlsx do
         render(
           xlsx: "excel_index",
-          filename: "Bancos del sistema - #{Date.today}.xlsx"
+          filename: "Valores de la leche del sistema - #{Date.today}.xlsx"
         )
       end
     end
@@ -57,7 +57,7 @@ class BancosController < ApplicationController
       end
     rescue StandardError => e
       flash[:error] = "Ocurrio un error al guardar los datos" if flash.now[:error].blank?
-      render template: "bancos/form", layout: "layouts/application"
+      render template: "valor_leches/form", layout: "layouts/application"
     end
   end
 
@@ -70,12 +70,12 @@ class BancosController < ApplicationController
       end
     rescue StandardError => e
       flash[:error] = "Ocurrio un error al actualizar los datos" if flash.now[:error].blank?
-      render template: "bancos/form", layout: "layouts/application"
+      render template: "valor_leches/form", layout: "layouts/application"
     end
   end
 
   def destroy
-    authorize!(:destroy, :Bancos)
+    authorize!(:destroy, :ValorLeche)
     begin
       flash[:notice] = "El registro ha sido eliminado exitosamente" if @registro.destroy
     rescue StandardError => e
@@ -88,12 +88,12 @@ class BancosController < ApplicationController
   private
 
     def nombre_recurso
-      "Banco"
+      "ValorLeche"
     end
 
-    def bancos_params
-      params.require(:bancos).permit(:id, :nombre, :siglas)
+    def valorleche_params
+      params.require(:valor_leches).permit(:id, :tasa_cambio, :fecha)
     end
 
-    alias :params_permit :bancos_params
+    alias :params_permit :valorleche_params
 end

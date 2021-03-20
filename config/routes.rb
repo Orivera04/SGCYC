@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   resources :clientes_cuotas_vencidas
   resources :clientes_morosos
   resources :formas_pagos
-  resources :valor_leche
+
+  resources :valor_leches do
+    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+  end
 
   root to: 'home#index'
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_012054) do
+ActiveRecord::Schema.define(version: 2021_03_19_022541) do
 
   create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 2021_03_18_012054) do
   create_table "bancos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "siglas"
+  end
+
+  create_table "cargos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clientes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -149,6 +155,11 @@ ActiveRecord::Schema.define(version: 2021_03_18_012054) do
     t.index ["posicions_id"], name: "index_usuarios_on_posicions_id"
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
     t.index ["roles_id"], name: "index_usuarios_on_roles_id"
+  end
+
+  create_table "valor_leches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.decimal "tasa_cambio", precision: 10, scale: 2
+    t.date "fecha"
   end
 
   add_foreign_key "recursos", "tipo_recursos"

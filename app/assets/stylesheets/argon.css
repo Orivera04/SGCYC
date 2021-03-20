@@ -29668,3 +29668,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 .alineador_botones {
     padding-right: 15px !important;
 }
+
+.scopes_heigth {
+    width: 18em;
+}

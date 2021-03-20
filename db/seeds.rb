@@ -63,6 +63,12 @@ begin
     Banco.create!(id: 6, nombre: "Banco Atlantida", siglas: "Atlantida")
     puts ': Realizado con exito.'
 
+    puts '==> Creando Cargos por Defecto'
+    Cargo.create!(id: 1, nombre: "Gerente")
+    Cargo.create!(id: 2, nombre: "Contador")
+    Cargo.create!(id: 3, nombre: "Cobrador")
+    puts ': Realizado con exito.'
+
     puts '==> Creando Usuarios por defecto'
     if Usuario.all.blank?
         Usuario.create!(email: 'admin@nicacentro.com', password: 'root12345',
