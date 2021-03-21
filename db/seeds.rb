@@ -74,6 +74,12 @@ begin
     TipoMoneda.create!(id: 2, nombre: "Dolar", simbolo: "USD")
     puts ': Realizado con exito.'
 
+    puts '==> Creando Formas de pago por Defecto'
+    FormaPago.create!(id: 1, nombre: "Efectivo", tipo_moneda_id: TipoMoneda::CORDOBA)
+    FormaPago.create!(id: 2, nombre: "Cheque", tipo_moneda_id: TipoMoneda::CORDOBA )
+    FormaPago.create!(id: 3, nombre: "Tarjeta", tipo_moneda_id: TipoMoneda::DOLAR )
+    puts ': Realizado con exito.'
+
 
     puts '==> Creando Usuarios por defecto'
     if Usuario.all.blank?

@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Información de la empresa</h3>
+                </div>
+                <div class="card-body row">
+                    <%= hidden_field(:empresas, :id, :value => @registro.id) %>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="nombre">Nombre comercial</label>
+                            <%= text_field(:empresas, :nombre_comercial, class: "form-control", id: "nombre_comercial", value: @registro.nombre_comercial) %>
+                            <p class="text-danger"><%= @registro.errors[:nombre_comercial].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="nombre">Telefono</label>
+                            <%= text_field(:empresas, :numero_telefono, class: "form-control", id: "numero_telefono", value: @registro.numero_telefono) %>
+                            <p class="text-danger"><%= @registro.errors[:numero_telefono].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="direccion">Dirección</label>
+                            <%= text_field(:empresas, :direccion, class: "form-control", id: "direccion", value: @registro.direccion) %>
+                            <p class="text-danger"><%= @registro.errors[:direccion].first %></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="correo">Correo</label>
+                            <%= text_field(:empresas, :correo, class: "form-control", id: "correo", value: @registro.correo) %>
+                            <p class="text-danger"><%= @registro.errors[:correo].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="correo">Actividad Comercial</label>
+                            <%= text_field(:empresas, :actividad_comercial, class: "form-control", id: "actividad_comercial", value: @registro.actividad_comercial) %>
+                            <p class="text-danger"><%= @registro.errors[:actividad_comercial].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="numero_ruc">Numero RUC</label>
+                            <%= text_field(:empresas, :numero_ruc, class: "form-control", id: "numero_ruc", value: @registro.numero_ruc) %>
+                            <p class="text-danger"><%= @registro.errors[:numero_ruc].first %></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <%= image_tag "data:image/jpeg;base64,#{@registro.logo_imagen}", class:"img-thumbnail", id: "imagen_empresa" %>
+                        <input type="file" class="mt-4" name="empresas[logo_imagen]" accept="image/png,image/jpg,image/jpeg" onchange="document.getElementById('imagen_empresa').src = window.URL.createObjectURL(this.files[0])" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
