@@ -1,3 +1,4 @@
+<% presenter = RolPresenter.new(@registro) %>
 <div class="row">
     <div class="col-lg-12">
         <div class="card-wrapper">
@@ -6,9 +7,11 @@
                     <h3 class="mb-0">Información del Rol</h3>
                 </div>
                 <div class="card-body">
+                    <%= hidden_field(:rols, :id, :value => @registro.id) %>
                     <div class="form-group">
                         <label class="form-control-label" for="nombre">Nombre</label>
-                        <%= text_field(:Rol, :nombre, class: "form-control", id: "nombre") %>
+                        <%= text_field(:rols, :nombre, class: "form-control", id: "nombre", value: @registro.nombre) %>
+                        <p class="text-danger"><%= @registro.errors[:nombre].first %></p>
                     </div>
                 </div>
             </div>
@@ -17,7 +20,7 @@
 </div>
 
 <div class="row mb-3 mt-3">
-    <nav class="nav nav-pills nav-justified container-fluid">
+    <nav id="menu_tabs" class="nav nav-pills nav-justified container-fluid">
         <% TipoRecurso.all.each do |tipo_recurso| %>
             <a class="nav-item nav-link" data-toggle="tab" href="#<%= tipo_recurso.nombre %>"><%= tipo_recurso.nombre %></a>
         <% end %>
@@ -43,10 +46,12 @@
                                     <tr>
                                         <td><%= recurso.nombre %></td>
                                         <% Accion.all.each do |accion| %>
+                                            <% recurso_accion_id = "#{presenter.encontrar_identificador(recurso.id, accion.id)}_#{@registro.id}_#{recurso.id}_#{accion.id}" %>
+                                            <% permiso_marcado = presenter.permiso_activo(recurso.id, accion.id) %>
                                             <td>
                                                 <div class="custom-control custom-checkbox mb-3">
-                                                    <input class="custom-control-input" id="customCheck2" type="checkbox" checked="">
-                                                    <label class="custom-control-label" for="customCheck2"></label>
+                                                    <input class="custom-control-input" id="<%= recurso_accion_id%>" type="checkbox" <%= permiso_marcado %> name="permisos[<%= recurso_accion_id %>]">
+                                                    <label class="custom-control-label" for="<%= recurso_accion_id%>"></label>
                                                 </div>
                                             </td>
                                         <% end %>

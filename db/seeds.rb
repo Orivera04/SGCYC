@@ -8,13 +8,13 @@ begin
                     actividad_comercial: "Cooperativa de Leche", numero_ruc: "J89342989", logo_imagen: Base64.encode64(File.open("#{Rails.root}/app/assets/images/logo_empresa_default.png", "rb").read))
 
     puts '==> Creando Posiciones por defecto'
-    Posicion.create!(id: 1, nombre: "Administrador del Sistema", descripcion: "Encargado de administrar el sistema")
-    Posicion.create!(id: 2, nombre: "Gestor de Cobro", descripcion: "Encargado de realizar la cobranza")
+    Cargo.create!(id: 1, nombre: "Administrador del Sistema", descripcion: "Encargado de administrar el sistema")
+    Cargo.create!(id: 2, nombre: "Gestor de Cobro", descripcion: "Encargado de realizar la cobranza")
     puts ': Realizado con exito.'
 
     puts '==> Creando Roles por defecto'
-    Rol.create!(id: 1, nombre: "Administrador", estado: true)
-    Rol.create!(id: 2, nombre: "Gestor de cobro", estado: true)
+    Rol.create!(id: 1, nombre: "Administrador")
+    Rol.create!(id: 2, nombre: "Gestor de cobro")
     puts ': Realizado con exito.'
 
     puts '==> Creando Tipo de Recursos por defecto'
@@ -63,12 +63,6 @@ begin
     Banco.create!(id: 6, nombre: "Banco Atlantida", siglas: "Atlantida")
     puts ': Realizado con exito.'
 
-    puts '==> Creando Cargos por Defecto'
-    Cargo.create!(id: 1, nombre: "Gerente")
-    Cargo.create!(id: 2, nombre: "Contador")
-    Cargo.create!(id: 3, nombre: "Cobrador")
-    puts ': Realizado con exito.'
-
     puts '==> Creando Monedas por Defecto'
     TipoMoneda.create!(id: 1, nombre: "Cordoba", simbolo: "C$")
     TipoMoneda.create!(id: 2, nombre: "Dolar", simbolo: "USD")
@@ -85,10 +79,10 @@ begin
     if Usuario.all.blank?
         Usuario.create!(email: 'admin@nicacentro.com', password: 'root12345',
                         password_confirmation: 'root12345', nombre: 'Administrador',
-                        estado: true, roles_id: 1, posicions_id: 1  )
+                        estado: true, roles_id: 1, cargos_id: 1  )
         Usuario.create!(email: 'gestorcobro@nicacentro.com', password: 'root12345',
             password_confirmation: 'root12345', nombre: 'Gestro de Cobro',
-            estado: true, roles_id: 2, posicions_id: 2  )
+            estado: true, roles_id: 2, cargos_id: 2  )
         puts ': Realizado con exito.'
     else
         puts 'No se puede agregar datos por defecto a la tabla Usuarios, porque ya contiene registros'

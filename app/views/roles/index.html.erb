@@ -25,9 +25,10 @@
                      <tr>
                         <th class="sort"><%= sort_link(@coleccion, :id, "ID") %></th>
                         <th class="sort"><%= sort_link(@coleccion, :nombre, "Nombre") %></th>
-                        <th class="sort"><%= sort_link(@coleccion, :estado, "Estado") %></th>
                         <th class="sort"><%= sort_link(@coleccion, :created_at, "Creado El") %></th>
                         <th class="sort"><%= sort_link(@coleccion, :updated_at, "Actualizado El") %></th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
                      </tr>
                   </thead>
                   <tbody class="list">
@@ -35,9 +36,18 @@
                      <tr>
                         <td><%= rol.id %></td>
                         <td><%= rol.nombre %></td>
-                        <td><%= I18n.t(rol.estado) %></td>
                         <td><%= rol.created_at %></td>
                         <td><%= rol.updated_at %></td>
+                        <td>
+                           <%= link_to edit_role_path(rol), class: "btn btn-icon btn-primary" do %>
+                              <i class="ni ni-align-left-2"></i>
+                           <% end %>
+                        </td>
+                        <td>
+                           <%= link_to role_path(rol), class: "btn btn-icon btn-danger", method: :delete do %>
+                              <i class="ni ni-scissors"></i>
+                           <% end %>
+                        </td>
                      </tr>
                     <% end %>
                   </tbody>

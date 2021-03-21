@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
-numero_columnas = 2
-encabezados = ["ID", "Nombre"]
+numero_columnas = 3
+encabezados = ["ID", "Nombre", "Descripción"]
 wb.add_worksheet(name: "Cargos") do |hoja|
   render partial: "shared/cabecera_excel",
     locals: {
@@ -9,8 +9,8 @@ wb.add_worksheet(name: "Cargos") do |hoja|
 
   hoja.add_row(encabezados, style: @title_cell)
   @registros.each do |cargo|
-    fila = [cargo.id, cargo.nombre]
-    estilos = [@default_cell, @default_cell]
+    fila = [cargo.id, cargo.nombre, cargo.descripcion]
+    estilos = [@default_cell, @default_cell, @default_cell]
     hoja.add_row(fila, style: estilos)
   end
 end

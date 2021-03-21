@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
 
   create_table "cargos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
+    t.string "descripcion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,20 +69,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.index ["tipo_moneda_id"], name: "index_forma_pagos_on_tipo_moneda_id"
   end
 
-  create_table "monedas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "simbolo_moneda"
-    t.string "nombre_moneda"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "posicions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.string "descripcion"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
@@ -92,19 +79,18 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
   end
 
   create_table "rol_accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "rols_id"
-    t.bigint "recursos_id"
+    t.bigint "rol_id"
+    t.bigint "recurso_id"
     t.bigint "accion_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["accion_id"], name: "index_rol_accions_on_accion_id"
-    t.index ["recursos_id"], name: "index_rol_accions_on_recursos_id"
-    t.index ["rols_id"], name: "index_rol_accions_on_rols_id"
+    t.index ["recurso_id"], name: "index_rol_accions_on_recurso_id"
+    t.index ["rol_id"], name: "index_rol_accions_on_rol_id"
   end
 
   create_table "rols", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.boolean "estado"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -138,14 +124,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tipo_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "monedas_id"
-    t.index ["monedas_id"], name: "index_tipo_pagos_on_monedas_id"
-  end
-
   create_table "tipo_recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
@@ -161,11 +139,11 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "roles_id"
-    t.bigint "posicions_id"
+    t.bigint "cargos_id"
     t.string "nombre"
     t.boolean "estado"
+    t.index ["cargos_id"], name: "index_usuarios_on_cargos_id"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["posicions_id"], name: "index_usuarios_on_posicions_id"
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
     t.index ["roles_id"], name: "index_usuarios_on_roles_id"
   end
@@ -177,6 +155,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
 
   add_foreign_key "recursos", "tipo_recursos"
   add_foreign_key "rol_accions", "accions"
-  add_foreign_key "rol_accions", "recursos", column: "recursos_id"
-  add_foreign_key "rol_accions", "rols", column: "rols_id"
+  add_foreign_key "rol_accions", "recursos"
+  add_foreign_key "rol_accions", "rols"
 end

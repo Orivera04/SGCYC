@@ -92,7 +92,7 @@ class CargosController < ApplicationController
     end
 
     def cargos_params
-      params.require(:cargos).permit(:id, :nombre)
+      params.require(:cargos).permit(:id, :nombre, :descripcion)
     end
 
     alias :params_permit :cargos_params
