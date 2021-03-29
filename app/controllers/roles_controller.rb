@@ -2,6 +2,7 @@ class RolesController < ApplicationController
   @recurso = :Rol
   include Controleable
   before_action :coleccion_inicial, only: %i[index excel_index]
+  before_action :validar_usuario_edicion, only: %i[edit destroy]
   prepend_before_action :procesar_parametros, only: %i[create update]
 
   def coleccion_inicial
@@ -64,9 +65,8 @@ class RolesController < ApplicationController
     begin
       flash[:notice] = "El registro ha sido eliminado exitosamente" if @registro.destroy
     rescue StandardError => e
-      flash[:error] = e.message
+      flash[:alert] = e.message
     end
-
     redirect_to action: :index, search: params[:q]
   end
 
@@ -90,19 +90,21 @@ class RolesController < ApplicationController
     def rol_params
       params.require(:rols)
              .permit(:id, :nombre,
-                     rol_accion_attributes: [:id, :rol_id, :recurso_id, :accion_id])
+                     rol_accion_attributes: [:id, :rol_id, :recurso_id, :accion_id, :marcado])
     end
 
     def procesar_parametros
       params[:rols][:rol_accion_attributes] = []
       recursos_roles = params[:permisos] || []
-
       recursos_roles.each  do |recurso|
-        binding.pry
         llaves_recurso = recurso.first.split("_")
         params[:rols][:rol_accion_attributes].push(id: llaves_recurso[Rol::ID] ,rol_id: llaves_recurso[Rol::ROL_ID],
-              recurso_id: llaves_recurso[Rol::RECURSO_ID], accion_id: llaves_recurso[Rol::ACCION_ID])
+              recurso_id: llaves_recurso[Rol::RECURSO_ID], accion_id: llaves_recurso[Rol::ACCION_ID], marcado: recurso.last.to_boolean  )
       end
+    end
+
+    def validar_usuario_edicion
+      redirect_to roles_path , alert: "No se puede editar/eliminar el usuario Administrador." if params[:id].to_i == Rol::ADMINISTRADOR
     end
 
     alias :params_permit :rol_params

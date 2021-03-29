@@ -50,8 +50,8 @@
                                             <% permiso_marcado = presenter.permiso_activo(recurso.id, accion.id) %>
                                             <td>
                                                 <div class="custom-control custom-checkbox mb-3">
-                                                    <input class="custom-control-input" id="<%= recurso_accion_id%>" type="checkbox" <%= permiso_marcado %> name="permisos[<%= recurso_accion_id %>]">
-                                                    <label class="custom-control-label" for="<%= recurso_accion_id%>"></label>
+                                                    <%= check_box("permisos", recurso_accion_id, { class: "custom-control-input", checked: permiso_marcado }, Rol::MARCADO, Rol::DESMARCADO) %>
+                                                    <label class="custom-control-label" for="permisos_<%= recurso_accion_id %>"></label>
                                                 </div>
                                             </td>
                                         <% end %>

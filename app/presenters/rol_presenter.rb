@@ -5,7 +5,7 @@ class RolPresenter < SimpleDelegator
     end
 
     def permiso_activo(recurso_id, accion_id)
-        (@permisos.select{|permiso| permiso.recurso_id == recurso_id && permiso.accion_id == accion_id}.any?) ? "checked" : ""
+        (@permisos.select{|permiso| permiso.recurso_id == recurso_id && permiso.accion_id == accion_id}.any?) ? true : false
     end
 
     def encontrar_identificador(recurso_id, accion_id)
