@@ -1,15 +1,15 @@
 wb = xlsx_package.workbook
 numero_columnas = 2
 encabezados = ["Fecha", "Valor"]
-wb.add_worksheet(name: "Valores de la leche") do |hoja|
+wb.add_worksheet(name: "Tasa de Cambios") do |hoja|
   render partial: "shared/cabecera_excel",
     locals: {
       wb: wb, sheet: hoja, merge: numero_columnas
     }
 
   hoja.add_row(encabezados, style: @title_cell)
-  @registros.each do |valor_leche|
-    fila = [valor_leche.fecha.strftime("%d-%m-%Y"), valor_leche.tasa_cambio]
+  @registros.each do |tasa_cambio|
+    fila = [tasa_cambio.fecha.strftime("%d-%m-%Y"), tasa_cambio.tasa_cambio]
     estilos = [@default_cell, @default_cell]
     hoja.add_row(fila, style: estilos)
   end

@@ -1,0 +1,36 @@
+<div class="col-lg-6 text-left">
+    <div class="btn-group">
+        <button class="btn btn-lg btn-default dropdown-toggle" type="button" id="filtros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="btn-inner--icon"><i class="fas fa-search"></i></span>
+            <span class="btn-inner--text">Filtros</span>
+        </button>
+
+        <div class="dropdown-menu scopes_heigth">
+            <%= search_form_for @coleccion, url: tasa_cambios_path, class: "px-4 py-3 text-center" do |formulario| %>
+                <div class="form-group text-left">
+                    <%= label_tag(:fecha_eq, "Fecha:") %>
+                    <%= date_field_tag "q[fecha_eq]", params[:q][:fecha_eq], class: "form-control" %>
+                </div>
+                <div class="form-group text-left">
+                    <%= label_tag(:tasa_cambio_eq, "Tasa de Cambio:") %>
+                    <%= text_field_tag "q[tasa_cambio_eq]", params[:q][:tasa_cambio_eq], class: "form-control" %>
+                </div>
+                <div class="form-group text-left">
+                    <%= formulario.submit class: "btn btn-primary text-center" %>
+                    <%= link_to "Quitar Filtros", tasa_cambios_path, class: "btn btn-danger text-center" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn btn-lg btn-danger dropdown-toggle" type="button" id="scopes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="btn-inner--icon"><i class="ni ni-tag"></i></span>
+            <span class="btn-inner--text">Filtros Especificos</span>
+        </button>
+
+        <div class="dropdown-menu scopes_heigth" aria-labelledby="scopes">
+            <a class="dropdown-item" href="tasa_cambios?q%5Bmes_eq%5D=true">Mes</a>
+        </div>
+    </div>
+</div>

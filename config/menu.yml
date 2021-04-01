@@ -52,7 +52,7 @@
         Ruta: "cargos_path"
     - Tasa De Cambio:
         Recurso: "TasaCambio"
-        Ruta: "tasa_cambio_index_path"
+        Ruta: "tasa_cambios_path"
     - Valor De La Leche:
         Recurso: "ValorLeche"
         Ruta: "valor_leches_path"
