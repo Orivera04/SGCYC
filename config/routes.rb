@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :tasa_cambios do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
+  match 'tasa_cambios/bcn_webservice' => 'tasa_cambios#bcn_webservice', via: :post
 
   resources :empresa
 

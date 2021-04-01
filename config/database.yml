@@ -51,4 +51,4 @@ production:
   <<: *default
   database: nicacentro_production
   username: admin
-  password: <%= ENV['NICACENTRO_DATABASE_PASSWORD'] %>
+  password: root12345678

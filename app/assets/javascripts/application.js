@@ -5,4 +5,6 @@
 //= require jquery-scrollLock.min.js
 //= require argon.js
 //= require selectpicker.js
+//= require sweetalert.js
+//= require overlay.js
 //= require rails-ujs

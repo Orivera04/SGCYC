@@ -47,3 +47,4 @@ es:
       last: "Fin"
       previous: "Anterior"
       next: "Siguiente"
+      truncate: "..."

@@ -6,6 +6,7 @@ class ValorLechesController < ApplicationController
   def coleccion_inicial
     params[:q] ||= {}
     @coleccion = ValorLeche.ransack(params[:q])
+    @coleccion.sorts = ["fecha asc"] if @coleccion.sorts.empty?
     respond_to do |formato|
       formato.html do
         @registros = @coleccion.result.page(params[:page])

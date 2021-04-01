@@ -6,6 +6,7 @@ class TasaCambiosController < ApplicationController
   def coleccion_inicial
     params[:q] ||= {}
     @coleccion = TasaCambio.ransack(params[:q])
+    @coleccion.sorts = ["fecha asc"] if @coleccion.sorts.empty?
     respond_to do |formato|
       formato.html do
         @registros = @coleccion.result.page(params[:page])
@@ -83,6 +84,15 @@ class TasaCambiosController < ApplicationController
     end
 
     redirect_to action: :index, search: params[:q]
+  end
+
+  def bcn_webservice
+    begin
+      TasaCambio.consumir_webservice_bcn(params[:mes])
+      render json: { mensaje: "Se crearon las tasas de cambios exitosamente."}, status: Rack::Utils::SYMBOL_TO_STATUS_CODE[:ok]
+    rescue StandardError => e
+      render json: { mensaje: "Hubo un error al comunicarse con el servicio web del BCN."}, status: Rack::Utils::SYMBOL_TO_STATUS_CODE[:internal_server_error]
+    end
   end
 
   private
