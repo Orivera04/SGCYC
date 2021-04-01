@@ -44,6 +44,9 @@ gem 'rails-i18n'
 # Gema para consumir WebService SOAP
 gem 'savon'
 
+# Gema para generar archivos ODT a partir de una plantilla
+gem 'odf-report'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
