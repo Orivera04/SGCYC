@@ -62,7 +62,7 @@
   - Items:
     - Usuarios:
         Recurso: "Usuario"
-        Ruta: "informacion_general_index_path"
+        Ruta: "usuarios_path"
     - Roles:
         Recurso: "Roles"
         Ruta: "roles_path"

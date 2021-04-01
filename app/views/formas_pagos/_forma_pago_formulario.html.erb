@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="nombre">Tipo de moneda</label>
-                        <%= select_tag "forma_pagos[tipo_moneda_id]", options_from_collection_for_select(TipoMoneda.all, :id, :simbolo, @registro.tipo_moneda_id ),
+                        <%= select_tag "forma_pagos[tipo_moneda_id]", options_from_collection_for_select(TipoMoneda.where(id: TipoMoneda::DOLAR), :id, :simbolo, @registro.tipo_moneda_id ),
                             class: "form-control selectpicker", "data-live-search": "true" %>
                         <p class="text-danger"><%= @registro.errors[:tipo_moneda_id].first %></p>
                     </div>

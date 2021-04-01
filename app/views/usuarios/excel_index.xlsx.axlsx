@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+numero_columnas = 3
+encabezados = ["ID", "Correo", "Nombre", "Estado", "Creado El", "Actualizado El"]
+wb.add_worksheet(name: "Usuarios") do |hoja|
+  render partial: "shared/cabecera_excel",
+    locals: {
+      wb: wb, sheet: hoja, merge: numero_columnas
+    }
+
+  hoja.add_row(encabezados, style: @title_cell)
+  @registros.each do |usuario|
+    fila = [usuario.id, usuario.email, usuario.nombre, I18n.t(usuario.activo),
+            usuario.created_at.strftime("%F %T"), usuario.updated_at.strftime("%F %T")]
+    estilos = [@default_cell, @default_cell, @default_cell, @default_cell, @default_cell, @default_cell]
+    hoja.add_row(fila, style: estilos)
+  end
+end

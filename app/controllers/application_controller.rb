@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     include MenuHelper
 
     rescue_from CanCan::AccessDenied do |exception|
-        redirect_to root_url, alert: "Usuario no autorizado para realizar esta operación."
+        redirect_back(fallback_location: root_path, alert: "Usuario no autorizado para realizar esta operación.")
     end
 
     def current_ability

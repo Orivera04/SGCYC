@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.string "direccion"
     t.integer "telefono"
     t.string "correo"
-    t.boolean "estado"
+    t.boolean "activo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.bigint "roles_id"
     t.bigint "cargos_id"
     t.string "nombre"
-    t.boolean "estado"
+    t.boolean "activo"
     t.index ["cargos_id"], name: "index_usuarios_on_cargos_id"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true

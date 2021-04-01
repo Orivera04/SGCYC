@@ -10,7 +10,7 @@ class CreateClientes < ActiveRecord::Migration[6.0]
       t.string :direccion
       t.integer :telefono
       t.string :correo
-      t.boolean :estado
+      t.boolean :activo
       t.timestamps
     end
   end

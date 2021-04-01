@@ -79,10 +79,10 @@ begin
     if Usuario.all.blank?
         Usuario.create!(email: 'admin@nicacentro.com', password: 'root12345',
                         password_confirmation: 'root12345', nombre: 'Administrador',
-                        estado: true, roles_id: 1, cargos_id: 1  )
+                        activo: true, roles_id: 1, cargos_id: 1  )
         Usuario.create!(email: 'gestorcobro@nicacentro.com', password: 'root12345',
             password_confirmation: 'root12345', nombre: 'Gestro de Cobro',
-            estado: true, roles_id: 2, cargos_id: 2  )
+            activo: true, roles_id: 2, cargos_id: 2  )
         puts ': Realizado con exito.'
     else
         puts 'No se puede agregar datos por defecto a la tabla Usuarios, porque ya contiene registros'

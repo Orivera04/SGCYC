@@ -1,0 +1,11 @@
+<% content_for :titulo_seccion do %>
+  Usuarios
+<% end %>
+
+<%= render "shared/flash", flash: flash %>
+<%= render partial: 'usuarios/usuarios_formulario', layout: "layouts/formulario",
+    locals: {
+        registro: @registro,
+        url: @url
+    }
+%>

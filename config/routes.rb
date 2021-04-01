@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :usuarios, controllers: { sessions: "usuarios/sessions" }
+  devise_for :usuarios, controllers: { sessions: "usuarios/sessions" }, path_prefix: "auth"
 
   resources :home
   resources :informacion_general
@@ -9,18 +9,18 @@ Rails.application.routes.draw do
   resources :socios
 
   resources :cargos do
-    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
   resources :roles do
-    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
   resources :tasa_cambio
   resources :empresa
 
   resources :bancos do
-    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
   resources :exceden_prestamos
@@ -29,12 +29,16 @@ Rails.application.routes.draw do
   resources :clientes_morosos
 
   resources :formas_pagos do
-    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
   resources :valor_leches do
-    get :excel_index, on: :collection, defaults: { :format => 'xlsx' }
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
-  root to: 'home#index'
+  resources :usuarios do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+  end
+
+  root to: "home#index"
 end

@@ -31,6 +31,7 @@
 
 es:
   true: "Activo"
+  false: "Inactivo"
   helpers:
     page_entries_info:
       one_page:

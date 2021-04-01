@@ -13,14 +13,14 @@ class Ability
       can :manage, :all
     else
       recurso = Recurso.all
-      acciones_permitidas = RolAccion.where(rols_id: usuario.roles_id)
+      acciones_permitidas = RolAccion.where(rol_id: usuario.roles_id)
       validar_permiso_recurso(acciones_permitidas, recurso)
     end
   end
 
   def validar_permiso_recurso(acciones_permitidas, recurso)
     recurso.each do |recurso|
-      acciones_recurso = acciones_permitidas.select{|accion| accion.recursos_id == recurso.id}
+      acciones_recurso = acciones_permitidas.select{|accion| accion.recurso_id == recurso.id}
       acciones_recurso.each do |permiso|
         case permiso.accion_id
           when Accion::LECTURA
