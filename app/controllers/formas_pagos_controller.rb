@@ -92,7 +92,7 @@ class FormasPagosController < ApplicationController
     end
 
     def forma_pago_params
-      params.require(:forma_pagos).permit(:id, :nombre, :tipo_moneda_id)
+      params.require(:forma_pagos).permit(:id, :nombre, :tipo_moneda_id, :bancos_id)
     end
 
     alias :params_permit :forma_pago_params

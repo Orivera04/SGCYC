@@ -5,11 +5,7 @@ class CreateSocios < ActiveRecord::Migration[6.0]
       t.string :nombre
       t.string :apellido
       t.string :numero_cedula
-      t.string :numero_ruc
-      t.string :direccion
-      t.integer :telefono
-      t.string :correo
-      t.boolean :estado
+      t.date :fecha_nacimiento
       t.timestamps
     end
   end

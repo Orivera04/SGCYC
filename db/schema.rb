@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_031643) do
+ActiveRecord::Schema.define(version: 2021_04_02_034349) do
 
   create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
@@ -31,24 +31,25 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clientes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "codigo_cliente"
-    t.string "tipo_entidad_id"
-    t.string "nombre"
-    t.string "apellido"
-    t.string "numero_cedula"
-    t.string "numero_ruc"
-    t.string "direccion"
-    t.integer "telefono"
-    t.string "correo"
-    t.boolean "activo"
+  create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "conyuges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "socios_id"
+    t.string "nombre"
+    t.string "apellido"
+    t.string "numero_cedula"
+    t.date "fecha_nacimiento"
+    t.bigint "sexos_id"
+    t.string "ocupacion"
+    t.string "telefono"
+    t.string "lugar_trabajo"
+    t.integer "tiempo_laborar"
+    t.string "direccion_domicilio"
+    t.index ["sexos_id"], name: "index_conyuges_on_sexos_id"
+    t.index ["socios_id"], name: "index_conyuges_on_socios_id"
   end
 
   create_table "empresas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -63,9 +64,42 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "escolaridads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+  end
+
+  create_table "estado_civils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+  end
+
+  create_table "fiadors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "socios_id"
+    t.string "nombre"
+    t.string "apellido"
+    t.string "numero_cedula"
+    t.string "domicilio"
+    t.string "municipio"
+    t.bigint "estado_civils_id"
+    t.string "nombre_conyuge"
+    t.string "profesion"
+    t.string "lugar_trabajo"
+    t.string "direccion_domicilio"
+    t.string "telefono"
+    t.integer "tiempo_laborar"
+    t.integer "salario_mensual"
+    t.integer "egreso_mensual"
+    t.string "disponibilidad_al_mes"
+    t.string "tiempo_conocer_solicitante"
+    t.string "anio_parentesco"
+    t.index ["estado_civils_id"], name: "index_fiadors_on_estado_civils_id"
+    t.index ["socios_id"], name: "index_fiadors_on_socios_id"
+  end
+
   create_table "forma_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.bigint "tipo_moneda_id"
+    t.bigint "bancos_id"
+    t.index ["bancos_id"], name: "index_forma_pagos_on_bancos_id"
     t.index ["tipo_moneda_id"], name: "index_forma_pagos_on_tipo_moneda_id"
   end
 
@@ -95,26 +129,52 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sexos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+  end
+
   create_table "socios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "codigo_socio"
     t.string "nombre"
     t.string "apellido"
     t.string "numero_cedula"
-    t.string "numero_ruc"
-    t.string "direccion"
-    t.integer "telefono"
-    t.string "correo"
-    t.boolean "estado"
+    t.date "fecha_nacimiento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sexos_id"
+    t.bigint "escolaridads_id"
+    t.string "profesion"
+    t.bigint "estado_civils_id"
+    t.integer "anios_relacion"
+    t.integer "numero_dependiente"
+    t.bigint "tipo_domicilios_id"
+    t.string "numero_telefono"
+    t.string "direccion_domiciliar"
+    t.string "municipio"
+    t.string "departamento"
+    t.string "empresa"
+    t.string "numero_inss"
+    t.string "direccion_empresa"
+    t.string "departamento_empresa"
+    t.string "municipio_empresa"
+    t.string "numero_telefono_empresa"
+    t.integer "tiempo_laborar"
+    t.string "cargo"
+    t.integer "salario_mensual"
+    t.string "forma_pago"
+    t.index ["escolaridads_id"], name: "index_socios_on_escolaridads_id"
+    t.index ["estado_civils_id"], name: "index_socios_on_estado_civils_id"
+    t.index ["sexos_id"], name: "index_socios_on_sexos_id"
+    t.index ["tipo_domicilios_id"], name: "index_socios_on_tipo_domicilios_id"
   end
 
-  create_table "tipo_entidads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tasa_cambios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.decimal "tasa_cambio", precision: 10, scale: 2
+    t.date "fecha"
+  end
+
+  create_table "tipo_domicilios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "socios_id"
-    t.index ["socios_id"], name: "index_tipo_entidads_on_socios_id"
   end
 
   create_table "tipo_monedas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -138,14 +198,14 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "roles_id"
-    t.bigint "cargos_id"
     t.string "nombre"
     t.boolean "activo"
+    t.bigint "rols_id"
+    t.bigint "cargos_id"
     t.index ["cargos_id"], name: "index_usuarios_on_cargos_id"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
-    t.index ["roles_id"], name: "index_usuarios_on_roles_id"
+    t.index ["rols_id"], name: "index_usuarios_on_rols_id"
   end
 
   create_table "valor_leches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -153,8 +213,20 @@ ActiveRecord::Schema.define(version: 2021_03_20_031643) do
     t.date "fecha"
   end
 
+  add_foreign_key "conyuges", "sexos", column: "sexos_id"
+  add_foreign_key "conyuges", "socios", column: "socios_id"
+  add_foreign_key "fiadors", "estado_civils", column: "estado_civils_id"
+  add_foreign_key "fiadors", "socios", column: "socios_id"
+  add_foreign_key "forma_pagos", "bancos", column: "bancos_id"
+  add_foreign_key "forma_pagos", "tipo_monedas"
   add_foreign_key "recursos", "tipo_recursos"
   add_foreign_key "rol_accions", "accions"
   add_foreign_key "rol_accions", "recursos"
   add_foreign_key "rol_accions", "rols"
+  add_foreign_key "socios", "escolaridads", column: "escolaridads_id"
+  add_foreign_key "socios", "estado_civils", column: "estado_civils_id"
+  add_foreign_key "socios", "sexos", column: "sexos_id"
+  add_foreign_key "socios", "tipo_domicilios", column: "tipo_domicilios_id"
+  add_foreign_key "usuarios", "cargos", column: "cargos_id"
+  add_foreign_key "usuarios", "rols", column: "rols_id"
 end

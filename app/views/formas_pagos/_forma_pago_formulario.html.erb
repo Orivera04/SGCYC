@@ -18,6 +18,12 @@
                             class: "form-control selectpicker", "data-live-search": "true" %>
                         <p class="text-danger"><%= @registro.errors[:tipo_moneda_id].first %></p>
                     </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="nombre">Banco</label>
+                        <%= select_tag "forma_pagos[bancos_id]", options_from_collection_for_select(Banco.all, :id, :nombre, @registro.bancos_id ),
+                            class: "form-control selectpicker", "data-live-search": "true", prompt: "Ninguno" %>
+                        <p class="text-danger"><%= @registro.errors[:bancos_id].first %></p>
+                    </div>
                 </div>
             </div>
         </div>

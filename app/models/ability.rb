@@ -9,11 +9,11 @@ class Ability
 
   def initialize(usuario)
     usuario ||= Usuario.new
-    if usuario.roles_id == Rol::ADMINISTRADOR
+    if usuario.rols_id == Rol::ADMINISTRADOR
       can :manage, :all
     else
       recurso = Recurso.all
-      acciones_permitidas = RolAccion.where(rol_id: usuario.roles_id)
+      acciones_permitidas = RolAccion.where(rol_id: usuario.rols_id)
       validar_permiso_recurso(acciones_permitidas, recurso)
     end
   end

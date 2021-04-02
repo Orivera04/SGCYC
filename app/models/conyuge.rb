@@ -1,0 +1,2 @@
+class Conyuge < ApplicationRecord
+end

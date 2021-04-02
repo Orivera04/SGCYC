@@ -2,7 +2,7 @@ class CreateFormaPagos < ActiveRecord::Migration[6.0]
   def change
     create_table :forma_pagos do |t|
       t.string :nombre
-      t.references :tipo_moneda, index: true
+      t.references :tipo_moneda, index: true, foreign_key: true
     end
   end
 end

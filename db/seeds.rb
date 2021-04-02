@@ -74,15 +74,38 @@ begin
     FormaPago.create!(id: 3, nombre: "Tarjeta", tipo_moneda_id: TipoMoneda::DOLAR )
     puts ': Realizado con exito.'
 
+    puts '==> Creando Catalogo de Sexos por Defecto'
+    Sexo.create!(id: 1, nombre: "Masculino")
+    Sexo.create!(id: 2, nombre: "Femenino")
+    puts ': Realizado con exito.'
+
+    puts '==> Creando Catalogo de Escolaridades por Defecto'
+    Escolaridad.create!(id: 1, nombre: "Primaria")
+    Escolaridad.create!(id: 2, nombre: "Secundaria")
+    Escolaridad.create!(id: 3, nombre: "Universidad")
+    puts ': Realizado con exito.'
+
+    puts '==> Creando Catalogo de Estados Civiles por Defecto'
+    EstadoCivil.create!(id: 1, nombre: "Soltero")
+    EstadoCivil.create!(id: 2, nombre: "Casado")
+    EstadoCivil.create!(id: 3, nombre: "Viudo")
+    puts ': Realizado con exito.'
+
+    puts '==> Creando Catalogo de Tipos de Domicilio por Defecto'
+    TipoDomicilio.create!(id: 1, nombre: "Propio")
+    TipoDomicilio.create!(id: 2, nombre: "Alquilado")
+    TipoDomicilio.create!(id: 3, nombre: "Familiar")
+    puts ': Realizado con exito.'
+
 
     puts '==> Creando Usuarios por defecto'
     if Usuario.all.blank?
         Usuario.create!(email: 'admin@nicacentro.com', password: 'root12345',
                         password_confirmation: 'root12345', nombre: 'Administrador',
-                        activo: true, roles_id: 1, cargos_id: 1  )
+                        activo: true, rols_id: 1, cargos_id: 1  )
         Usuario.create!(email: 'gestorcobro@nicacentro.com', password: 'root12345',
             password_confirmation: 'root12345', nombre: 'Gestro de Cobro',
-            activo: true, roles_id: 2, cargos_id: 2  )
+            activo: true, rols_id: 2, cargos_id: 2  )
         puts ': Realizado con exito.'
     else
         puts 'No se puede agregar datos por defecto a la tabla Usuarios, porque ya contiene registros'

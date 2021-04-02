@@ -1,0 +1,2 @@
+class Fiador < ApplicationRecord
+end

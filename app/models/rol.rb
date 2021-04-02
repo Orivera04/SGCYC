@@ -21,7 +21,7 @@ class Rol < ApplicationRecord
     end
 
     def validate_destroy
-        if Usuario.where(roles_id: id ).any?
+        if Usuario.where(rols_id: id ).any?
             raise StandardError.new "No se puede eliminar el rol, este se encuentra vinculado a un usuario"
         end
     end

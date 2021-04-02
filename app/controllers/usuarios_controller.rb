@@ -93,7 +93,7 @@ class UsuariosController < ApplicationController
 
     def usuario_params
         params.require(:usuarios).permit(:id, :email, :password, :nombre,
-                                         :roles_id, :cargos_id, :activo)
+                                         :rols_id, :cargos_id, :activo)
     end
 
     alias :params_permit :usuario_params

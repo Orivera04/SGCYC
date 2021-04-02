@@ -1,2 +1,0 @@
-class TipoEntidad < ApplicationRecord
-end

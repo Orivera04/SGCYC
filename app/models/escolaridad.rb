@@ -1,0 +1,2 @@
+class Escolaridad < ApplicationRecord
+end
