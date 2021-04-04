@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :home
   resources :informacion_general
   resources :graficos
-  resources :pagare
-  resources :comprobante
+  resources :pagares
+  resources :comprobantes
 
   resources :socios do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }

@@ -1,4 +1,4 @@
-class ComprobanteController < ApplicationController
+class ComprobantesController < ApplicationController
   before_action :authenticate_usuario!
   load_and_authorize_resource class: :Comprobante
 

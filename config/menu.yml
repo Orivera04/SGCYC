@@ -1,4 +1,4 @@
-- Dashboards:
+- Dashboard:
     - Items:
         - Información General:
             Recurso: "InformacionGeneral"
@@ -10,11 +10,11 @@
     - Icono: "ni ni-shop text-primary"
 - Realizar Pagaré:
     - Recurso: "Pagare"
-    - Ruta: "pagare_index_path"
+    - Ruta: "pagares_path"
     - Icono: "ni ni-archive-2 text-green"
 - Comprobantes:
     - Recurso: "Comprobante"
-    - Ruta: "comprobante_index_path"
+    - Ruta: "comprobantes_path"
     - Icono: "ni ni-ungroup text-orange"
 - Socios:
     - Recurso: "Socios"

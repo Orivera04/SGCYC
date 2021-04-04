@@ -1,5 +1,203 @@
 <% content_for :titulo_seccion do %>
-  Información General
+Información General
 <% end %>
-
-<h1>Test</h1>
+<div class="row">
+   <div class="col-xl-4 col-md-6">
+      <div class="card card-stats">
+         <div class="card-body">
+            <div class="row">
+               <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Pagares</h5>
+                  <span class="h2 font-weight-bold mb-0">34</span>
+               </div>
+               <div class="col-auto">
+                  <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                     <i class="ni ni-money-coins"></i>
+                  </div>
+               </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm"></p>
+         </div>
+      </div>
+   </div>
+   <div class="col-xl-4 col-md-6">
+      <div class="card card-stats">
+         <div class="card-body">
+            <div class="row">
+               <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Comprobantes</h5>
+                  <span class="h2 font-weight-bold mb-0">323</span>
+               </div>
+               <div class="col-auto">
+                  <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                     <i class="ni ni-archive-2"></i>
+                  </div>
+               </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm"></p>
+         </div>
+      </div>
+   </div>
+   <div class="col-xl-4 col-md-6">
+      <div class="card card-stats">
+         <div class="card-body">
+            <div class="row">
+               <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Socios</h5>
+                  <span class="h2 font-weight-bold mb-0">340</span>
+               </div>
+               <div class="col-auto">
+                  <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                     <i class="ni ni-chart-bar-32"></i>
+                  </div>
+               </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm">
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-xl-4">
+      <div class="card">
+         <div class="card-header border-0">
+            <div class="row align-items-center">
+               <div class="col">
+                  <h5 class="mb-0">
+                  Ultimos Pagares</h3>
+               </div>
+               <div class="col text-right">
+                  <a href="<%= pagares_path %>" class="btn btn-sm btn-primary">Mirar Todos</a>
+               </div>
+            </div>
+         </div>
+         <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+               <thead class="thead-light">
+                  <tr>
+                     <th scope="col">Numero</th>
+                     <th scope="col">Monto Prestado</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">2 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">3 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">4 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">5 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+   <div class="col-xl-4">
+      <div class="card">
+         <div class="card-header border-0">
+            <div class="row align-items-center">
+               <div class="col">
+                  <h5 class="mb-0">
+                  Ultimos Comprobantes</h3>
+               </div>
+               <div class="col text-right">
+                  <a href="<%= comprobantes_path %>" class="btn btn-sm btn-primary">Mirar Todos</a>
+               </div>
+            </div>
+         </div>
+         <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+               <thead class="thead-light">
+                  <tr>
+                     <th scope="col">Numero</th>
+                     <th scope="col">Monto Abonado</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">2 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">3 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">4 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">5 </a></td>
+                     <td>500 USD</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+   <div class="col-xl-4">
+      <div class="card">
+         <div class="card-header border-0">
+            <div class="row align-items-center">
+               <div class="col">
+                  <h5 class="mb-0">
+                  Ultimos Socios</h3>
+               </div>
+               <div class="col text-right">
+                  <a href="<%= socios_path %>" class="btn btn-sm btn-primary">Mirar Todos</a>
+               </div>
+            </div>
+         </div>
+         <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+               <thead class="thead-light">
+                  <tr>
+                     <th scope="col">Codigo de Socio</th>
+                     <th scope="col">Nombre</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>Gerald Padilla</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>Gerald Padilla</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>Gerald Padilla</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>Gerald Padilla</td>
+                  </tr>
+                  <tr>
+                     <td><a href="#">1 </a></td>
+                     <td>Gerald Padilla</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>

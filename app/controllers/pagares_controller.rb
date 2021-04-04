@@ -1,4 +1,4 @@
-class PagareController < ApplicationController
+class PagaresController < ApplicationController
   before_action :authenticate_usuario!
   load_and_authorize_resource class: :Pagare
 
