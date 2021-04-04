@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_034349) do
+ActiveRecord::Schema.define(version: 2021_04_04_212526) do
 
   create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "antecedente_crediticios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "pagare_id"
+    t.string "institucion"
+    t.date "fecha"
+    t.decimal "monto", precision: 10, scale: 2
+    t.decimal "saldo", precision: 10, scale: 2
+    t.index ["pagare_id"], name: "index_antecedente_crediticios_on_pagare_id"
   end
 
   create_table "bancos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -87,6 +96,43 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.index ["tipo_moneda_id"], name: "index_forma_pagos_on_tipo_moneda_id"
   end
 
+  create_table "interes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "cantidad"
+  end
+
+  create_table "pagares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "usuario_id"
+    t.bigint "socio_id"
+    t.bigint "tipo_moneda_id"
+    t.integer "numero_pagare"
+    t.decimal "cantidad_solicitada", precision: 10, scale: 2
+    t.bigint "plazo_id"
+    t.bigint "interes_id"
+    t.string "forma_pago"
+    t.decimal "cuota_pagar", precision: 10, scale: 2
+    t.string "destino_credito"
+    t.string "ubicacion_inversion"
+    t.string "garantias_ofrecidas"
+    t.boolean "aceptar_condiciones_diferentes"
+    t.boolean "tuvo_credito"
+    t.boolean "tiene_credito_actualmente"
+    t.string "garantia_hipotecaria"
+    t.integer "cantidad_leche_entregada"
+    t.string "observaciones"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interes_id"], name: "index_pagares_on_interes_id"
+    t.index ["plazo_id"], name: "index_pagares_on_plazo_id"
+    t.index ["socio_id"], name: "index_pagares_on_socio_id"
+    t.index ["tipo_moneda_id"], name: "index_pagares_on_tipo_moneda_id"
+    t.index ["usuario_id"], name: "index_pagares_on_usuario_id"
+  end
+
+  create_table "plazos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "plazo"
+  end
+
   create_table "recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
@@ -94,6 +140,14 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tipo_recurso_id"], name: "index_recursos_on_tipo_recurso_id"
+  end
+
+  create_table "referencia_personal_pagares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "pagare_id"
+    t.string "nombre"
+    t.string "domicilio"
+    t.string "telefono"
+    t.index ["pagare_id"], name: "index_referencia_personal_pagares_on_pagare_id"
   end
 
   create_table "rol_accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -207,11 +261,18 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.date "fecha"
   end
 
+  add_foreign_key "antecedente_crediticios", "pagares"
   add_foreign_key "fiadors", "estado_civils", column: "estado_civils_id"
   add_foreign_key "fiadors", "socios"
   add_foreign_key "forma_pagos", "bancos", column: "bancos_id"
   add_foreign_key "forma_pagos", "tipo_monedas"
+  add_foreign_key "pagares", "interes", column: "interes_id"
+  add_foreign_key "pagares", "plazos"
+  add_foreign_key "pagares", "socios"
+  add_foreign_key "pagares", "tipo_monedas"
+  add_foreign_key "pagares", "usuarios"
   add_foreign_key "recursos", "tipo_recursos"
+  add_foreign_key "referencia_personal_pagares", "pagares"
   add_foreign_key "rol_accions", "accions"
   add_foreign_key "rol_accions", "recursos"
   add_foreign_key "rol_accions", "rols"

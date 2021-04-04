@@ -6,6 +6,7 @@ begin
     Empresa.create!(id: 1, nombre_comercial: "NicaCentro", numero_telefono: "89438943",
                     correo: "admin@nicacentro.com", direccion: "Barrio 24 de Junio, del Puente Central 1 ½ cuadra al Este Matiguás Matagalpa",
                     actividad_comercial: "Cooperativa de Leche", numero_ruc: "J89342989", logo_imagen: Base64.encode64(File.open("#{Rails.root}/app/assets/images/logo_empresa_default.png", "rb").read))
+    puts ': Realizado con exito.'
 
     puts '==> Creando Posiciones por defecto'
     Cargo.create!(id: 1, nombre: "Administrador del Sistema", descripcion: "Encargado de administrar el sistema")
@@ -112,6 +113,29 @@ begin
                   fecha_nacimiento_conyuge: "10-10-1997", ocupacion_conyuge: "Contador Publico", telefono_conyuge: "89328932",
                   lugar_trabajo_conyuge: "Celnicsa", tiempo_laborar_conyuge: "2", direccion_domicilio_conyuge: "Laureles Sur",
                   sexo_id_conyuge: Sexo::FEMENINO)
+    puts ': Realizado con exito.'
+
+    puts '==> Creando Catalogo de Plazos por Defecto'
+    Plazo.create!(id: 1, nombre: "3 Meses", plazo: 3)
+    Plazo.create!(id: 2, nombre: "6 Meses", plazo: 6)
+    Plazo.create!(id: 3, nombre: "9 Meses", plazo: 9)
+    Plazo.create!(id: 4, nombre: "12 Meses", plazo: 12)
+    Plazo.create!(id: 5, nombre: "18 Meses", plazo: 18)
+    Plazo.create!(id: 6, nombre: "24 Meses", plazo: 24)
+    Plazo.create!(id: 7, nombre: "36 Meses", plazo: 36)
+    Plazo.create!(id: 8, nombre: "48 Meses", plazo: 48)
+    Plazo.create!(id: 9, nombre: "56 Meses", plazo: 56)
+    Plazo.create!(id: 10, nombre: "72 Meses", plazo: 72)
+    puts ': Realizado con exito.'
+
+    puts '==> Creando Catalogo de Intereses por Defecto'
+    Interes.create!(id: 1, cantidad: 7.5)
+    Interes.create!(id: 2, cantidad: 8.5)
+    Interes.create!(id: 3, cantidad: 9.5)
+    Interes.create!(id: 4, cantidad: 10.5)
+    Interes.create!(id: 5, cantidad: 11.5)
+    Interes.create!(id: 6, cantidad: 12.5)
+    Interes.create!(id: 7, cantidad: 13.5)
     puts ': Realizado con exito.'
 
     puts '==> Creando Usuarios por defecto'

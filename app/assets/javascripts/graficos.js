@@ -68,8 +68,8 @@ $(document).ready(function() {
                    "Enero", "Febrero", "Marzo", "Abril"],
           datasets: [
             {
-                backgroundColor: [ "rgba(204, 255, 204, 0.6)"],
-                borderColor: [ "rgba(204, 220, 204, 1)"],
+                backgroundColor: [ "rgba(75, 192, 192, 0.5)"],
+                borderColor: [ "rgba(75, 192, 192, 1)"],
                 borderWidth: 3,
                 fill: true,
                 label: "Socios nuevos en los ultimos 12 meses",
