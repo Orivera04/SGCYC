@@ -1,0 +1,27 @@
+wb = xlsx_package.workbook
+numero_columnas = 14
+encabezados = ["Codigo Socio", "Nombre", "Cedula", "Fecha Nacimiento", "Sexo",
+               "Escolaridad", "Profesion", "Estado Civil", "Tipo Domicilio",
+               "Numero Telefono", "Municipio", "Departamento", "Empresa Laboral", "Salario Mensual",
+               "Creado El", "Actualizado El"]
+wb.add_worksheet(name: "Socios") do |hoja|
+  render partial: "shared/cabecera_excel",
+    locals: {
+      wb: wb, sheet: hoja, merge: numero_columnas
+    }
+
+  hoja.add_row(encabezados, style: @title_cell)
+  @registros.each do |socio|
+    fila = [socio.codigo_socio, socio.display_name, socio.numero_cedula, socio.fecha_nacimiento.strftime("%F %T"),
+            socio.sexo.display_name, socio.escolaridad.display_name, socio.profesion,
+            socio.estado_civil.display_name, socio.tipo_domicilio.display_name, socio.numero_telefono,
+            socio.municipio, socio.departamento, socio.empresa, socio.salario_mensual,
+            socio.created_at.strftime("%F %T"), socio.updated_at.strftime("%F %T")]
+
+    estilos = [@default_cell, @default_cell, @default_cell, @default_cell, @default_cell,
+               @default_cell, @default_cell, @default_cell, @default_cell, @default_cell,
+               @default_cell, @default_cell, @default_cell, @monto_cell, @default_cell, @default_cell]
+
+    hoja.add_row(fila, style: estilos)
+  end
+end

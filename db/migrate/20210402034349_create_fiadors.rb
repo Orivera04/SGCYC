@@ -1,7 +1,7 @@
 class CreateFiadors < ActiveRecord::Migration[6.0]
   def change
     create_table :fiadors do |t|
-      t.references :socios, index: true, foreign_key: true
+      t.references :socio, index: true, foreign_key: true
       t.string :nombre
       t.string :apellido
       t.string :numero_cedula

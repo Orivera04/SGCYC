@@ -51,7 +51,6 @@ class ValorLechesController < ApplicationController
 
   def create
     begin
-      raise if flash.now[:error].present?
       if @registro.save!
         flash[:notice] = "El registro fue guardado exitosamente"
         redirect_to action: :index
@@ -64,7 +63,6 @@ class ValorLechesController < ApplicationController
 
   def update
     begin
-      raise if flash.now[:error].present?
       if @registro.save!
         flash[:notice] = "El registro fue actualizado exitosamente"
         redirect_to action: :index

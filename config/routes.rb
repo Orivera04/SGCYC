@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :graficos
   resources :pagare
   resources :comprobante
-  resources :socios
+
+  resources :socios do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+  end
 
   resources :cargos do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }

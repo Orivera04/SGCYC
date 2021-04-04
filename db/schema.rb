@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "conyuges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "socios_id"
-    t.string "nombre"
-    t.string "apellido"
-    t.string "numero_cedula"
-    t.date "fecha_nacimiento"
-    t.bigint "sexos_id"
-    t.string "ocupacion"
-    t.string "telefono"
-    t.string "lugar_trabajo"
-    t.integer "tiempo_laborar"
-    t.string "direccion_domicilio"
-    t.index ["sexos_id"], name: "index_conyuges_on_sexos_id"
-    t.index ["socios_id"], name: "index_conyuges_on_socios_id"
-  end
-
   create_table "empresas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre_comercial"
     t.integer "numero_telefono"
@@ -73,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
   end
 
   create_table "fiadors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "socios_id"
+    t.bigint "socio_id"
     t.string "nombre"
     t.string "apellido"
     t.string "numero_cedula"
@@ -92,7 +76,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.string "tiempo_conocer_solicitante"
     t.string "anio_parentesco"
     t.index ["estado_civils_id"], name: "index_fiadors_on_estado_civils_id"
-    t.index ["socios_id"], name: "index_fiadors_on_socios_id"
+    t.index ["socio_id"], name: "index_fiadors_on_socio_id"
   end
 
   create_table "forma_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -141,13 +125,13 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.date "fecha_nacimiento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "sexos_id"
-    t.bigint "escolaridads_id"
+    t.bigint "sexo_id"
+    t.bigint "escolaridad_id"
     t.string "profesion"
-    t.bigint "estado_civils_id"
+    t.bigint "estado_civil_id"
     t.integer "anios_relacion"
     t.integer "numero_dependiente"
-    t.bigint "tipo_domicilios_id"
+    t.bigint "tipo_domicilio_id"
     t.string "numero_telefono"
     t.string "direccion_domiciliar"
     t.string "municipio"
@@ -162,10 +146,20 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.string "cargo"
     t.integer "salario_mensual"
     t.string "forma_pago"
-    t.index ["escolaridads_id"], name: "index_socios_on_escolaridads_id"
-    t.index ["estado_civils_id"], name: "index_socios_on_estado_civils_id"
-    t.index ["sexos_id"], name: "index_socios_on_sexos_id"
-    t.index ["tipo_domicilios_id"], name: "index_socios_on_tipo_domicilios_id"
+    t.string "nombre_conyuge"
+    t.string "apellido_conyuge"
+    t.string "numero_cedula_conyuge"
+    t.date "fecha_nacimiento_conyuge"
+    t.string "ocupacion_conyuge"
+    t.string "telefono_conyuge"
+    t.string "lugar_trabajo_conyuge"
+    t.integer "tiempo_laborar_conyuge"
+    t.string "direccion_domicilio_conyuge"
+    t.integer "sexo_id_conyuge"
+    t.index ["escolaridad_id"], name: "index_socios_on_escolaridad_id"
+    t.index ["estado_civil_id"], name: "index_socios_on_estado_civil_id"
+    t.index ["sexo_id"], name: "index_socios_on_sexo_id"
+    t.index ["tipo_domicilio_id"], name: "index_socios_on_tipo_domicilio_id"
   end
 
   create_table "tasa_cambios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -213,20 +207,18 @@ ActiveRecord::Schema.define(version: 2021_04_02_034349) do
     t.date "fecha"
   end
 
-  add_foreign_key "conyuges", "sexos", column: "sexos_id"
-  add_foreign_key "conyuges", "socios", column: "socios_id"
   add_foreign_key "fiadors", "estado_civils", column: "estado_civils_id"
-  add_foreign_key "fiadors", "socios", column: "socios_id"
+  add_foreign_key "fiadors", "socios"
   add_foreign_key "forma_pagos", "bancos", column: "bancos_id"
   add_foreign_key "forma_pagos", "tipo_monedas"
   add_foreign_key "recursos", "tipo_recursos"
   add_foreign_key "rol_accions", "accions"
   add_foreign_key "rol_accions", "recursos"
   add_foreign_key "rol_accions", "rols"
-  add_foreign_key "socios", "escolaridads", column: "escolaridads_id"
-  add_foreign_key "socios", "estado_civils", column: "estado_civils_id"
-  add_foreign_key "socios", "sexos", column: "sexos_id"
-  add_foreign_key "socios", "tipo_domicilios", column: "tipo_domicilios_id"
+  add_foreign_key "socios", "escolaridads"
+  add_foreign_key "socios", "estado_civils"
+  add_foreign_key "socios", "sexos"
+  add_foreign_key "socios", "tipo_domicilios"
   add_foreign_key "usuarios", "cargos", column: "cargos_id"
   add_foreign_key "usuarios", "rols", column: "rols_id"
 end

@@ -97,6 +97,22 @@ begin
     TipoDomicilio.create!(id: 3, nombre: "Familiar")
     puts ': Realizado con exito.'
 
+    puts '==> Creando Socios Por Defecto'
+    Socio.create!(id: 1, codigo_socio: "1", nombre: "Luis", apellido: "Rivera",
+                  numero_cedula: "001-101197-0013X", fecha_nacimiento: "10/11/1997",
+                  sexo_id: Sexo::MASCULINO, escolaridad_id: Escolaridad::UNIVERSIDAD,
+                  profesion: "Desarollador de Software", estado_civil_id: EstadoCivil::SOLTERO,
+                  anios_relacion: 0, numero_dependiente: 0, tipo_domicilio_id: TipoDomicilio::FAMILIAR,
+                  numero_telefono: "87501549", direccion_domiciliar: "Barrio Venezuela", municipio: "Managua",
+                  departamento: "Managua", empresa: "AG Software", numero_inss: "3920403904",
+                  direccion_empresa: "Colonial Los Robles", departamento_empresa: "Managua",
+                  municipio_empresa: "Managua", numero_telefono_empresa: "89438943", tiempo_laborar: "2 Años",
+                  cargo: "Programador", salario_mensual: 15000, forma_pago: "Tarjeta", nombre_conyuge: "Emily Dayana",
+                  apellido_conyuge: "Martinez Nuñez", numero_cedula_conyuge: "002-101097-0023X",
+                  fecha_nacimiento_conyuge: "10-10-1997", ocupacion_conyuge: "Contador Publico", telefono_conyuge: "89328932",
+                  lugar_trabajo_conyuge: "Celnicsa", tiempo_laborar_conyuge: "2", direccion_domicilio_conyuge: "Laureles Sur",
+                  sexo_id_conyuge: Sexo::FEMENINO)
+    puts ': Realizado con exito.'
 
     puts '==> Creando Usuarios por defecto'
     if Usuario.all.blank?

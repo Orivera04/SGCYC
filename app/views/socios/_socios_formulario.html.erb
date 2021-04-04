@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row mb-3 mt-3">
+            <nav id="menu_tabs" class="nav nav-pills nav-justified container-fluid">
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosPersonales">Datos Personales</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosPersonalesConyuge">Datos Conyuge</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosEmpleado">Datos Empleo</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosFiador">Datos Fiador</a>
+            </nav>
+        <div class="tab-content container-fluid">
+            <div id="DatosPersonales" class="tab-pane fade mt-4">
+                <%= render partial: "socios/datos_personales" %>
+            </div>
+
+            <div id="DatosPersonalesConyuge" class="tab-pane fade mt-4">
+                <%= render partial: "socios/datos_conyuge" %>
+            </div>
+
+            <div id="DatosEmpleado" class="tab-pane fade mt-4">
+                <%= render partial: "socios/datos_empleado" %>
+            </div>
+
+            <div id="DatosFiador" class="tab-pane fade mt-4">
+                <%= render partial: "socios/datos_fiador" %>
+            </div>
+        </div>
+    </div>
+</div>

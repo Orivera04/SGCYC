@@ -1,0 +1,63 @@
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Datos de Empleo</h3>
+      </div>
+      <div class="card-body row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="numero_telefono">Empresa</label>
+               <%= text_field(:socios, :empresa, class: "form-control", id: "empresa", value: @registro.empresa) %>
+               <p class="text-danger"><%= @registro.errors[:empresa].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="direccion_empresa">Dirección Empresa</label>
+               <%= text_field(:socios, :direccion_empresa, class: "form-control", id: "empresa", value: @registro.direccion_empresa) %>
+               <p class="text-danger"><%= @registro.errors[:direccion_empresa].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="municipio">Municipio</label>
+               <%= text_field(:socios, :municipio_empresa, class: "form-control", id: "municipio", value: @registro.municipio_empresa) %>
+               <p class="text-danger"><%= @registro.errors[:municipio_empresa].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="tiempo_laboral">Años de Laborar</label>
+               <%= number_field(:socios, :tiempo_laborar, class: "form-control", id: "tiempo_laborar", value: @registro.tiempo_laborar) %>
+               <p class="text-danger"><%= @registro.errors[:tiempo_laborar].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="cargo">Salario Mensual</label>
+               <%= number_field(:socios, :salario_mensual, class: "form-control", id: "salario_mensual", value: @registro.salario_mensual) %>
+               <p class="text-danger"><%= @registro.errors[:salario_mensual].first %></p>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="numero_inss">Numero INSS</label>
+               <%= number_field(:socios, :numero_inss, class: "form-control", id: "numero_inss", value: @registro.numero_inss) %>
+               <p class="text-danger"><%= @registro.errors[:numero_inss].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="municipio">Departamento</label>
+               <%= text_field(:socios, :departamento_empresa, class: "form-control", id: "departamento", value: @registro.departamento_empresa) %>
+               <p class="text-danger"><%= @registro.errors[:departamento_empresa].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="municipio">Telefono</label>
+               <%= text_field(:socios, :numero_telefono_empresa, class: "form-control", id: "numero_telefono_empresa", value: @registro.numero_telefono_empresa) %>
+               <p class="text-danger"><%= @registro.errors[:numero_telefono_empresa].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="cargo">Cargo</label>
+               <%= text_field(:socios, :cargo, class: "form-control", id: "cargo", value: @registro.cargo) %>
+               <p class="text-danger"><%= @registro.errors[:cargo].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="forma_pago">Forma Pago</label>
+               <%= text_field(:socios, :forma_pago, class: "form-control", id: "forma_pago", value: @registro.forma_pago) %>
+               <p class="text-danger"><%= @registro.errors[:forma_pago].first %></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

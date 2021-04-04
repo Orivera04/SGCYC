@@ -1,0 +1,64 @@
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Datos del Conyuge</h3>
+      </div>
+      <div class="card-body row">
+         <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-control-label" for="nombre_conyuge">Nombre</label>
+                <%= text_field(:socios, :nombre_conyuge, class: "form-control", id: "nombre_conyuge", value: @registro.nombre_conyuge) %>
+                <p class="text-danger"><%= @registro.errors[:nombre_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Cedula</label>
+               <%= text_field(:socios, :numero_cedula_conyuge, class: "form-control", id: "cedula", value: @registro.numero_cedula_conyuge) %>
+               <p class="text-danger"><%= @registro.errors[:numero_cedula_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="sexo_id">Sexo</label>
+               <%= select_tag "socios[sexo_id_conyuge]", options_from_collection_for_select(Sexo.all, :id, :nombre, @registro.sexo_id_conyuge ),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:sexo_id_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="numero_telefono">Telefono</label>
+               <%= text_field(:socios, :telefono_conyuge, class: "form-control", id: "numero_telefono", value: @registro.telefono_conyuge) %>
+               <p class="text-danger"><%= @registro.errors[:telefono_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="numero_telefono">Año de Laborar</label>
+               <%= number_field(:socios, :tiempo_laborar_conyuge, class: "form-control", id: "tiempo_laborar_conyuge", value: @registro.tiempo_laborar_conyuge) %>
+               <p class="text-danger"><%= @registro.errors[:tiempo_laborar_conyuge].first %></p>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-control-label" for="apellido_conyuge">Apellido</label>
+                <%= text_field(:socios, :apellido_conyuge, class: "form-control", id: "apellido_conyuge", value: @registro.apellido_conyuge) %>
+                <p class="text-danger"><%= @registro.errors[:apellido_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="fecha_nacimiento">Fecha Nacimiento</label>
+               <%= date_field(:socios, :fecha_nacimiento_conyuge, class: "form-control", id: "fecha_nacimiento", value: @registro.fecha_nacimiento_conyuge) %>
+               <p class="text-danger"><%= @registro.errors[:fecha_nacimiento_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" for="ocupacion">Ocupación</label>
+                <%= text_field(:socios, :ocupacion_conyuge, class: "form-control", id: "ocupacion", value: @registro.ocupacion_conyuge) %>
+                <p class="text-danger"><%= @registro.errors[:ocupacion_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="numero_telefono">Lugar de Trabajo</label>
+               <%= text_field(:socios, :lugar_trabajo_conyuge, class: "form-control", id: "lugar_trabajo_conyuge", value: @registro.lugar_trabajo_conyuge) %>
+               <p class="text-danger"><%= @registro.errors[:lugar_trabajo_conyuge].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="numero_telefono">Dirección Domicilio</label>
+               <%= text_field(:socios, :direccion_domicilio_conyuge, class: "form-control", id: "direccion_domicilio_conyuge", value: @registro.direccion_domicilio_conyuge) %>
+               <p class="text-danger"><%= @registro.errors[:direccion_domicilio_conyuge].first %></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

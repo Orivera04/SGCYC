@@ -25,7 +25,6 @@ class EmpresaController < ApplicationController
 
   def update
     begin
-      raise if flash.now[:error].present?
       if @registro.save!
         flash[:notice] = "El registro fue actualizado exitosamente"
         redirect_to action: :index

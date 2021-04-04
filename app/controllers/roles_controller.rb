@@ -36,7 +36,6 @@ class RolesController < ApplicationController
 
   def create
     begin
-      raise if flash.now[:error].present?
       if @registro.save!
         flash[:notice] = "El registro fue guardado exitosamente"
         redirect_to action: :index
@@ -49,7 +48,6 @@ class RolesController < ApplicationController
 
   def update
     begin
-      raise if flash.now[:error].present?
       if @registro.save!
         flash[:notice] = "El registro fue actualizado exitosamente"
         redirect_to action: :index

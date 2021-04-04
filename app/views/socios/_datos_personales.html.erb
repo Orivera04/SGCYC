@@ -1,0 +1,98 @@
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Datos Personales del Socio</h3>
+      </div>
+      <div class="card-body row">
+         <%= hidden_field(:socios, :id, :value => @registro.id) %>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="codigo_socio">Codigo Socio</label>
+               <%= text_field(:socios, :codigo_socio, class: "form-control", id: "codigo_socio", value: @registro.obtener_codigo_socio) %>
+               <p class="text-danger"><%= @registro.errors[:codigo_socio].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="apellido">Apellido</label>
+               <%= text_field(:socios, :apellido, class: "form-control", id: "apellido", value: @registro.apellido) %>
+               <p class="text-danger"><%= @registro.errors[:apellido].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="fecha_nacimiento">Fecha Nacimiento</label>
+               <%= date_field(:socios, :fecha_nacimiento, class: "form-control", id: "fecha_nacimiento", value: @registro.fecha_nacimiento) %>
+               <p class="text-danger"><%= @registro.errors[:fecha_nacimiento].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="escolaridad_id">Escolaridad</label>
+               <%= select_tag "socios[escolaridad_id]", options_from_collection_for_select(Escolaridad.all, :id, :nombre, @registro.escolaridad_id),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:escolaridad_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="estado_civil_id">Estado Civil</label>
+               <%= select_tag "socios[estado_civil_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.estado_civil_id),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:estado_civil_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="numero_dependientes">Numero de dependientes</label>
+               <%= number_field(:socios, :numero_dependiente, class: "form-control", id: "numero_dependientes", value: @registro.numero_dependiente) %>
+               <p class="text-danger"><%= @registro.errors[:numero_dependiente].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="numero_telefono">Numero telefono</label>
+               <%= text_field(:socios, :numero_telefono, class: "form-control", id: "numero_telefono", value: @registro.numero_telefono) %>
+               <p class="text-danger"><%= @registro.errors[:numero_telefono].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="municipio">Departamento</label>
+               <%= text_field(:socios, :departamento, class: "form-control", id: "departamento", value: @registro.departamento) %>
+               <p class="text-danger"><%= @registro.errors[:departamento].first %></p>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Nombre</label>
+               <%= text_field(:socios, :nombre, class: "form-control", id: "nombre", value: @registro.nombre) %>
+               <p class="text-danger"><%= @registro.errors[:nombre].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Cedula</label>
+               <%= text_field(:socios, :numero_cedula, class: "form-control", id: "cedula", value: @registro.numero_cedula) %>
+               <p class="text-danger"><%= @registro.errors[:numero_cedula].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="sexo_id">Sexo</label>
+               <%= select_tag "socios[sexo_id]", options_from_collection_for_select(Sexo.all, :id, :nombre, @registro.sexo_id ),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:sexo_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="profesion">Profesión</label>
+               <%= text_field(:socios, :profesion, class: "form-control", id: "profesion", value: @registro.profesion) %>
+               <p class="text-danger"><%= @registro.errors[:profesion].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="años_relacion">Años Relación</label>
+               <%= number_field(:socios, :anios_relacion, class: "form-control", id: "anios_relacion", value: @registro.anios_relacion) %>
+               <p class="text-danger"><%= @registro.errors[:anios_relacion].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="sexo_id">Pertenencia Domicilio</label>
+               <%= select_tag "socios[tipo_domicilio_id]", options_from_collection_for_select(TipoDomicilio.all, :id, :nombre, @registro.tipo_domicilio_id ),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:tipo_domicilio_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="direccion_domiciliar">Dirección Domicilio</label>
+               <%= text_field(:socios, :direccion_domiciliar, class: "form-control", id: "direccion_domiciliar", value: @registro.direccion_domiciliar) %>
+               <p class="text-danger"><%= @registro.errors[:direccion_domiciliar].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="municipio">Municipio</label>
+               <%= text_field(:socios, :municipio, class: "form-control", id: "municipio", value: @registro.municipio) %>
+               <p class="text-danger"><%= @registro.errors[:municipio].first %></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
