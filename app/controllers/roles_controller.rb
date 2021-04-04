@@ -1,5 +1,4 @@
 class RolesController < ApplicationController
-  @recurso = :Rol
   include Controleable
   before_action :coleccion_inicial, only: %i[index excel_index]
   before_action :validar_usuario_edicion, only: %i[edit destroy]
@@ -19,18 +18,18 @@ class RolesController < ApplicationController
   end
 
   def index
-    authorize!(:index, :Rol)
+    authorize!(:index, :Roles)
     @params_permit = params[:q].present? ? {q: params[:q] .permit! } : {}
     render template: "roles/index",  layout: 'layouts/application'
   end
 
   def new
-    authorize!(:new, :Rol)
+    authorize!(:new, :Roles)
     render template: 'roles/form', layout: 'layouts/application'
   end
 
   def edit
-    authorize!(:edit, :Rol)
+    authorize!(:edit, :Roles)
     render template: 'roles/form', layout: 'layouts/application'
   end
 
@@ -59,7 +58,7 @@ class RolesController < ApplicationController
   end
 
   def destroy
-    authorize!(:destroy, :Rol)
+    authorize!(:destroy, :Roles)
     begin
       flash[:notice] = "El registro ha sido eliminado exitosamente" if @registro.destroy
     rescue StandardError => e

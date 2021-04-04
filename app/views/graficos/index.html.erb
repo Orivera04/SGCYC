@@ -1,2 +1,43 @@
-<h1>Graficos#index</h1>
-<p>Find me in app/views/graficos/index.html.erb</p>
+<%= javascript_include_tag "graficos" %>
+<% content_for :titulo_seccion do %>
+    Graficos
+<% end %>
+
+<div class="card-deck flex-column flex-xl-row">
+   <div class="card">
+      <div class="card-header bg-transparent">
+         <h6 class="text-muted text-uppercase ls-1 mb-1">Visión General</h6>
+         <h2 class="h3 mb-0">Montos prestados</h2>
+      </div>
+      <div class="card-body">
+         <div class="chartjs">
+            <canvas id="montos_prestados"></canvas>
+         </div>
+      </div>
+   </div>
+   <div class="card">
+      <div class="card-header bg-transparent">
+         <h6 class="text-muted text-uppercase ls-1 mb-1">Visión General</h6>
+         <h2 class="h3 mb-0">Total en abonos</h2>
+      </div>
+      <div class="card-body">
+         <div class="chartjs">
+            <canvas id="total_abonos"></canvas>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="card-deck flex-column flex-xl-row">
+   <div class="card">
+      <div class="card-header bg-transparent">
+         <h6 class="text-muted text-uppercase ls-1 mb-1">Visión General</h6>
+         <h2 class="h3 mb-0">Socios nuevos</h2>
+      </div>
+      <div class="card-body">
+         <div class="chartjs">
+            <canvas id="socios_nuevos"></canvas>
+         </div>
+      </div>
+   </div>
+</div>

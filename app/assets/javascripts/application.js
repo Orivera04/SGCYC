@@ -7,4 +7,5 @@
 //= require selectpicker.js
 //= require sweetalert.js
 //= require overlay.js
+//= require chart.js
 //= require rails-ujs

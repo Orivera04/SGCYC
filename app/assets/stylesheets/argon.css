@@ -29641,3 +29641,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 .scopes_heigth {
     width: 18em;
 }
+
+.chartjs {
+    height: 275px;
+}
