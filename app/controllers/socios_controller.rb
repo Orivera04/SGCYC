@@ -98,7 +98,11 @@ class SociosController < ApplicationController
                     :fecha_nacimiento_conyuge, :sexo_id_conyuge, :ocupacion_conyuge, :telefono_conyuge,
                     :lugar_trabajo_conyuge, :tiempo_laborar_conyuge, :direccion_domicilio_conyuge,
                     :empresa, :numero_inss, :direccion_empresa, :departamento_empresa, :municipio_empresa,
-                    :numero_telefono_empresa, :tiempo_laborar, :cargo, :salario_mensual, :forma_pago )
+                    :numero_telefono_empresa, :tiempo_laborar, :cargo, :salario_mensual, :forma_pago,
+                    fiador_attributes: [:id, :socio_id, :nombre, :numero_cedula, :municipio, :nombre_conyuge, :lugar_trabajo,
+                                        :direccion_domicilio, :egreso_mensual, :tiempo_laborar, :tiempo_conocer_solicitante,
+                                        :apellido, :domicilio, :estado_civils_id, :profesion, :telefono, :salario_mensual,
+                                        :disponibilidad_al_mes, :anio_parentesco ] )
     end
 
     alias :params_permit :socios_params

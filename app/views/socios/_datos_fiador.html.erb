@@ -1,1 +1,176 @@
-Fiador
+<%
+    primer_fiador = 0
+    segundo_fiador = 1
+    prefix_primer_fiador = "socios[fiador_attributes][#{primer_fiador}]"
+    prefix_segundo_fiador = "socios[fiador_attributes][#{segundo_fiador}]"
+%>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos del primer fiador</h3>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <%= hidden_field(prefix_primer_fiador, :id, :value => @registro.fiador[primer_fiador]&.id) %>
+                <%= hidden_field(prefix_primer_fiador, :socio_id, :value => @registro.fiador[primer_fiador]&.socio_id) %>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Nombre</label>
+                    <%= text_field(prefix_primer_fiador, :nombre, class: "form-control", id: "nombre", value: @registro.fiador[primer_fiador]&.nombre) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="numero_cedula">Cedula</label>
+                    <%= text_field(prefix_primer_fiador, :numero_cedula, class: "form-control", id: "numero_cedula", value: @registro.fiador[primer_fiador]&.numero_cedula) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="municipio">Municipio</label>
+                    <%= text_field(prefix_primer_fiador, :municipio, class: "form-control", id: "municipio", value: @registro.fiador[primer_fiador]&.municipio) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre_conyuge">Nombre Conyuge</label>
+                    <%= text_field(prefix_primer_fiador, :nombre_conyuge, class: "form-control", id: "nombre_conyuge", value: @registro.fiador[primer_fiador]&.nombre_conyuge) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="lugar_trabajo">Lugar de Trabajo</label>
+                    <%= text_field(prefix_primer_fiador, :lugar_trabajo, class: "form-control", id: "lugar_trabajo", value: @registro.fiador[primer_fiador]&.lugar_trabajo) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Dirección</label>
+                    <%= text_field(prefix_primer_fiador, :direccion_domicilio, class: "form-control", id: "direccion_domicilio", value: @registro.fiador[primer_fiador]&.direccion_domicilio) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="ingreso_mensual">Egreso Mensual</label>
+                    <%= number_field(prefix_primer_fiador, :egreso_mensual, class: "form-control", id: "egreso_mensual", value: @registro.fiador[primer_fiador]&.egreso_mensual) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="tiempo_laborar">Años de Laborar</label>
+                    <%= number_field(prefix_primer_fiador, :tiempo_laborar, class: "form-control", id: "tiempo_laborar", value: @registro.fiador[primer_fiador]&.tiempo_laborar) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="tiempo_conocer">Tiempo de Conocer Al Solicitante</label>
+                    <%= text_field(prefix_primer_fiador, :tiempo_conocer_solicitante, class: "form-control", id: "tiempo_conocer_solicitante", value: @registro.fiador[primer_fiador]&.tiempo_conocer_solicitante) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="apellido">Apellido</label>
+                    <%= text_field(prefix_primer_fiador, :apellido, class: "form-control", id: "apellido", value: @registro.fiador[primer_fiador]&.apellido) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Domicilio</label>
+                    <%= text_field(prefix_primer_fiador, :domicilio, class: "form-control", id: "domicilio", value: @registro.fiador[primer_fiador]&.domicilio) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="municipio">Estado Civil</label>
+                    <%= select_tag "#{prefix_primer_fiador}[estado_civils_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.fiador[primer_fiador]&.estado_civils_id),
+                                   class: "form-control selectpicker", "data-live-search": "true" %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="profesion">Profesión</label>
+                    <%= text_field(prefix_primer_fiador, :profesion, class: "form-control", id: "profesion", value: @registro.fiador[primer_fiador]&.profesion) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="telefono">Telefono</label>
+                    <%= text_field(prefix_primer_fiador, :telefono, class: "form-control", id: "telefono", value: @registro.fiador[primer_fiador]&.telefono) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="ingreso_mensual">Ingreso Mensual</label>
+                    <%= number_field(prefix_primer_fiador, :salario_mensual, class: "form-control", id: "ingreso_mensual", value: @registro.fiador[primer_fiador]&.salario_mensual) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="disponibilidad_mes">Disponibilidad al Mes</label>
+                    <%= text_field(prefix_primer_fiador, :disponibilidad_al_mes, class: "form-control", id: "disponibilidad_al_mes", value: @registro.fiador[primer_fiador]&.disponibilidad_al_mes) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="anios_parentesco">Años de Parentesco</label>
+                    <%= number_field(prefix_primer_fiador, :anio_parentesco, class: "form-control", id: "anio_parentesco", value: @registro.fiador[primer_fiador]&.anio_parentesco) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos del segundo fiador</h3>
+        </div>
+        <div class="card-body row">
+            <%= hidden_field(prefix_segundo_fiador, :id, :value => @registro.fiador[segundo_fiador]&.id) %>
+            <%= hidden_field(prefix_segundo_fiador, :socio_id, :value => @registro.fiador[segundo_fiador]&.socio_id) %>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Nombre</label>
+                    <%= text_field(prefix_segundo_fiador, :nombre, class: "form-control", id: "nombre", value: @registro.fiador[segundo_fiador]&.nombre) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="numero_cedula">Cedula</label>
+                    <%= text_field(prefix_segundo_fiador, :numero_cedula, class: "form-control", id: "numero_cedula", value: @registro.fiador[segundo_fiador]&.numero_cedula) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="municipio">Municipio</label>
+                    <%= text_field(prefix_segundo_fiador, :municipio, class: "form-control", id: "municipio", value: @registro.fiador[segundo_fiador]&.municipio) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre_conyuge">Nombre Conyuge</label>
+                    <%= text_field(prefix_segundo_fiador, :nombre_conyuge, class: "form-control", id: "nombre_conyuge", value: @registro.fiador[segundo_fiador]&.nombre_conyuge) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="lugar_trabajo">Lugar de Trabajo</label>
+                    <%= text_field(prefix_segundo_fiador, :lugar_trabajo, class: "form-control", id: "lugar_trabajo", value: @registro.fiador[segundo_fiador]&.lugar_trabajo) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Dirección</label>
+                    <%= text_field(prefix_segundo_fiador, :direccion_domicilio, class: "form-control", id: "direccion_domicilio", value: @registro.fiador[segundo_fiador]&.direccion_domicilio) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="ingreso_mensual">Egreso Mensual</label>
+                    <%= number_field(prefix_segundo_fiador, :egreso_mensual, class: "form-control", id: "egreso_mensual", value: @registro.fiador[segundo_fiador]&.egreso_mensual) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="tiempo_laborar">Años de Laborar</label>
+                    <%= number_field(prefix_segundo_fiador, :tiempo_laborar, class: "form-control", id: "tiempo_laborar", value: @registro.fiador[segundo_fiador]&.tiempo_laborar) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="tiempo_conocer">Tiempo de Conocer Al Solicitante</label>
+                    <%= text_field(prefix_segundo_fiador, :tiempo_conocer_solicitante, class: "form-control", id: "tiempo_conocer_solicitante", value: @registro.fiador[segundo_fiador]&.tiempo_conocer_solicitante) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="apellido">Apellido</label>
+                    <%= text_field(prefix_segundo_fiador, :apellido, class: "form-control", id: "apellido", value: @registro.fiador[segundo_fiador]&.apellido) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Domicilio</label>
+                    <%= text_field(prefix_segundo_fiador, :domicilio, class: "form-control", id: "domicilio", value: @registro.fiador[segundo_fiador]&.domicilio) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="municipio">Estado Civil</label>
+                    <%= select_tag "#{prefix_segundo_fiador}[estado_civils_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.fiador[segundo_fiador]&.estado_civils_id),
+                                   class: "form-control selectpicker", "data-live-search": "true" %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="profesion">Profesión</label>
+                    <%= text_field(prefix_segundo_fiador, :profesion, class: "form-control", id: "profesion", value: @registro.fiador[segundo_fiador]&.profesion) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="telefono">Telefono</label>
+                    <%= text_field(prefix_segundo_fiador, :telefono, class: "form-control", id: "telefono", value: @registro.fiador[segundo_fiador]&.telefono) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="ingreso_mensual">Ingreso Mensual</label>
+                    <%= number_field(prefix_segundo_fiador, :salario_mensual, class: "form-control", id: "ingreso_mensual", value: @registro.fiador[segundo_fiador]&.salario_mensual) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="disponibilidad_mes">Disponibilidad al Mes</label>
+                    <%= text_field(prefix_segundo_fiador, :disponibilidad_al_mes, class: "form-control", id: "disponibilidad_al_mes", value: @registro.fiador[segundo_fiador]&.disponibilidad_al_mes) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="anios_parentesco">Años de Parentesco</label>
+                    <%= number_field(prefix_segundo_fiador, :anio_parentesco, class: "form-control", id: "anio_parentesco", value: @registro.fiador[segundo_fiador]&.anio_parentesco) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
