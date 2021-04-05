@@ -1,0 +1,62 @@
+<%
+    primer_referencia = 0
+    segunda_referencia = 1
+    prefix_primer_referencia = "pagare[referencia_personal_pagare_attributes][#{primer_referencia}]"
+    prefix_segundo_referencia = "pagare[referencia_personal_pagare_attributes][#{segunda_referencia}]"
+%>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos de la Primera Referencia</h3>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <%= hidden_field(prefix_primer_referencia, :id, :value => @registro.referencia_personal_pagare[primer_referencia]&.id) %>
+                <%= hidden_field(prefix_primer_referencia, :pagare_id, :value => @registro.referencia_personal_pagare[primer_referencia]&.pagare_id) %>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Nombre</label>
+                    <%= text_field(prefix_primer_referencia, :nombre, class: "form-control", id: "nombre", value: @registro.referencia_personal_pagare[primer_referencia]&.nombre) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Domicilio</label>
+                    <%= text_field(prefix_primer_referencia, :domicilio, class: "form-control", id: "domicilio", value: @registro.referencia_personal_pagare[primer_referencia]&.domicilio) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="telefono">Telefono</label>
+                    <%= text_field(prefix_primer_referencia, :telefono, class: "form-control", id: "telefono", value: @registro.referencia_personal_pagare[primer_referencia]&.telefono) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos de la Segunda Referencia</h3>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <%= hidden_field(prefix_segundo_referencia, :id, :value => @registro.referencia_personal_pagare[segunda_referencia]&.id) %>
+                <%= hidden_field(prefix_segundo_referencia, :pagare_id, :value => @registro.referencia_personal_pagare[segunda_referencia]&.pagare_id) %>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Nombre</label>
+                    <%= text_field(prefix_segundo_referencia, :nombre, class: "form-control", id: "nombre", value: @registro.referencia_personal_pagare[segunda_referencia]&.nombre) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Domicilio</label>
+                    <%= text_field(prefix_segundo_referencia, :domicilio, class: "form-control", id: "domicilio", value: @registro.referencia_personal_pagare[segunda_referencia]&.domicilio) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="telefono">Telefono</label>
+                    <%= text_field(prefix_segundo_referencia, :telefono, class: "form-control", id: "telefono", value: @registro.referencia_personal_pagare[segunda_referencia]&.telefono) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

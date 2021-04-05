@@ -1,0 +1,129 @@
+<%
+    primer_credito = 0
+    segundo_credito = 1
+    tercer_credito = 2
+    prefix_primer_credito = "pagare[antecedente_crediticio_attributes][#{primer_credito}]"
+    prefix_segundo_credito = "pagare[antecedente_crediticio_attributes][#{segundo_credito}]"
+    prefix_tercer_credito = "pagare[antecedente_crediticio_attributes][#{tercer_credito}]"
+%>
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Información de Credito</h3>
+      </div>
+      <div class="card-body row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="escolaridad_id">¿Ha Tenido Credito?</label>
+               <%= select_tag "pagare[tuvo_credito]", options_for_select([["Si", Usuario::ACTIVO], ["No", Usuario::INACTIVO]], "#{@registro.tuvo_credito.to_i}"),
+                            class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:tuvo_credito].first %></p>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="escolaridad_id">¿Tiene Credito Actualmente?</label>
+               <%= select_tag "pagare[tiene_credito_actualmente]", options_for_select([["Si", Usuario::ACTIVO], ["No", Usuario::INACTIVO]], "#{@registro.tiene_credito_actualmente.to_i}"),
+                            class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:tiene_credito].first %></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos del Primer Credito</h3>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <%= hidden_field(prefix_primer_credito, :id, :value => @registro.antecedente_crediticio[primer_credito]&.id) %>
+                <%= hidden_field(prefix_primer_credito, :pagare_id, :value => @registro.antecedente_crediticio[primer_credito]&.pagare_id) %>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Institución</label>
+                    <%= text_field(prefix_primer_credito, :institucion, class: "form-control", id: "institucion", value: @registro.antecedente_crediticio[primer_credito]&.institucion) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="numero_cedula">Monto</label>
+                    <%= number_field(prefix_primer_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[primer_credito]&.monto) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="fecha">Fecha</label>
+                    <%= date_field(prefix_primer_credito, :fecha, class: "form-control", id: "fecha", value: @registro.antecedente_crediticio[primer_credito]&.fecha) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Saldo</label>
+                    <%= number_field(prefix_primer_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[primer_credito]&.saldo) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos del Segundo Credito</h3>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <%= hidden_field(prefix_segundo_credito, :id, :value => @registro.antecedente_crediticio[segundo_credito]&.id) %>
+                <%= hidden_field(prefix_segundo_credito, :pagare_id, :value => @registro.antecedente_crediticio[segundo_credito]&.pagare_id) %>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Institución</label>
+                    <%= text_field(prefix_segundo_credito, :institucion, class: "form-control", id: "institucion", value: @registro.antecedente_crediticio[segundo_credito]&.institucion) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="numero_cedula">Monto</label>
+                    <%= number_field(prefix_segundo_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[segundo_credito]&.monto) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="fecha">Fecha</label>
+                    <%= date_field(prefix_segundo_credito, :fecha, class: "form-control", id: "fecha", value: @registro.antecedente_crediticio[segundo_credito]&.fecha) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Saldo</label>
+                    <%= number_field(prefix_segundo_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[segundo_credito]&.saldo) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Datos del Tercer Credito</h3>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <%= hidden_field(prefix_tercer_credito, :id, :value => @registro.antecedente_crediticio[tercer_credito]&.id) %>
+                <%= hidden_field(prefix_tercer_credito, :pagare_id, :value => @registro.antecedente_crediticio[tercer_credito]&.pagare_id) %>
+                <div class="form-group">
+                    <label class="form-control-label" for="nombre">Institución</label>
+                    <%= text_field(prefix_tercer_credito, :institucion, class: "form-control", id: "institucion", value: @registro.antecedente_crediticio[tercer_credito]&.institucion) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="numero_cedula">Monto</label>
+                    <%= number_field(prefix_tercer_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[tercer_credito]&.monto) %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="fecha">Fecha</label>
+                    <%= date_field(prefix_tercer_credito, :fecha, class: "form-control", id: "fecha", value: @registro.antecedente_crediticio[tercer_credito]&.fecha) %>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="domicilio">Saldo</label>
+                    <%= number_field(prefix_tercer_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[tercer_credito]&.saldo) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

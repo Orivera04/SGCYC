@@ -1,10 +1,22 @@
 <div class="row">
     <div class="col-lg-12">
-        <div class="card-wrapper">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="mb-0">Información del Cargo</h3>
-                </div>
+        <div class="row mb-3 mt-3">
+            <nav id="menu_tabs" class="nav nav-pills nav-justified container-fluid">
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosFinanciamiento">Datos del Financiamiento</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosAntecedentesCredito">Antecedentes Crediticios</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#DatosReferenciasPersonales">Referencias Personales</a>
+            </nav>
+        <div class="tab-content container-fluid">
+            <div id="DatosFinanciamiento" class="tab-pane fade mt-4">
+                <%= render partial: "pagares/financiamiento" %>
+            </div>
+
+            <div id="DatosAntecedentesCredito" class="tab-pane fade mt-4">
+                <%= render partial: "pagares/antecedente_crediticio" %>
+            </div>
+
+            <div id="DatosReferenciasPersonales" class="tab-pane fade mt-4">
+                <%= render partial: "pagares/referencias_personales" %>
             </div>
         </div>
     </div>

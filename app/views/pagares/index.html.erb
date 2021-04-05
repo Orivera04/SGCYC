@@ -36,7 +36,7 @@
                      <tr>
                         <td><%= pagare.numero_pagare %></td>
                         <td><%= pagare.socio.display_name %></td>
-                        <td><%= [pagare.cantidad_solicitada, TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR).display_name].join(" ") %></td>
+                        <td><%= [pagare.cantidad_solicitada.truncate, TipoMoneda.obtener_simbolo_moneda(TipoMoneda::CORDOBA)].join(" ") %></td>
                         <td><%= pagare.plazo.display_name %></td>
                         <td>
                            <%= link_to edit_pagare_path(pagare), class: "btn btn-icon btn-primary" do %>

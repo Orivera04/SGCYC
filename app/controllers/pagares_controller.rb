@@ -1,6 +1,7 @@
 class PagaresController < ApplicationController
   include Controleable
   before_action :authenticate_usuario!
+  before_action :configurar_pagare, only: %i[create]
   before_action :coleccion_inicial, only: %i[index excel_index]
 
   def coleccion_inicial
@@ -89,8 +90,19 @@ class PagaresController < ApplicationController
       "Pagare"
     end
 
+    def configurar_pagare
+      @registro.usuario_id = current_usuario.id
+      @registro.tipo_moneda_id = TipoMoneda::DOLAR
+    end
+
     def pagare_params
-      params.require(:pagare).permit(:id, :nombre, :descripcion)
+      params.require(:pagare)
+            .permit(:id, :numero_pagare, :plazo_id, :destino_credito, :garantias_ofrecidas,
+                    :garantia_hipotecaria, :cantidad_solicitada, :cuota_pagar, :ubicacion_inversion,
+                    :aceptar_condiciones_diferentes, :observaciones, :tuvo_credito, :tiene_credito_actualmente,
+                    :interes_id, :socio_id, :cantidad_leche_entregada, :forma_pago,
+                    antecedente_crediticio_attributes: [:id, :pagare_id, :institucion, :monto, :fecha, :saldo],
+                    referencia_personal_pagare_attributes: [:id, :pagare_id, :nombre, :domicilio, :telefono])
     end
 
     alias :params_permit :pagare_params

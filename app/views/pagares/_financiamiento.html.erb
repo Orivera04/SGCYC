@@ -1,0 +1,88 @@
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Datos del Financiamiento</h3>
+      </div>
+      <div class="card-body row">
+         <%= hidden_field(:pagare, :id, :value => @registro.id) %>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Numero Pagare</label>
+               <%= text_field(:pagare, :numero_pagare, class: "form-control", id: "numero_pagare", value: @registro.obtener_numero) %>
+               <p class="text-danger"><%= @registro.errors[:numero_pagare].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="escolaridad_id">Plazo</label>
+               <%= select_tag "pagare[plazo_id]", options_from_collection_for_select(Plazo.all, :id, :nombre, @registro.plazo_id),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:plazo_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="interes_id">Tasa de Interes</label>
+               <%= select_tag "pagare[interes_id]", options_from_collection_for_select(Interes.all, :id, :display_name, @registro.interes_id),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:interes_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="destino">Destino del Credito</label>
+               <%= text_field(:pagare, :destino_credito, class: "form-control", id: "destino", value: @registro.destino_credito) %>
+               <p class="text-danger"><%= @registro.errors[:destino_credito].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="destino">Garantias ofrecidas</label>
+               <%= text_field(:pagare, :garantias_ofrecidas, class: "form-control", id: "garantias_ofrecidas", value: @registro.garantias_ofrecidas) %>
+               <p class="text-danger"><%= @registro.errors[:garantias_ofrecidas].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Garantia Hipotecaria o Prendataria</label>
+               <%= text_field(:pagare, :garantia_hipotecaria, class: "form-control", id: "garantia_hipotecaria", value: @registro.garantia_hipotecaria) %>
+               <p class="text-danger"><%= @registro.errors[:garantia_hipotecaria].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="cantidad_leche_entregada">Cantidad de Leche Entregada (Lts)</label>
+               <%= number_field(:pagare, :cantidad_leche_entregada, class: "form-control", id: "cantidad_leche_entregada", value: @registro.cantidad_leche_entregada) %>
+               <p class="text-danger"><%= @registro.errors[:cantidad_leche_entregada].first %></p>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="socio_id">Socio</label>
+               <%= select_tag "pagare[socio_id]", options_from_collection_for_select(Socio.all, :id, :display_name, @registro.socio_id),
+                  class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:socio_id].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="cantidad_solicitada">Cantidad Solicitada C$</label>
+               <%= number_field(:pagare, :cantidad_solicitada, class: "form-control", id: "cantidad_solicitada", value: @registro.cantidad_solicitada) %>
+               <p class="text-danger"><%= @registro.errors[:cantidad_solicitada].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Cuota que puede pagar</label>
+               <%= number_field(:pagare, :cuota_pagar, class: "form-control", id: "cuota_pagar", value: @registro.cuota_pagar) %>
+               <p class="text-danger"><%= @registro.errors[:cuota_pagar].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="destino">Ubicación de la Inversión</label>
+               <%= text_field(:pagare, :ubicacion_inversion, class: "form-control", id: "destino", value: @registro.ubicacion_inversion) %>
+               <p class="text-danger"><%= @registro.errors[:ubicacion_inversion].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="escolaridad_id">¿Aceptaria un monto, plazo y condiciones diferentes a las solicitadas?</label>
+               <%= select_tag "pagare[aceptar_condiciones_diferentes]", options_for_select([["Si", Usuario::ACTIVO], ["No", Usuario::INACTIVO]], "#{@registro.aceptar_condiciones_diferentes.to_i}"),
+                            class: "form-control selectpicker", "data-live-search": "true" %>
+               <p class="text-danger"><%= @registro.errors[:aceptar_condiciones_diferentes].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="nombre">Observaciones</label>
+               <%= text_field(:pagare, :observaciones, class: "form-control", id: "observaciones", value: @registro.observaciones) %>
+               <p class="text-danger"><%= @registro.errors[:observaciones].first %></p>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="destino">Forma de Pago</label>
+               <%= text_field(:pagare, :forma_pago, class: "form-control", id: "forma_pago", value: @registro.forma_pago) %>
+               <p class="text-danger"><%= @registro.errors[:forma_pago].first %></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
