@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="municipio">Estado Civil</label>
-                    <%= select_tag "#{prefix_primer_fiador}[estado_civils_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.fiador[primer_fiador]&.estado_civils_id),
+                    <%= select_tag "#{prefix_primer_fiador}[estado_civil_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.fiador[primer_fiador]&.estado_civil_id),
                                    class: "form-control selectpicker", "data-live-search": "true" %>
                 </div>
                 <div class="form-group">
@@ -147,7 +147,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="municipio">Estado Civil</label>
-                    <%= select_tag "#{prefix_segundo_fiador}[estado_civils_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.fiador[segundo_fiador]&.estado_civils_id),
+                    <%= select_tag "#{prefix_segundo_fiador}[estado_civil_id]", options_from_collection_for_select(EstadoCivil.all, :id, :nombre, @registro.fiador[segundo_fiador]&.estado_civil_id),
                                    class: "form-control selectpicker", "data-live-search": "true" %>
                 </div>
                 <div class="form-group">

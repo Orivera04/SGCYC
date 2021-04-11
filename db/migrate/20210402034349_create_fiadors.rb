@@ -7,7 +7,7 @@ class CreateFiadors < ActiveRecord::Migration[6.0]
       t.string :numero_cedula
       t.string :domicilio
       t.string :municipio
-      t.references :estado_civils, index: true, foreign_key: true
+      t.references :estado_civil, index: true, foreign_key: true
       t.string :nombre_conyuge
       t.string :profesion
       t.string :lugar_trabajo

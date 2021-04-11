@@ -62,6 +62,7 @@ class SociosController < ApplicationController
 
   def update
     begin
+      binding.pry
       if @registro.save!
         flash[:notice] = "El registro fue actualizado exitosamente"
         redirect_to action: :index
@@ -101,7 +102,7 @@ class SociosController < ApplicationController
                     :numero_telefono_empresa, :tiempo_laborar, :cargo, :salario_mensual, :forma_pago,
                     fiador_attributes: [:id, :socio_id, :nombre, :numero_cedula, :municipio, :nombre_conyuge, :lugar_trabajo,
                                         :direccion_domicilio, :egreso_mensual, :tiempo_laborar, :tiempo_conocer_solicitante,
-                                        :apellido, :domicilio, :estado_civils_id, :profesion, :telefono, :salario_mensual,
+                                        :apellido, :domicilio, :estado_civil_id, :profesion, :telefono, :salario_mensual,
                                         :disponibilidad_al_mes, :anio_parentesco ] )
     end
 

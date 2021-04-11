@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 numero_columnas = 3
-encabezados = ["ID", "Correo", "Nombre", "Estado", "Creado El", "Actualizado El"]
+encabezados = ["ID", "Correo", "Nombre", "Activo", "Creado El", "Actualizado El"]
 wb.add_worksheet(name: "Usuarios") do |hoja|
   render partial: "shared/cabecera_excel",
     locals: {

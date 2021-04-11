@@ -97,8 +97,62 @@ class PagaresController < ApplicationController
       odt.add_field :destino_credito, pagare.destino_credito
       odt.add_field :ubi, pagare.ubicacion_inversion
       odt.add_field :garantias_ofrecidas, pagare.garantias_ofrecidas
-      odt.add_field :condiciones_diferentes, "Si"
-
+      odt.add_field :condiciones_diferentes, I18n.t(pagare.aceptar_condiciones_diferentes)
+      odt.add_field :credito, I18n.t(pagare.tuvo_credito)
+      odt.add_field :tiene_credito, I18n.t(pagare.tiene_credito_actualmente)
+      odt.add_field :institucion_1, pagare.antecedente_crediticio.first.institucion
+      odt.add_field :fecha_1, pagare.antecedente_crediticio.first.fecha
+      odt.add_field :monto_1, pagare.antecedente_crediticio.first.monto
+      odt.add_field :saldo_1, pagare.antecedente_crediticio.first.saldo
+      odt.add_field :institucion_2, pagare.antecedente_crediticio.second_to_last.institucion
+      odt.add_field :fecha_2, pagare.antecedente_crediticio.second_to_last.fecha
+      odt.add_field :monto_2, pagare.antecedente_crediticio.second_to_last.monto
+      odt.add_field :saldo_2, pagare.antecedente_crediticio.second_to_last.saldo
+      odt.add_field :institucion_3, pagare.antecedente_crediticio.last.institucion
+      odt.add_field :fecha_3, pagare.antecedente_crediticio.last.fecha
+      odt.add_field :monto_3, pagare.antecedente_crediticio.last.monto
+      odt.add_field :saldo_3, pagare.antecedente_crediticio.last.saldo
+      odt.add_field :re_1, pagare.referencia_personal_pagare.first.nombre
+      odt.add_field :red_1, pagare.referencia_personal_pagare.first.domicilio
+      odt.add_field :tf_1, pagare.referencia_personal_pagare.first.telefono
+      odt.add_field :re_2, pagare.referencia_personal_pagare.last.nombre
+      odt.add_field :red_2, pagare.referencia_personal_pagare.last.domicilio
+      odt.add_field :tf_2, pagare.referencia_personal_pagare.last.telefono
+      odt.add_field :fiador_nombre_1, pagare.socio.fiador.first.display_name
+      odt.add_field :fiador_cedula_1, pagare.socio.fiador.first.numero_cedula
+      odt.add_field :fiador_municipio_1, pagare.socio.fiador.first.municipio
+      odt.add_field :fiador_domicilio_1, pagare.socio.fiador.first.domicilio
+      odt.add_field :fiador_estado_civil_1  , pagare.socio.fiador.first.estado_civil.display_name
+      odt.add_field :fiador_conyuge_1, pagare.socio.fiador.first.nombre_conyuge
+      odt.add_field :fiador_profesion_1, pagare.socio.fiador.first.profesion
+      odt.add_field :fiador_lugar_1, pagare.socio.fiador.first.lugar_trabajo
+      odt.add_field :fiador_direccion_1, pagare.socio.fiador.first.direccion_domicilio
+      odt.add_field :fiador_telefono_1, pagare.socio.fiador.first.telefono
+      odt.add_field :fiador_t_labo_1, pagare.socio.fiador.first.tiempo_laborar
+      odt.add_field :f_i_m_1, pagare.socio.fiador.first.salario_mensual
+      odt.add_field :f_e_m_1, pagare.socio.fiador.first.egreso_mensual
+      odt.add_field :fiador_d_1, pagare.socio.fiador.first.disponibilidad_al_mes
+      odt.add_field :f_t_1, pagare.socio.fiador.first.tiempo_conocer_solicitante
+      odt.add_field :a_n_1, pagare.socio.fiador.first.anio_parentesco
+      odt.add_field :fiador_nombre_2, pagare.socio.fiador.last.display_name
+      odt.add_field :fiador_cedula_2, pagare.socio.fiador.last.numero_cedula
+      odt.add_field :fiador_municipio_2, pagare.socio.fiador.last.municipio
+      odt.add_field :fiador_domicilio_2, pagare.socio.fiador.last.domicilio
+      odt.add_field :fiador_estado_civil_2  , pagare.socio.fiador.last.estado_civil.display_name
+      odt.add_field :fiador_conyuge_2, pagare.socio.fiador.last.nombre_conyuge
+      odt.add_field :fiador_profesion_2, pagare.socio.fiador.last.profesion
+      odt.add_field :fiador_lugar_2, pagare.socio.fiador.last.lugar_trabajo
+      odt.add_field :fiador_direccion_2, pagare.socio.fiador.last.direccion_domicilio
+      odt.add_field :fiador_telefono_2, pagare.socio.fiador.last.telefono
+      odt.add_field :fiador_t_labo_2, pagare.socio.fiador.last.tiempo_laborar
+      odt.add_field :f_i_m_2, pagare.socio.fiador.last.salario_mensual
+      odt.add_field :f_e_m_2, pagare.socio.fiador.last.egreso_mensual
+      odt.add_field :fiador_d_2, pagare.socio.fiador.last.disponibilidad_al_mes
+      odt.add_field :f_t_2, pagare.socio.fiador.last.tiempo_conocer_solicitante
+      odt.add_field :a_n_2, pagare.socio.fiador.last.anio_parentesco
+      odt.add_field :garantia_hipotecaria, pagare.garantia_hipotecaria
+      odt.add_field :leche_dia, pagare.cantidad_leche_entregada
+      odt.add_field :observaciones, pagare.observaciones
     end
 
     send_data reporte.generate, type: "application/vnd.oasis.opendocument.text", disposition: "attachment",

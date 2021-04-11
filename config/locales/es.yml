@@ -30,8 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 es:
-  true: "Activo"
-  false: "Inactivo"
+  true: "Sí"
+  false: "No"
   helpers:
     page_entries_info:
       one_page:
