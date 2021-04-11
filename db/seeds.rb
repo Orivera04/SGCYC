@@ -113,6 +113,8 @@ begin
                   fecha_nacimiento_conyuge: "10-10-1997", ocupacion_conyuge: "Contador Publico", telefono_conyuge: "89328932",
                   lugar_trabajo_conyuge: "Celnicsa", tiempo_laborar_conyuge: "2", direccion_domicilio_conyuge: "Laureles Sur",
                   sexo_id_conyuge: Sexo::FEMENINO)
+    Fiador.create!(id: 1, socio_id: 1, nombre: "Oscar", estado_civil_id: EstadoCivil::SOLTERO)
+    Fiador.create!(id: 2, socio_id: 1, nombre: "Daniela", estado_civil_id: EstadoCivil::SOLTERO)
     puts ': Realizado con exito.'
 
     puts '==> Creando Catalogo de Plazos por Defecto'

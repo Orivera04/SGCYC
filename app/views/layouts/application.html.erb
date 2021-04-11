@@ -208,6 +208,9 @@
       <% end %>
       <%= yield %>
     </div>
+    <% unless ValorLeche.existe_tasa_hoy? %>
+      <%= javascript_include_tag 'modal_leche' %>
+    <% end %>
   </div>
   </body>
 </html>

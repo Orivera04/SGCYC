@@ -1,5 +1,5 @@
 module Controleable
-        extend ActiveSupport::Concern
+    extend ActiveSupport::Concern
 
     included do
         before_action :authenticate_usuario!

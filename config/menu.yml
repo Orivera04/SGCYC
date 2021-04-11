@@ -22,13 +22,13 @@
     - Icono: "ni ni-circle-08 text-primary"
 - Informes:
     - Items:
-        - Clientes Morosos:
+        - Socios Morosos:
             Recurso: "ClientesMorosos"
             Ruta: "clientes_morosos_path"
-        - Clientes Con Cuotas Vencidas:
+        - Socios Con Cuotas Vencidas:
             Recurso: "ClientesCuotasVencidas"
             Ruta: "clientes_cuotas_vencidas_path"
-        - Clientes Nuevos:
+        - Socios Nuevos:
             Recurso: "ClientesNuevos"
             Ruta: "clientes_nuevos_path"
         - Exceden Prestamos:

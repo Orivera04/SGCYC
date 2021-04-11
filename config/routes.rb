@@ -53,5 +53,6 @@ Rails.application.routes.draw do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
+  match 'tasa_cambio_leche' => 'valor_leches#crear_tasa_cambio_diaria', via: :post
   root to: "home#index"
 end

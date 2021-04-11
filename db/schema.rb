@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
     t.string "numero_cedula"
     t.string "domicilio"
     t.string "municipio"
-    t.bigint "estado_civils_id"
+    t.bigint "estado_civil_id"
     t.string "nombre_conyuge"
     t.string "profesion"
     t.string "lugar_trabajo"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
     t.string "disponibilidad_al_mes"
     t.string "tiempo_conocer_solicitante"
     t.string "anio_parentesco"
-    t.index ["estado_civils_id"], name: "index_fiadors_on_estado_civils_id"
+    t.index ["estado_civil_id"], name: "index_fiadors_on_estado_civil_id"
     t.index ["socio_id"], name: "index_fiadors_on_socio_id"
   end
 
@@ -273,7 +273,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
 
   add_foreign_key "antecedente_crediticios", "pagares"
   add_foreign_key "cuotas", "pagares"
-  add_foreign_key "fiadors", "estado_civils", column: "estado_civils_id"
+  add_foreign_key "fiadors", "estado_civils"
   add_foreign_key "fiadors", "socios"
   add_foreign_key "forma_pagos", "bancos", column: "bancos_id"
   add_foreign_key "forma_pagos", "tipo_monedas"

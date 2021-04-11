@@ -9,4 +9,8 @@ class ValorLeche < ApplicationRecord
     def self.ransackable_scopes(auth_object = nil)
         [:mes_eq]
     end
+
+    def self.existe_tasa_hoy?
+        ValorLeche.find_by_fecha(Date.today).present?
+    end
 end

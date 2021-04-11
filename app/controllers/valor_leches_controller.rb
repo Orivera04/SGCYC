@@ -18,6 +18,7 @@ class ValorLechesController < ApplicationController
   end
 
   def index
+    binding.pry
     authorize!(:read, :ValorLeche)
     @params_permit = params[:q].present? ? {q: params[:q] .permit! } : {}
     render template: "valor_leches/index",  layout: "layouts/application"
@@ -82,6 +83,15 @@ class ValorLechesController < ApplicationController
     end
 
     redirect_to action: :index, search: params[:q]
+  end
+
+  def crear_tasa_cambio_diaria
+    begin
+      ValorLeche.new(tasa_cambio: params[:tasa_cambio], fecha: Date.today).save!
+      render json: { mensaje: "Se creo el valor para el dia de hoy exitosamente."}, status: Rack::Utils::SYMBOL_TO_STATUS_CODE[:ok]
+    rescue StandardError => e
+      render json: { mensaje: "Hubo un error al comunicarse con el servicio web del BCN."}, status: Rack::Utils::SYMBOL_TO_STATUS_CODE[:internal_server_error]
+    end
   end
 
   private

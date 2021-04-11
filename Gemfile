@@ -48,7 +48,7 @@ gem 'savon'
 gem 'odf-report'
 
 # Gema para imprimir HTML en PDF
-gem 'wkhtmltopdf-binary-edge'
+gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
 # Reduces boot times through caching; required in config/boot.rb
