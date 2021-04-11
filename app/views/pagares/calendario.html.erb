@@ -1,0 +1,51 @@
+<% presenter = PagarePresenter.new(registro) %>
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <%= wicked_pdf_stylesheet_link_tag "bootstrap.min.css" %>
+    </head>
+    <body>
+        <div class="row">
+            <h3 class="text-center">COOPERATIVA MULTISECTORIAL LACTEOS NICACENTRO, R.L.</h3>
+            <h5 class="text-center">CALENDARIO DE PAGOS</h3>
+        </div>
+        <div class="row mt-5 ml-3">
+            <dic class="col-md-12">
+                <span class="text-left">Socio: <strong><%= registro.socio.display_name %></strong></span>
+            </div>
+        </div>
+        <div class="row ml-3">
+            <dic class="col-md-12">
+                <span class="text-left">Numero de Pagare: <strong>#<%= registro.numero_pagare %></strong></span>
+            </div>
+        </div>
+
+        <div class="row ml-3 mt-5">
+            <dic class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Numero de Cuota</th>
+                            <th scope="col">Fecha de Pago</th>
+                            <th scope="col">Cuota</th>
+                            <th scope="col">Monto Abonado</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% registro.cuotas.each do |cuota| %>
+                            <tr>
+                                <td><%= cuota.numero_cuota %></td>
+                                <td><%= cuota.fecha_pago %></td>
+                                <td><%= "#{cuota.cuota} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}" %></td>
+                                <td><%= "#{cuota.monto_abonado} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}" %></td>
+                                <td><%= presenter.estado_pago(cuota) %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

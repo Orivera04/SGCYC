@@ -160,7 +160,12 @@ class PagaresController < ApplicationController
   end
 
   def calendario_pdf
-    binding.pry
+    pagare = Pagare.find(params[:q][:id])
+    respond_to do |format|
+      format.pdf do
+        render pdf: "pagare.pdf", template: "pagares/calendario.html.erb", locals: { registro: pagare }
+      end
+    end
   end
 
   def create

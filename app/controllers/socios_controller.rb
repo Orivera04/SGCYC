@@ -62,7 +62,6 @@ class SociosController < ApplicationController
 
   def update
     begin
-      binding.pry
       if @registro.save!
         flash[:notice] = "El registro fue actualizado exitosamente"
         redirect_to action: :index
