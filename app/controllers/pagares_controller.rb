@@ -44,7 +44,7 @@ class PagaresController < ApplicationController
       formato.xlsx do
         render(
           xlsx: "excel_index",
-          filename: "Cargos del sistema - #{Date.today}.xlsx"
+          filename: "Pagares del sistema - #{Date.today}.xlsx"
         )
       end
     end

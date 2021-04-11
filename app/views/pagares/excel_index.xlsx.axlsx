@@ -11,7 +11,7 @@ wb.add_worksheet(name: "Pagares") do |hoja|
   hoja.add_row(encabezados, style: @title_cell)
   @registros.each do |pagare|
     fila = [pagare.numero_pagare, pagare.socio.display_name, pagare.cantidad_solicitada,
-            pagare.plazo.display_name, pagare.usuario.display_name, pagare.forma_pago]
+            pagare.plazo.display_name, pagare.usuario.nombre, pagare.forma_pago]
 
     estilos = [@default_cell, @default_cell, @monto_cell, @default_cell, @default_cell,
                @default_cell]

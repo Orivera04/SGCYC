@@ -1,0 +1,23 @@
+<% content_for :titulo_seccion do %>
+  Socios Nuevos
+<% end %>
+<%= form_for "", method: :get do |formulario| %>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Filtros del Informe</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-control-label" for="numero_prestamos">Mes</label>
+                            <%= number_field(:q, :numero_prestamos, class: "form-control", id: "numero_prestamos", value: 1) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%= formulario.submit "Filtrar", class: "btn btn-primary btn-lg" %>
+        </div>
+    </div>
+<% end %>

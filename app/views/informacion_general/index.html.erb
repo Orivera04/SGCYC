@@ -1,6 +1,9 @@
 <% content_for :titulo_seccion do %>
   Información General
 <% end %>
+<%
+   numero_registros = 5
+%>
 <div class="row">
    <div class="col-xl-4 col-md-6">
       <div class="card card-stats">
@@ -8,7 +11,7 @@
             <div class="row">
                <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Pagares</h5>
-                  <span class="h2 font-weight-bold mb-0">34</span>
+                  <span class="h2 font-weight-bold mb-0"><%= Pagare.count %></span>
                </div>
                <div class="col-auto">
                   <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -26,7 +29,7 @@
             <div class="row">
                <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Comprobantes</h5>
-                  <span class="h2 font-weight-bold mb-0">323</span>
+                  <span class="h2 font-weight-bold mb-0"><%= Comprobante.count %></span>
                </div>
                <div class="col-auto">
                   <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -44,7 +47,7 @@
             <div class="row">
                <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Socios</h5>
-                  <span class="h2 font-weight-bold mb-0">340</span>
+                  <span class="h2 font-weight-bold mb-0"><%= Socio.count %></span>
                </div>
                <div class="col-auto">
                   <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -81,26 +84,12 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">2 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">3 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">4 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">5 </a></td>
-                     <td>500 USD</td>
-                  </tr>
+                  <% Pagare.last(numero_registros).each do |pagare|%>
+                     <tr>
+                        <td><%= link_to pagare.numero_pagare, edit_pagare_path(pagare) %></td>
+                        <td><%= "#{pagare.cantidad_solicitada} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::CORDOBA)}" %></td>
+                     </tr>
+                  <% end %>
                </tbody>
             </table>
          </div>
@@ -175,26 +164,12 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>Gerald Padilla</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>Gerald Padilla</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>Gerald Padilla</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>Gerald Padilla</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>Gerald Padilla</td>
-                  </tr>
+                  <% Socio.last(numero_registros).each do |socio|%>
+                     <tr>
+                        <td><%= link_to socio.codigo_socio, edit_socio_path(socio) %></td>
+                        <td><%= socio.display_name %></td>
+                     </tr>
+                  <% end %>
                </tbody>
             </table>
          </div>

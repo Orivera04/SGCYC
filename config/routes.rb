@@ -36,10 +36,21 @@ Rails.application.routes.draw do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }
   end
 
-  resources :exceden_prestamos
-  resources :clientes_nuevos
-  resources :clientes_cuotas_vencidas
-  resources :clientes_morosos
+  resources :exceden_prestamos do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+  end
+
+  resources :clientes_nuevos do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+  end
+
+  resources :clientes_cuotas_vencidas do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+  end
+
+  resources :clientes_morosos do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+  end
 
   resources :formas_pagos do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }
