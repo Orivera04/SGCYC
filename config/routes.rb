@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :pagares do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+    get :pagare_odt, on: :collection, defaults: { :format => "odt" }
+    get :calendario_pdf, on: :collection, defaults: { :format => "pdf" }
   end
 
   resources :comprobantes

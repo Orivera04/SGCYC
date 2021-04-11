@@ -7,6 +7,7 @@ class Pagare < ApplicationRecord
 
     has_many :antecedente_crediticio, dependent: :destroy, inverse_of: :pagare
     has_many :referencia_personal_pagare, dependent: :destroy, inverse_of: :pagare
+    has_many :cuotas, dependent: :destroy, inverse_of: :pagare
     accepts_nested_attributes_for :antecedente_crediticio, allow_destroy: true
     accepts_nested_attributes_for :referencia_personal_pagare, allow_destroy: true
 
@@ -21,8 +22,27 @@ class Pagare < ApplicationRecord
     validates :garantia_hipotecaria, presence: true
     validates :observaciones, presence: true
     validates :cuota_pagar, presence: true
+    after_create_commit  :crear_cuotas
 
     def obtener_numero
         (numero_pagare.nil?) ? Pagare.count + 1 : numero_pagare
+    end
+
+    def crear_cuotas
+        monto_dolares = TasaCambio.conversion_divisa(cantidad_solicitada, TipoMoneda::CORDOBA,
+                                                     TipoMoneda::DOLAR, Date.today).round(2)
+
+        porcentaje_interes = (self.interes.cantidad.to_d / 100)
+        cantidad_plazo = plazo.plazo
+        porcentaje_interes_mensual = porcentaje_interes / cantidad_plazo
+        monto_plazo = (monto_dolares / cantidad_plazo).round(2)
+        cuota_plazo = (monto_plazo + (monto_plazo * porcentaje_interes_mensual)).round(2)
+
+        cantidad_plazo.times do |plazo|
+            cuota = Cuota.new(pagare_id: self.id, fecha_pago: (Date.today + (plazo.next).month), numero_cuota: plazo.next,
+                              cuota: cuota_plazo, monto_abonado: 0, cancelado: false)
+            cuota.save!
+        end
+
     end
 end

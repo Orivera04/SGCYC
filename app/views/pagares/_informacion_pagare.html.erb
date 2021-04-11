@@ -1,0 +1,60 @@
+<% presenter = PagarePresenter.new(@registro) %>
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Información del Pagare</h3>
+      </div>
+      <div class="card-body row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="total_cuotas">Total de Cuotas: <%= presenter.obtener_cuotas %></label>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="monto_restante">Monto Restante: <%= presenter.obtener_monto_restante %></label>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label class="form-control-label" for="monto_financiado">Monto Financiado: <%= presenter.obtener_monto_financiado %></label>
+            </div>
+            <div class="form-group">
+               <label class="form-control-label" for="tasa_interes">Tasa de Interes: <%= @registro.interes.cantidad %> %</label>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="card-wrapper">
+   <div class="card">
+      <div class="card-header">
+         <h3 class="mb-0">Información de Cuotas</h3>
+      </div>
+      <div class="card-body row">
+         <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+               <thead class="thead-light">
+                  <tr>
+                     <th>Numero de Cuota</th>
+                     <th>Fecha de Pago</th>
+                     <th>Cuota</th>
+                     <th>Monto Abonado</th>
+                     <th>Estado</th>
+                  </tr>
+               </thead>
+               <tbody class="list">
+                  <% @registro.cuotas.each do |cuota| %>
+                     <tr>
+                        <td><%= cuota.numero_cuota %></td>
+                        <td><%= cuota.fecha_pago %></td>
+                        <td><%= cuota.cuota %></td>
+                        <td><%= cuota.monto_abonado %></td>
+                        <td><%= presenter.estado_pago(cuota) %></td>
+                     </tr>
+                  <% end %>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>

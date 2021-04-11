@@ -24,4 +24,15 @@ class TasaCambio < ApplicationRecord
             registro.save!
         end
     end
+
+    def self.conversion_divisa(monto_convertir, moneda_origen_id, moneda_destino_id, fecha)
+        tasa_cambio = TasaCambio.find_by_fecha(fecha)&.tasa_cambio || 1
+        if (moneda_origen_id == TipoMoneda::CORDOBA && moneda_destino_id == TipoMoneda::DOLAR)
+            monto_convertir / tasa_cambio
+        elsif (moneda_origen_id == TipoMoneda::DOLAR && moneda_destino_id == TipoMoneda::CORDOBA)
+            monto_convertir * tasa_cambio
+        else
+            monto_convertir
+        end
+    end
 end

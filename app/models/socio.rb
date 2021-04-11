@@ -26,6 +26,10 @@ class Socio < ApplicationRecord
         "#{nombre} #{apellido}"
     end
 
+    def display_name_conyuge
+        "#{nombre_conyuge} #{apellido_conyuge}"
+    end
+
     def obtener_codigo_socio
         (codigo_socio.nil?) ? Socio.count + 1 : codigo_socio
     end

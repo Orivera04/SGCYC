@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_212526) do
+ActiveRecord::Schema.define(version: 2021_04_10_220322) do
 
   create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2021_04_04_212526) do
   create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cuotas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "pagare_id"
+    t.date "fecha_pago"
+    t.integer "numero_cuota"
+    t.decimal "cuota", precision: 10, scale: 2
+    t.decimal "monto_abonado", precision: 10, scale: 2
+    t.boolean "cancelado"
+    t.index ["pagare_id"], name: "index_cuotas_on_pagare_id"
   end
 
   create_table "empresas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -262,6 +272,7 @@ ActiveRecord::Schema.define(version: 2021_04_04_212526) do
   end
 
   add_foreign_key "antecedente_crediticios", "pagares"
+  add_foreign_key "cuotas", "pagares"
   add_foreign_key "fiadors", "estado_civils", column: "estado_civils_id"
   add_foreign_key "fiadors", "socios"
   add_foreign_key "forma_pagos", "bancos", column: "bancos_id"

@@ -1,12 +1,31 @@
+<div class="col-lg-12 col-12">
+   <div class="row">
+      <div class="col-lg-12 text-right">
+        <% unless @registro.new_record? %>
+            <%= link_to "Calendario", calendario_pdf_pagares_path(@params_permit), class: "btn btn-lg btn-success" %>
+            <%= link_to "Pagare", pagare_odt_pagares_path(@params_permit), class: "btn btn-lg btn-danger" %>
+        <% end %>
+      </div>
+   </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="row mb-3 mt-3">
             <nav id="menu_tabs" class="nav nav-pills nav-justified container-fluid">
+                <% unless @registro.new_record? %>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#InformacionPagare">Información del Pagare</a>
+                <% end %>
                 <a class="nav-item nav-link" data-toggle="tab" href="#DatosFinanciamiento">Datos del Financiamiento</a>
                 <a class="nav-item nav-link" data-toggle="tab" href="#DatosAntecedentesCredito">Antecedentes Crediticios</a>
                 <a class="nav-item nav-link" data-toggle="tab" href="#DatosReferenciasPersonales">Referencias Personales</a>
             </nav>
         <div class="tab-content container-fluid">
+            <% unless @registro.new_record? %>
+                <div id="InformacionPagare" class="tab-pane fade mt-4">
+                    <%= render partial: "pagares/informacion_pagare" %>
+                </div>
+            <% end %>
+
             <div id="DatosFinanciamiento" class="tab-pane fade mt-4">
                 <%= render partial: "pagares/financiamiento" %>
             </div>
