@@ -18,7 +18,6 @@ class ValorLechesController < ApplicationController
   end
 
   def index
-    binding.pry
     authorize!(:read, :ValorLeche)
     @params_permit = params[:q].present? ? {q: params[:q] .permit! } : {}
     render template: "valor_leches/index",  layout: "layouts/application"

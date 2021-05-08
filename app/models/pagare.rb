@@ -45,4 +45,23 @@ class Pagare < ApplicationRecord
         end
 
     end
+
+    def self.obtener_cuotas_pagare(pagare_id)
+        pagare_usuario = Pagare.find(pagare_id)
+        cuotas = pagare_usuario.cuotas.order("numero_cuota")
+        cuotas_pendientes = cuotas.where(cancelado: false).order("numero_cuota")
+        proxima_cuota = cuotas_pendientes.first
+
+        total_pendiente = cuotas_pendientes.sum(&:cuota)
+        monto_cuota = proxima_cuota.cuota
+        numero_cuota = proxima_cuota.numero_cuota
+        monto_pendiente_cuota = proxima_cuota.cuota - proxima_cuota.monto_abonado
+
+        {
+            total_pendiente: "#{total_pendiente} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}",
+            monto_cuota: "#{monto_cuota} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}",
+            numero_cuota: numero_cuota,
+            monto_pendiente_cuota: "#{monto_pendiente_cuota} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}"
+        }
+    end
 end

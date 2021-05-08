@@ -13,16 +13,31 @@
                         <p class="text-danger"><%= @registro.errors[:nombre].first %></p>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" for="nombre">Tipo de moneda</label>
-                        <%= select_tag "forma_pagos[tipo_moneda_id]", options_from_collection_for_select(TipoMoneda.where(id: TipoMoneda::DOLAR), :id, :simbolo, @registro.tipo_moneda_id ),
+                        <label class="form-control-label" for="tipo_pago">Tipo de Pago</label>
+                        <%= select_tag "forma_pagos[tipo_pago_id]", options_from_collection_for_select(TipoPago.all, :id, :nombre, @registro.tipo_pago_id),
                             class: "form-control selectpicker", "data-live-search": "true" %>
-                        <p class="text-danger"><%= @registro.errors[:tipo_moneda_id].first %></p>
+                        <p class="text-danger"><%= @registro.errors[:tipo_pago_id].first %></p>
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label" for="nombre">Banco</label>
-                        <%= select_tag "forma_pagos[bancos_id]", options_from_collection_for_select(Banco.all, :id, :nombre, @registro.bancos_id ),
-                            class: "form-control selectpicker", "data-live-search": "true", prompt: "Ninguno" %>
-                        <p class="text-danger"><%= @registro.errors[:bancos_id].first %></p>
+                    <div id="dinero" class="d-none">
+                        <div class="form-group">
+                            <label class="form-control-label" for="nombre">Tipo de moneda</label>
+                            <%= select_tag "forma_pagos[tipo_moneda_id]", options_from_collection_for_select(TipoMoneda.all, :id, :simbolo, @registro.tipo_moneda_id ),
+                                class: "form-control selectpicker", "data-live-search": "true" %>
+                            <p class="text-danger"><%= @registro.errors[:tipo_moneda_id].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="nombre">Banco</label>
+                            <%= select_tag "forma_pagos[bancos_id]", options_from_collection_for_select(Banco.all, :id, :nombre, @registro.bancos_id ),
+                                class: "form-control selectpicker", "data-live-search": "true", prompt: "Ninguno" %>
+                            <p class="text-danger"><%= @registro.errors[:bancos_id].first %></p>
+                        </div>
+                    </div>
+                    <div id="intercambio" class="d-none">
+                        <div class="form-group">
+                            <label class="form-control-label" for="nombre">Monto Equivalente (C$)</label>
+                            <%= number_field(:forma_pagos, :equivalencia, class: "form-control", id: "equivalencia", value: @registro.equivalencia,  step: 0.01) %>
+                            <p class="text-danger"><%= @registro.errors[:equivalencia].first %></p>
+                        </div>
                     </div>
                 </div>
             </div>

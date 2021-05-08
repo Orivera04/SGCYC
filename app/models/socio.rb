@@ -33,4 +33,8 @@ class Socio < ApplicationRecord
     def obtener_codigo_socio
         (codigo_socio.nil?) ? Socio.count + 1 : codigo_socio
     end
+
+    def obtener_pagare_socio
+        Pagare.where(socio_id: id)
+    end
 end

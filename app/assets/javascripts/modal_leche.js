@@ -2,7 +2,7 @@ $(document).ready(function() {
     Swal.fire({
         title: 'Ingresa el valor de la leche del dia de hoy',
         input: 'text',
-        inputPlaceholder: 'Mes',
+        inputPlaceholder: 'Valor',
         inputValidator: function(value) {
             return new Promise(function(resolve, reject) {
                 if (value !== '') {

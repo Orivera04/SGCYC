@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+numero_columnas = 6
+encabezados = ["Numero", "Pagare", "Usuario", "Monto Pagado", "Socio"]
+wb.add_worksheet(name: "Comprobantes") do |hoja|
+  render partial: "shared/cabecera_excel",
+    locals: {
+      wb: wb, sheet: hoja, merge: numero_columnas
+    }
+
+  hoja.add_row(encabezados, style: @title_cell)
+  @registros.each do |comprobante|
+    fila = [comprobante.numero_comprobante, comprobante.pagare.numero_pagare, comprobante.usuario.nombre,
+            comprobante.monto_pagado, comprobante.socio.display_name]
+
+    estilos = [@default_cell, @default_cell, @default_cell, @monto_cell, @default_cell]
+    hoja.add_row(fila, style: estilos)
+  end
+end

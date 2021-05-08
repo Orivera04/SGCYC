@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_220322) do
+ActiveRecord::Schema.define(version: 2021_04_27_014504) do
 
   create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
@@ -40,9 +40,31 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comprobante_detalles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "comprobante_id"
+    t.bigint "forma_pago_id"
+    t.decimal "monto_pagado", precision: 10, scale: 2
+    t.string "referencia"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comprobante_id"], name: "index_comprobante_detalles_on_comprobante_id"
+    t.index ["forma_pago_id"], name: "index_comprobante_detalles_on_forma_pago_id"
+  end
+
+  create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "numero_comprobante"
+    t.bigint "pagare_id"
+    t.bigint "usuario_id"
+    t.bigint "socio_id"
+    t.bigint "tipo_moneda_id"
+    t.decimal "monto_pagado", precision: 10, scale: 2
+    t.string "observacion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pagare_id"], name: "index_comprobantes_on_pagare_id"
+    t.index ["socio_id"], name: "index_comprobantes_on_socio_id"
+    t.index ["tipo_moneda_id"], name: "index_comprobantes_on_tipo_moneda_id"
+    t.index ["usuario_id"], name: "index_comprobantes_on_usuario_id"
   end
 
   create_table "cuotas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -102,8 +124,11 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
     t.string "nombre"
     t.bigint "tipo_moneda_id"
     t.bigint "bancos_id"
+    t.bigint "tipo_pago_id"
+    t.decimal "equivalencia", precision: 10
     t.index ["bancos_id"], name: "index_forma_pagos_on_bancos_id"
     t.index ["tipo_moneda_id"], name: "index_forma_pagos_on_tipo_moneda_id"
+    t.index ["tipo_pago_id"], name: "index_forma_pagos_on_tipo_pago_id"
   end
 
   create_table "interes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -242,6 +267,10 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tipo_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nombre"
+  end
+
   create_table "tipo_recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
@@ -272,11 +301,18 @@ ActiveRecord::Schema.define(version: 2021_04_10_220322) do
   end
 
   add_foreign_key "antecedente_crediticios", "pagares"
+  add_foreign_key "comprobante_detalles", "comprobantes"
+  add_foreign_key "comprobante_detalles", "forma_pagos"
+  add_foreign_key "comprobantes", "pagares"
+  add_foreign_key "comprobantes", "socios"
+  add_foreign_key "comprobantes", "tipo_monedas"
+  add_foreign_key "comprobantes", "usuarios"
   add_foreign_key "cuotas", "pagares"
   add_foreign_key "fiadors", "estado_civils"
   add_foreign_key "fiadors", "socios"
   add_foreign_key "forma_pagos", "bancos", column: "bancos_id"
   add_foreign_key "forma_pagos", "tipo_monedas"
+  add_foreign_key "forma_pagos", "tipo_pagos"
   add_foreign_key "pagares", "interes", column: "interes_id"
   add_foreign_key "pagares", "plazos"
   add_foreign_key "pagares", "socios"

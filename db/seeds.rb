@@ -69,10 +69,17 @@ begin
     TipoMoneda.create!(id: 2, nombre: "Dolar", simbolo: "USD")
     puts ': Realizado con exito.'
 
+    puts '==> Creando Tipos de Pago por Defecto'
+    TipoPago.create!(id: 1, nombre: "Dinero")
+    TipoPago.create!(id: 2, nombre: "Intercambio")
+    puts ': Realizado con exito.'
+
     puts '==> Creando Formas de pago por Defecto'
-    FormaPago.create!(id: 1, nombre: "Efectivo", tipo_moneda_id: TipoMoneda::DOLAR)
-    FormaPago.create!(id: 2, nombre: "Cheque", tipo_moneda_id: TipoMoneda::DOLAR )
-    FormaPago.create!(id: 3, nombre: "Tarjeta", tipo_moneda_id: TipoMoneda::DOLAR )
+    FormaPago.create!(id: 1, nombre: "Leche", tipo_moneda_id: TipoMoneda::CORDOBA, tipo_pago_id: TipoPago::DINERO)
+    FormaPago.create!(id: 2, nombre: "Efectivo", tipo_moneda_id: TipoMoneda::DOLAR, tipo_pago_id: TipoPago::DINERO)
+    FormaPago.create!(id: 3, nombre: "Cheque", tipo_moneda_id: TipoMoneda::DOLAR, tipo_pago_id: TipoPago::DINERO)
+    FormaPago.create!(id: 4, nombre: "Tarjeta", tipo_moneda_id: TipoMoneda::DOLAR, tipo_pago_id: TipoPago::DINERO)
+    FormaPago.create!(id: 5, nombre: "Cabeza de Buey (Intercambio)", tipo_moneda_id: TipoMoneda::CORDOBA, tipo_pago_id: TipoPago::INTERCAMBIO, equivalencia: 30)
     puts ': Realizado con exito.'
 
     puts '==> Creando Catalogo de Sexos por Defecto'

@@ -11,7 +11,13 @@ Rails.application.routes.draw do
     get :calendario_pdf, on: :collection, defaults: { :format => "pdf" }
   end
 
-  resources :comprobantes
+  resources :comprobantes do
+    get :excel_index, on: :collection, defaults: { :format => "xlsx" }
+    get :obtener_pagare_socios, on: :collection
+    get :obtener_informacion_cuotas, on: :collection
+    get :obtener_totales, on: :collection
+    get :comprobante_odt, on: :collection, defaults: { :format => "odt" }
+  end
 
   resources :socios do
     get :excel_index, on: :collection, defaults: { :format => "xlsx" }

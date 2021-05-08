@@ -26,6 +26,7 @@
                         <th class="sort"><%= sort_link(@coleccion, :id, "ID") %></th>
                         <th class="sort"><%= sort_link(@coleccion, :nombre, "Nombre") %></th>
                         <th class="sort"><%= sort_link(@coleccion, :tipo_moneda_id, "Moneda") %></th>
+                        <th>Tipo de Pago</th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                      </tr>
@@ -36,6 +37,7 @@
                         <td><%= forma_pago.id %></td>
                         <td><%= forma_pago.nombre %></td>
                         <td><%= forma_pago.tipo_moneda.simbolo %></td>
+                        <td><%= forma_pago.tipo_pago.nombre %></td>
                         <td>
                            <%= link_to edit_formas_pago_path(forma_pago), class: "btn btn-icon btn-primary" do %>
                               <i class="ni ni-align-left-2"></i>

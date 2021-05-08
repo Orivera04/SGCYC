@@ -2,6 +2,8 @@ class FormasPagosController < ApplicationController
   include Controleable
   before_action :authenticate_usuario!
   before_action :coleccion_inicial, only: %i[index excel_index]
+  before_action :validar_forma_pago_edicion, only: %i[edit destroy]
+  before_action :configurar_forma_pago, only: %i[create update]
 
   def coleccion_inicial
     params[:q] ||= {}
@@ -83,6 +85,14 @@ class FormasPagosController < ApplicationController
     redirect_to action: :index, search: params[:q]
   end
 
+  def configurar_forma_pago
+    @registro.tipo_moneda_id = TipoMoneda::CORDOBA if @registro.tipo_pago_id == TipoPago::INTERCAMBIO
+  end
+
+  def validar_forma_pago_edicion
+    redirect_to formas_pagos_path , alert: "No se puede editar/eliminar la forma de pago Leche." if params[:id].to_i == FormaPago::LECHE
+  end
+
   private
 
     def nombre_recurso
@@ -90,7 +100,8 @@ class FormasPagosController < ApplicationController
     end
 
     def forma_pago_params
-      params.require(:forma_pagos).permit(:id, :nombre, :tipo_moneda_id, :bancos_id)
+      params.require(:forma_pagos).permit(:id, :nombre, :tipo_moneda_id, :bancos_id,
+                                          :tipo_pago_id, :equivalencia)
     end
 
     alias :params_permit :forma_pago_params

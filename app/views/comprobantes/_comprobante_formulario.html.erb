@@ -1,0 +1,111 @@
+<div class="col-lg-12 col-12 mb-3">
+   <div class="row">
+      <div class="col-lg-12 text-right">
+        <% unless @registro.new_record? %>
+            <%= link_to "Comprobante", comprobante_odt_comprobantes_path(@params_permit), class: "btn btn-lg btn-danger" %>
+        <% end %>
+      </div>
+   </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Información del Comprobante</h3>
+                </div>
+                <div class="card-body row">
+                    <%= hidden_field(:comprobante, :id, :value => @registro.id) %>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="Socio">Socio</label>
+                            <%= select_tag "comprobante[socio_id]", options_from_collection_for_select(Socio.all, :id, :display_name, @registro.socio_id),
+                                class: "form-control selectpicker", "data-live-search": "true", "disabled": !@registro.new_record? %>
+                            <p class="text-danger"><%= @registro.errors[:socio_id].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="observacion">Observación</label>
+                            <%= text_field(:comprobante, :observacion, class: "form-control", id: "observacion", value: @registro.observacion) %>
+                            <p class="text-danger"><%= @registro.errors[:observacion].first %></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="pagare_id">Numero de Pagare</label>
+                            <%= select_tag "comprobante[pagare_id]", options_from_collection_for_select(@registro.socio&.obtener_pagare_socio || [], :id, :numero_pagare, @registro.pagare_id),
+                                class: "form-control selectpicker", "data-live-search": "true", "disabled": !@registro.new_record? %>
+                            <p class="text-danger"><%= @registro.errors[:pagare_id].first %></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="numero">Numero Comprobante</label>
+                            <%= text_field(:comprobante, :numero_comprobante, class: "form-control", id: "numero", value: @registro.obtener_numero, disabled: !@registro.new_record?) %>
+                            <p class="text-danger"><%= @registro.errors[:numero_comprobante].first %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if @registro.new_record? %>
+  <%= render partial: 'comprobantes/informacion_cuotas' %>
+<% end %>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Detalle de Pagos</h3>
+                </div>
+                <div id="headers" class="card-body pb-0">
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+                            <label class="form-control-label">Forma de Pago</label>
+                        </div>
+
+                        <div class="form-group moneda col-lg-2">
+                            <label class="form-control-label">Moneda</label>
+                        </div>
+
+                        <div class="form-group monto col-lg-2">
+                            <label class="form-control-label">Monto / Litros</label>
+                        </div>
+
+                        <div class="form-group monto_total col-lg-2">
+                            <label class="form-control-label">Monto Convertido $</label>
+                        </div>
+
+                        <div class="form-group concepto col-lg-3">
+                            <label class="form-control-label">Observación</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="detalle_pagos" class="card-body pt-0">
+                    <% totales = FormaPago.procesar_totales(@registro.comprobante_detalle) %>
+                    <% totales[:pagos].each_with_index do |pago, indice| %>
+                        <%= render partial: 'comprobantes/comprobante_detalle_items',
+                            locals: {
+                                indice: indice,
+                                pago: pago
+                            }
+                        %>
+                    <% end %>
+                </div>
+
+                <% if @registro.new_record? %>
+                    <div class="row ml-4 mb-4">
+                        <button id="agregar_fila" type="button" class="btn btn-twitter btn-icon-only rounded-circle">
+                            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+                        </button>
+                    </div>
+                <% end %>
+                <h3 class="text-right mr-5 mb-4">Total Abonado: <span id="total_abonado"><%= totales[:total_formateado] %></span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= render partial: 'comprobantes/comprobante_template' %>
