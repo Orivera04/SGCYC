@@ -117,26 +117,12 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr>
-                     <td><a href="#">1 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">2 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">3 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">4 </a></td>
-                     <td>500 USD</td>
-                  </tr>
-                  <tr>
-                     <td><a href="#">5 </a></td>
-                     <td>500 USD</td>
-                  </tr>
+                  <% Comprobante.last(numero_registros).each do |comprobante|%>
+                        <tr>
+                           <td><%= link_to comprobante.numero_comprobante, edit_comprobante_path(comprobante) %></td>
+                           <td><%= "#{comprobante.monto_pagado} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}" %></td>
+                        </tr>
+                  <% end %>
                </tbody>
             </table>
          </div>
