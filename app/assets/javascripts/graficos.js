@@ -1,10 +1,14 @@
 $(document).ready(function() {
+    let meses = JSON.parse($("#meses").val()),
+        montos_prestados = JSON.parse($("#montos_prestados_grafico").val()),
+        total_abonos = JSON.parse($("#total_abonos_grafico").val()),
+        clientes_nuevos = JSON.parse($("#clientes_nuevos_grafico").val());
+
     // Montos Prestados
     new Chart(document.getElementById("montos_prestados"), {
         type: "bar",
         data: {
-          labels: ["Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
-                   "Enero", "Febrero", "Marzo", "Abril"],
+          labels: meses,
           datasets: [
             {
                 backgroundColor: [
@@ -25,7 +29,7 @@ $(document).ready(function() {
                 ],
                 borderWidth: 1,
                 label: "Montos prestados en los ultimos 12 Meses",
-                data: [2478,5267,734,784,433,2478,5267,734,784,433,332,433]
+                data: montos_prestados
             }
           ]
         },
@@ -41,15 +45,14 @@ $(document).ready(function() {
     new Chart(document.getElementById("total_abonos"), {
         type: "line",
         data: {
-          labels: ["Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
-                   "Enero", "Febrero", "Marzo", "Abril"],
+          labels: meses,
           datasets: [
             {
                 backgroundColor: [ "rgba(255, 99, 132, 0.2)"],
                 borderColor: [ "rgba(255, 99, 132, 1)"],
                 borderWidth: 3,
                 label: "Abonos en los ultimos 12 meses",
-                data: [2478,5267,734,784,433,2478,5267,734,784,433,332,433]
+                data: total_abonos
             }
           ]
         },
@@ -64,8 +67,7 @@ $(document).ready(function() {
     new Chart(document.getElementById("socios_nuevos"), {
         type: "line",
         data: {
-          labels: ["Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
-                   "Enero", "Febrero", "Marzo", "Abril"],
+          labels: meses,
           datasets: [
             {
                 backgroundColor: [ "rgba(75, 192, 192, 0.5)"],
@@ -73,7 +75,7 @@ $(document).ready(function() {
                 borderWidth: 3,
                 fill: true,
                 label: "Socios nuevos en los ultimos 12 meses",
-                data: [2478,5267,734,784,433,2478,5267,734,784,433,332,433]
+                data: clientes_nuevos
             }
           ]
         },

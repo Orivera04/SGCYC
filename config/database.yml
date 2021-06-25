@@ -14,8 +14,8 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: admin
-  password: root12345678
-  host: fenicotaxi.cvqrnzci6iiw.us-east-2.rds.amazonaws.com
+  password: root12345
+  host: localhost
 
 development:
   <<: *default

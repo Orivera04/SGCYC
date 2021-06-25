@@ -1,8 +1,8 @@
+<% presenter = GraficosPresenter.new() %>
 <%= javascript_include_tag "graficos" %>
 <% content_for :titulo_seccion do %>
     Graficos
 <% end %>
-
 <div class="card-deck flex-column flex-xl-row">
    <div class="card">
       <div class="card-header bg-transparent">
@@ -41,3 +41,8 @@
       </div>
    </div>
 </div>
+
+<%= hidden_field_tag :meses, presenter.obtener_meses.to_json %>
+<%= hidden_field_tag :montos_prestados_grafico, presenter.montos_prestados.to_json %>
+<%= hidden_field_tag :total_abonos_grafico, presenter.total_abonos.to_json %>
+<%= hidden_field_tag :clientes_nuevos_grafico, presenter.clientes_nuevos.to_json %>
