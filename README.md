@@ -1,6 +1,6 @@
-# NICACENTRO
+# SGYC
 
-Sistema de cobro de la empresa NICACENTRO para los clientes en todas las sucursales de Nicaragua.
+Sistema de gestión de credito y cobranza.
 
 
 
