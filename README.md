@@ -1,24 +1,14 @@
-# README
+NICACENTRO
+Sistema de cobro de la empresa NICACENTRO para los clientes en todas las sucursales de Nicaragua.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Stack
+Ruby 2.7.3
+Rails 6
+JS
+Jquery
+Bootsrap 4
+Devise
+CanCanCan
+Roo-Excel
