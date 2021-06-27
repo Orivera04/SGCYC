@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.string "garantia_hipotecaria"
     t.integer "cantidad_leche_entregada"
     t.string "observaciones"
+    t.boolean "cancelado", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["interes_id"], name: "index_pagares_on_interes_id"

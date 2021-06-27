@@ -89,14 +89,14 @@ class ComprobantesController < ApplicationController
       begin
         flash[:notice] = "El registro ha sido eliminado exitosamente" if @registro.destroy
       rescue StandardError => e
-        flash[:error] = e.message
+        flash[:alert] = e.message
       end
 
       redirect_to action: :index, search: params[:q]
     end
 
     def obtener_pagare_socios
-      pagare_usuario = Pagare.where(socio_id: params[:socio_id])
+      pagare_usuario = Pagare.where(socio_id: params[:socio_id], cancelado: false)
       opciones = view_context.options_from_collection_for_select(pagare_usuario, :id, :numero_pagare)
       render json: { lista: opciones}, status: Rack::Utils::SYMBOL_TO_STATUS_CODE[:ok]
     end

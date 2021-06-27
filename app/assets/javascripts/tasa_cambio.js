@@ -50,7 +50,7 @@ $(document).ready(function() {
                       $.LoadingOverlay("hide");
                       Swal.fire(
                         "Error",
-                        respuesta.mensaje,
+                        "El servicio del banco no se encuentra disponible, intentelo mas tarde.",
                         "error"
                       )
                     }

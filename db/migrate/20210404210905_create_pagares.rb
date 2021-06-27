@@ -19,6 +19,7 @@ class CreatePagares < ActiveRecord::Migration[6.0]
       t.string :garantia_hipotecaria
       t.integer :cantidad_leche_entregada
       t.string :observaciones
+      t.boolean :cancelado, default: false
       t.timestamps
     end
   end
