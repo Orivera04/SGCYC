@@ -11,8 +11,8 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-control-label" for="numero_prestamos">Mes</label>
-                            <%= number_field(:q, :numero_prestamos, class: "form-control", id: "numero_prestamos", value: 1) %>
+                            <label class="form-control-label" for="numero_prestamos">Fecha</label>
+                            <%= date_field(:q, :created_at_gteq, class: "form-control", value: Date.today) %>
                         </div>
                     </div>
                 </div>

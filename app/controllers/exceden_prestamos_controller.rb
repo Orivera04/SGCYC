@@ -5,13 +5,13 @@ class ExcedenPrestamosController < ApplicationController
   def coleccion_inicial
     params[:q] ||= {}
     return unless params[:commit].present?
-    @coleccion = Socio.ransack(params[:q])
+    @coleccion = Pagare.select("count(*) AS conteo, socio_id").group(:socio_id).having("count(*) > #{params[:q][:numero_prestamos]}")
     respond_to do |formato|
       formato.html do
-        @registros = @coleccion.result.page(params[:page])
+        @registros = @coleccion
       end
       formato.xlsx do
-        @registros = @coleccion.result
+        @registros = @coleccion
       end
     end
   end

@@ -20,9 +20,9 @@ class ClientesNuevosController < ApplicationController
     authorize!(:read, :ClientesNuevos)
     @params_permit = params[:commit].present? ? {q: params[:q].permit! } : {}
     if params[:commit].present?
-      render template: "exceden_prestamos/informe",  layout: 'layouts/application'
+      render template: "clientes_nuevos/informe",  layout: 'layouts/application'
     else
-      render template: "exceden_prestamos/panel",  layout: 'layouts/application'
+      render template: "clientes_nuevos/panel",  layout: 'layouts/application'
     end
   end
 end
