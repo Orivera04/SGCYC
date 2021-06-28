@@ -52,10 +52,10 @@ class Pagare < ApplicationRecord
         cuotas_pendientes = cuotas.where(cancelado: false).order("numero_cuota")
         proxima_cuota = cuotas_pendientes.first
 
-        total_pendiente = cuotas_pendientes.sum(&:cuota)
-        monto_cuota = proxima_cuota.cuota
+        total_pendiente = cuotas_pendientes.sum(&:monto_con_mora)
+        monto_cuota = proxima_cuota.monto_con_mora
         numero_cuota = proxima_cuota.numero_cuota
-        monto_pendiente_cuota = proxima_cuota.cuota - proxima_cuota.monto_abonado
+        monto_pendiente_cuota = proxima_cuota.monto_con_mora - proxima_cuota.monto_abonado
 
         {
             total_pendiente: "#{total_pendiente} #{TipoMoneda.obtener_simbolo_moneda(TipoMoneda::DOLAR)}",

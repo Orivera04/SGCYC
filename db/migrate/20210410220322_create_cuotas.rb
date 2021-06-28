@@ -5,6 +5,7 @@ class CreateCuotas < ActiveRecord::Migration[6.0]
       t.date :fecha_pago
       t.integer :numero_cuota
       t.decimal :cuota, precision: 10, scale: 2
+      t.decimal :mora, precision: 10, scale: 2
       t.decimal :monto_abonado, precision: 10, scale: 2
       t.boolean :cancelado
     end

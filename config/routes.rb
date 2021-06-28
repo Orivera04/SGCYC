@@ -71,5 +71,8 @@ Rails.application.routes.draw do
   end
 
   match 'tasa_cambio_leche' => 'valor_leches#crear_tasa_cambio_diaria', via: :post
+  match 'obtener_pagare_socios' => 'comprobantes#obtener_pagare_socios', via: :get
+  match 'obtener_informacion_cuotas' => 'comprobantes#obtener_informacion_cuotas', via: :get
+  match 'obtener_totales' => 'comprobantes#obtener_totales', via: :get
   root to: "home#index"
 end

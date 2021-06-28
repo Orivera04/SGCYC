@@ -17,7 +17,7 @@ class PagarePresenter < SimpleDelegator
     end
 
     def obtener_monto_restante
-        monto_financiado = @modelo.cuotas.sum(&:cuota)
+        monto_financiado = @modelo.cuotas.sum(&:monto_con_mora)
         monto_pagado = @modelo.cuotas.sum(&:monto_abonado)
         monto_restante = monto_financiado - monto_pagado
         "#{monto_restante} USD"

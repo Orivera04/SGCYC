@@ -5,6 +5,7 @@ class Comprobante < ApplicationRecord
     belongs_to :usuario
     validate :validar_monto_pagado
     after_create_commit  :crear_pago_pagare
+    validate :validar_pago_mora
     before_destroy :validar_ultima_cuota
     before_destroy :revertir_cuotas
 
@@ -16,19 +17,28 @@ class Comprobante < ApplicationRecord
     end
 
     def validar_monto_pagado
-        monto_total = pagare.cuotas.sum(&:cuota) - pagare.cuotas.sum(&:monto_abonado)
+        monto_total = pagare.cuotas.sum(&:monto_con_mora) - pagare.cuotas.sum(&:monto_abonado)
         errors.add(:pagare_id, "El monto pagado sobrepasa el restante del pagare") if monto_total < monto_pagado
+    end
+
+    def validar_pago_mora
+        proxima_cuota = Cuota.where(pagare_id: pagare_id, cancelado: false).order("fecha_pago asc").first
+        return if proxima_cuota.calcular_mora == SALDO_CERO
+        errors.add(:pagare_id, "La cuota tiene mora, es necesario pagarla en su totalidad") if proxima_cuota.monto_con_mora != monto_pagado
     end
 
     def crear_pago_pagare
         cuotas_pendientes = Cuota.where(pagare_id: pagare_id, cancelado: false).order("fecha_pago asc")
         cuota_proxima_pagar = cuotas_pendientes.first
-        monto_cuota_pagar = cuota_proxima_pagar.cuota - cuota_proxima_pagar.monto_abonado
+        monto_cuota_pagar = cuota_proxima_pagar.monto_con_mora - cuota_proxima_pagar.monto_abonado
         monto_pagado_socio = monto_pagado
 
         if monto_cuota_pagar >= monto_pagado_socio
+            monto_con_mora = cuota_proxima_pagar.monto_con_mora
+            mora_cuota = cuota_proxima_pagar.calcular_mora
             cuota_proxima_pagar.monto_abonado += monto_pagado_socio
-            cuota_proxima_pagar.cancelado = true if cuota_proxima_pagar.monto_abonado == cuota_proxima_pagar.cuota
+            cuota_proxima_pagar.cancelado = true if cuota_proxima_pagar.monto_abonado == monto_con_mora
+            cuota_proxima_pagar.mora = mora_cuota if cuota_proxima_pagar.cancelado
             cuota_proxima_pagar.save!
         else
             cuotas_pendientes.each do |cuota|
@@ -42,6 +52,7 @@ class Comprobante < ApplicationRecord
                 end
 
                 cuota.cancelado = true if cuota.monto_abonado == cuota.cuota
+                cuota.mora = SALDO_CERO
                 cuota.save!
                 monto_pagado_socio -= monto_cuota_pagar
             end
@@ -68,6 +79,7 @@ class Comprobante < ApplicationRecord
                 SALDO_CERO
             end
 
+            cuota.mora = nil
             cuota.cancelado = false
             cuota.save!
             monto_pagado_socio -= if monto_abonado > 0

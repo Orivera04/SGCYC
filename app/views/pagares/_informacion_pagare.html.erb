@@ -38,6 +38,7 @@
                      <th>Numero de Cuota</th>
                      <th>Fecha de Pago</th>
                      <th>Cuota</th>
+                     <th>Mora</th>
                      <th>Monto Abonado</th>
                      <th>Estado</th>
                   </tr>
@@ -48,6 +49,7 @@
                         <td><%= cuota.numero_cuota %></td>
                         <td><%= cuota.fecha_pago %></td>
                         <td><%= cuota.cuota %></td>
+                        <td><%= cuota.mora || cuota.calcular_mora %></td>
                         <td><%= cuota.monto_abonado %></td>
                         <td><%= presenter.estado_pago(cuota) %></td>
                      </tr>

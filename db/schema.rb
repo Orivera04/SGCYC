@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.date "fecha_pago"
     t.integer "numero_cuota"
     t.decimal "cuota", precision: 10, scale: 2
+    t.decimal "mora", precision: 10, scale: 2
     t.decimal "monto_abonado", precision: 10, scale: 2
     t.boolean "cancelado"
     t.index ["pagare_id"], name: "index_cuotas_on_pagare_id"
