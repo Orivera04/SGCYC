@@ -15,7 +15,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: admin
   password: root12345
-  host: localhost
+  host: nicacentro.cuwyglk1qkr8.us-east-2.rds.amazonaws.com
+  port: 3306
 
 development:
   <<: *default
@@ -51,4 +52,4 @@ production:
   <<: *default
   database: nicacentro_production
   username: admin
-  password: root12345678
+  password: root12345
