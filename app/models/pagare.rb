@@ -32,15 +32,15 @@ class Pagare < ApplicationRecord
         monto_dolares = TasaCambio.conversion_divisa(cantidad_solicitada, TipoMoneda::CORDOBA,
                                                      TipoMoneda::DOLAR, Date.today).round(2)
 
-        porcentaje_interes = (self.interes.cantidad.to_d / 100)
+        porcentaje_interes = (self.interes.cantidad.to_d)
         cantidad_plazo = plazo.plazo
-        porcentaje_interes_mensual = porcentaje_interes / cantidad_plazo
-        monto_plazo = (monto_dolares / cantidad_plazo).round(2)
-        cuota_plazo = (monto_plazo + (monto_plazo * porcentaje_interes_mensual)).round(2)
+
+        interes_por_mes = porcentaje_interes / (12 * 100)
+        cuota_nivelada = monto_dolares * interes_por_mes * ((1 + interes_por_mes)**cantidad_plazo)/((1+interes_por_mes)**cantidad_plazo - 1)
 
         cantidad_plazo.times do |plazo|
             cuota = Cuota.new(pagare_id: self.id, fecha_pago: (Date.today + (plazo.next).month), numero_cuota: plazo.next,
-                              cuota: cuota_plazo, monto_abonado: 0, cancelado: false)
+                              cuota: cuota_nivelada, monto_abonado: 0, cancelado: false)
             cuota.save!
         end
 

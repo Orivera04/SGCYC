@@ -138,13 +138,14 @@ begin
     puts ': Realizado con exito.'
 
     puts '==> Creando Catalogo de Intereses por Defecto'
-    Interes.create!(id: 1, cantidad: 7.5)
-    Interes.create!(id: 2, cantidad: 8.5)
-    Interes.create!(id: 3, cantidad: 9.5)
-    Interes.create!(id: 4, cantidad: 10.5)
-    Interes.create!(id: 5, cantidad: 11.5)
-    Interes.create!(id: 6, cantidad: 12.5)
-    Interes.create!(id: 7, cantidad: 13.5)
+    Interes.create!(id: 1, cantidad: 1)
+    Interes.create!(id: 2, cantidad: 7.5)
+    Interes.create!(id: 3, cantidad: 8.5)
+    Interes.create!(id: 4, cantidad: 9.5)
+    Interes.create!(id: 5, cantidad: 10.5)
+    Interes.create!(id: 6, cantidad: 11.5)
+    Interes.create!(id: 7, cantidad: 12.5)
+    Interes.create!(id: 8, cantidad: 13.5)
     puts ': Realizado con exito.'
 
     puts '==> Creando Usuarios por defecto'
