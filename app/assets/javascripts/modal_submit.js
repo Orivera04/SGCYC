@@ -1,7 +1,10 @@
 $(document).ready(function() {
   debugger;
   $("input:submit").click(function( event ) {
-    debugger;
+    if ($("form").attr('method') == "get") {
+      return;
+    }
+
     Swal.fire({
       title: "¿Seguro que quieres guardar?",
       showDenyButton: true,
