@@ -67,6 +67,7 @@ begin
     puts '==> Creando Monedas por Defecto'
     TipoMoneda.create!(id: 1, nombre: "Cordoba", simbolo: "C$")
     TipoMoneda.create!(id: 2, nombre: "Dolar", simbolo: "USD")
+    TipoMoneda.create!(id: 3, nombre: "Leche", simbolo: "L")
     puts ': Realizado con exito.'
 
     puts '==> Creando Tipos de Pago por Defecto'
@@ -75,7 +76,7 @@ begin
     puts ': Realizado con exito.'
 
     puts '==> Creando Formas de pago por Defecto'
-    FormaPago.create!(id: 1, nombre: "Leche", tipo_moneda_id: TipoMoneda::CORDOBA, tipo_pago_id: TipoPago::DINERO)
+    FormaPago.create!(id: 1, nombre: "Leche", tipo_moneda_id: TipoMoneda::LECHE, tipo_pago_id: TipoPago::DINERO)
     FormaPago.create!(id: 2, nombre: "Efectivo", tipo_moneda_id: TipoMoneda::DOLAR, tipo_pago_id: TipoPago::DINERO)
     FormaPago.create!(id: 3, nombre: "Cheque", tipo_moneda_id: TipoMoneda::DOLAR, tipo_pago_id: TipoPago::DINERO)
     FormaPago.create!(id: 4, nombre: "Tarjeta", tipo_moneda_id: TipoMoneda::DOLAR, tipo_pago_id: TipoPago::DINERO)

@@ -8,4 +8,5 @@
 //= require sweetalert.js
 //= require overlay.js
 //= require chart.js
+//= require modal_submit.js
 //= require rails-ujs

@@ -8,7 +8,7 @@
          <div class="col-md-6">
             <div class="form-group">
                <label class="form-control-label" for="codigo_socio">Codigo Socio</label>
-               <%= text_field(:socios, :codigo_socio, class: "form-control", id: "codigo_socio", value: @registro.obtener_codigo_socio) %>
+               <%= text_field(:socios, :codigo_socio, class: "form-control", id: "codigo_socio", value: @registro.obtener_codigo_socio, readonly: true) %>
                <p class="text-danger"><%= @registro.errors[:codigo_socio].first %></p>
             </div>
             <div class="form-group">

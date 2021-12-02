@@ -8,7 +8,7 @@
          <div class="col-md-6">
             <div class="form-group">
                <label class="form-control-label" for="nombre">Numero Pagare</label>
-               <%= text_field(:pagare, :numero_pagare, class: "form-control", id: "numero_pagare", value: @registro.obtener_numero) %>
+               <%= text_field(:pagare, :numero_pagare, class: "form-control", id: "numero_pagare", value: @registro.obtener_numero, readonly: true) %>
                <p class="text-danger"><%= @registro.errors[:numero_pagare].first %></p>
             </div>
             <div class="form-group">
