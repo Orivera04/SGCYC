@@ -51,5 +51,6 @@ test:
 production:
   <<: *default
   database: nicacentro_production
+  host: database-1.cch6thfumacv.us-east-1.rds.amazonaws.com
   username: admin
   password: root12345
