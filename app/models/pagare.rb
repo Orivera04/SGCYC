@@ -24,6 +24,10 @@ class Pagare < ApplicationRecord
     validates :cuota_pagar, presence: true
     after_create_commit  :crear_cuotas
 
+    validates_numericality_of :cantidad_leche_entregada, greater_than_or_equal_to: 0
+    validates_numericality_of :cantidad_solicitada, greater_than_or_equal_to: 0
+    validates_numericality_of :cuota_pagar, greater_than_or_equal_to: 0
+
     def obtener_numero
         (numero_pagare.nil?) ? Pagare.count + 1 : numero_pagare
     end

@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="numero_cedula">Monto</label>
-                    <%= number_field(prefix_primer_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[primer_credito]&.monto) %>
+                    <%= number_field(prefix_primer_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[primer_credito]&.monto, min: 1, step: 0.1) %>
                 </div>
             </div>
             <div class="col-md-6">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="domicilio">Saldo</label>
-                    <%= number_field(prefix_primer_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[primer_credito]&.saldo) %>
+                    <%= number_field(prefix_primer_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[primer_credito]&.saldo, min: 1, step: 0.1) %>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="numero_cedula">Monto</label>
-                    <%= number_field(prefix_segundo_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[segundo_credito]&.monto) %>
+                    <%= number_field(prefix_segundo_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[segundo_credito]&.monto, min: 1, step: 0.1) %>
                 </div>
             </div>
             <div class="col-md-6">
@@ -89,7 +89,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="domicilio">Saldo</label>
-                    <%= number_field(prefix_segundo_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[segundo_credito]&.saldo) %>
+                    <%= number_field(prefix_segundo_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[segundo_credito]&.saldo, min: 1, step: 0.1) %>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="numero_cedula">Monto</label>
-                    <%= number_field(prefix_tercer_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[tercer_credito]&.monto) %>
+                    <%= number_field(prefix_tercer_credito, :monto, class: "form-control", id: "monto", value: @registro.antecedente_crediticio[tercer_credito]&.monto, min: 1, step: 0.1) %>
                 </div>
             </div>
             <div class="col-md-6">
@@ -121,7 +121,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="domicilio">Saldo</label>
-                    <%= number_field(prefix_tercer_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[tercer_credito]&.saldo) %>
+                    <%= number_field(prefix_tercer_credito, :saldo, class: "form-control", id: "saldo", value: @registro.antecedente_crediticio[tercer_credito]&.saldo, min: 1, step: 0.1) %>
                 </div>
             </div>
         </div>

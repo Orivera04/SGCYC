@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                <label class="form-control-label" for="cantidad_leche_entregada">Cantidad de Leche Entregada (Lts)</label>
-               <%= number_field(:pagare, :cantidad_leche_entregada, class: "form-control", id: "cantidad_leche_entregada", value: @registro.cantidad_leche_entregada) %>
+               <%= number_field(:pagare, :cantidad_leche_entregada, class: "form-control", id: "cantidad_leche_entregada", value: @registro.cantidad_leche_entregada, min: 1, step: 0.01) %>
                <p class="text-danger"><%= @registro.errors[:cantidad_leche_entregada].first %></p>
             </div>
          </div>
@@ -53,12 +53,12 @@
             </div>
             <div class="form-group">
                <label class="form-control-label" for="cantidad_solicitada">Cantidad Solicitada C$</label>
-               <%= number_field(:pagare, :cantidad_solicitada, class: "form-control", id: "cantidad_solicitada", value: @registro.cantidad_solicitada, disabled: !@registro.new_record?) %>
+               <%= number_field(:pagare, :cantidad_solicitada, class: "form-control", id: "cantidad_solicitada", value: @registro.cantidad_solicitada, disabled: !@registro.new_record?, min: 1, step: 0.01) %>
                <p class="text-danger"><%= @registro.errors[:cantidad_solicitada].first %></p>
             </div>
             <div class="form-group">
                <label class="form-control-label" for="nombre">Cuota que puede pagar</label>
-               <%= number_field(:pagare, :cuota_pagar, class: "form-control", id: "cuota_pagar", value: @registro.cuota_pagar) %>
+               <%= number_field(:pagare, :cuota_pagar, class: "form-control", id: "cuota_pagar", value: @registro.cuota_pagar, min: 1, step: 0.01) %>
                <p class="text-danger"><%= @registro.errors[:cuota_pagar].first %></p>
             </div>
             <div class="form-group">
