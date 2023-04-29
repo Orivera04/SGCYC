@@ -4,6 +4,11 @@ class FormaPago < ApplicationRecord
     belongs_to :tipo_moneda
     belongs_to :tipo_pago
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["bancos_id", "equivalencia", "id", "nombre", "tipo_moneda_id", "tipo_pago_id"]
+    end
+
+
     def self.procesar_totales(pagos)
         total_pendiente = 0
         lista_pagos = []

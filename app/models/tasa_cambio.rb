@@ -11,6 +11,10 @@ class TasaCambio < ApplicationRecord
         [:mes_eq]
     end
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["fecha", "id", "tasa_cambio"]
+    end
+
     def self.consumir_webservice_bcn(mes)
         cliente = Savon.client(wsdl: "https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx?wsdl",  namespace: "http://servicios.bcn.gob.ni/",
                                ssl_verify_mode: :none, log_level: :debug, log: true, convert_request_keys_to: :none)

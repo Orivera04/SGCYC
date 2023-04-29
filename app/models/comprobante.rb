@@ -12,6 +12,11 @@ class Comprobante < ApplicationRecord
     has_many :comprobante_detalle, dependent: :destroy, inverse_of: :comprobante
     accepts_nested_attributes_for :comprobante_detalle, allow_destroy: true
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["created_at", "id", "monto_pagado", "numero_comprobante", "observacion", "pagare_id", "socio_id", "tipo_moneda_id", "updated_at", "usuario_id"]
+    end
+
+
     def obtener_numero
         (numero_comprobante.nil?) ? Comprobante.count + 1 : numero_comprobante
     end

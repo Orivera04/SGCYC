@@ -3,6 +3,10 @@ class Cuota < ApplicationRecord
     belongs_to :pagare
     after_save :cambiar_estado_pagare
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["cancelado", "cuota", "fecha_pago", "id", "monto_abonado", "mora", "numero_cuota", "pagare_id"]
+    end
+
     def cambiar_estado_pagare
         monto_total = pagare.cuotas.sum(&:cuota) - pagare.cuotas.sum(&:monto_abonado)
         pagare.update_columns(cancelado: monto_total == Comprobante::SALDO_CERO)

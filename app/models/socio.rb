@@ -22,6 +22,10 @@ class Socio < ApplicationRecord
     validates :numero_inss, presence: true
     validates :salario_mensual, presence: true
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["anios_relacion", "apellido", "apellido_conyuge", "cargo", "codigo_socio", "created_at", "departamento", "departamento_empresa", "direccion_domiciliar", "direccion_domicilio_conyuge", "direccion_empresa", "empresa", "escolaridad_id", "estado_civil_id", "fecha_nacimiento", "fecha_nacimiento_conyuge", "forma_pago", "id", "lugar_trabajo_conyuge", "municipio", "municipio_empresa", "nombre", "nombre_conyuge", "numero_cedula", "numero_cedula_conyuge", "numero_dependiente", "numero_inss", "numero_telefono", "numero_telefono_empresa", "ocupacion_conyuge", "profesion", "salario_mensual", "sexo_id", "sexo_id_conyuge", "telefono_conyuge", "tiempo_laborar", "tiempo_laborar_conyuge", "tipo_domicilio_id", "updated_at"]
+    end
+
     def display_name
         "#{nombre} #{apellido}"
     end

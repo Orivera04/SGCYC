@@ -8,6 +8,10 @@ class Usuario < ApplicationRecord
 
   validates :nombre, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["activo", "cargos_id", "created_at", "email", "encrypted_password", "id", "nombre", "remember_created_at", "reset_password_sent_at", "reset_password_token", "rols_id", "updated_at"]
+  end
+
   def active_for_authentication?
     super && self.activo
   end

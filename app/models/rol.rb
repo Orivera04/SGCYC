@@ -13,6 +13,10 @@ class Rol < ApplicationRecord
     before_validation :eliminar_permisos_desmarcados
     before_destroy :validate_destroy
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["created_at", "id", "nombre", "updated_at"]
+    end
+
     # Este metodo elimina las acciones que fueron desmarcadas por el usuario
     def eliminar_permisos_desmarcados
         rol_accion.each do |accion|

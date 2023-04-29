@@ -6,6 +6,10 @@ class ValorLeche < ApplicationRecord
 
     scope :mes_eq, -> { where(fecha: Date.today.beginning_of_month..Date.today.end_of_month)}
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["fecha", "id", "tasa_cambio"]
+    end
+
     def self.ransackable_scopes(auth_object = nil)
         [:mes_eq]
     end

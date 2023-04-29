@@ -2,24 +2,23 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_014504) do
-
-  create_table "accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2021_04_27_014504) do
+  create_table "accions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "antecedente_crediticios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "antecedente_crediticios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "pagare_id"
     t.string "institucion"
     t.date "fecha"
@@ -28,30 +27,30 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["pagare_id"], name: "index_antecedente_crediticios_on_pagare_id"
   end
 
-  create_table "bancos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "bancos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "siglas"
   end
 
-  create_table "cargos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "cargos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "comprobante_detalles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comprobante_detalles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "comprobante_id"
     t.bigint "forma_pago_id"
     t.decimal "monto_pagado", precision: 10, scale: 2
     t.string "referencia"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["comprobante_id"], name: "index_comprobante_detalles_on_comprobante_id"
     t.index ["forma_pago_id"], name: "index_comprobante_detalles_on_forma_pago_id"
   end
 
-  create_table "comprobantes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comprobantes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "numero_comprobante"
     t.bigint "pagare_id"
     t.bigint "usuario_id"
@@ -59,15 +58,15 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.bigint "tipo_moneda_id"
     t.decimal "monto_pagado", precision: 10, scale: 2
     t.string "observacion"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["pagare_id"], name: "index_comprobantes_on_pagare_id"
     t.index ["socio_id"], name: "index_comprobantes_on_socio_id"
     t.index ["tipo_moneda_id"], name: "index_comprobantes_on_tipo_moneda_id"
     t.index ["usuario_id"], name: "index_comprobantes_on_usuario_id"
   end
 
-  create_table "cuotas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "cuotas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "pagare_id"
     t.date "fecha_pago"
     t.integer "numero_cuota"
@@ -78,7 +77,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["pagare_id"], name: "index_cuotas_on_pagare_id"
   end
 
-  create_table "empresas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "empresas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre_comercial"
     t.integer "numero_telefono"
     t.string "correo"
@@ -86,19 +85,19 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.string "actividad_comercial"
     t.string "numero_ruc"
     t.text "logo_imagen", size: :long
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "escolaridads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "escolaridads", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
   end
 
-  create_table "estado_civils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "estado_civils", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
   end
 
-  create_table "fiadors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "fiadors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "socio_id"
     t.string "nombre"
     t.string "apellido"
@@ -121,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["socio_id"], name: "index_fiadors_on_socio_id"
   end
 
-  create_table "forma_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "forma_pagos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.bigint "tipo_moneda_id"
     t.bigint "bancos_id"
@@ -132,11 +131,11 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["tipo_pago_id"], name: "index_forma_pagos_on_tipo_pago_id"
   end
 
-  create_table "interes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "interes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "cantidad"
   end
 
-  create_table "pagares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "pagares", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "usuario_id"
     t.bigint "socio_id"
     t.bigint "tipo_moneda_id"
@@ -156,8 +155,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.integer "cantidad_leche_entregada"
     t.string "observaciones"
     t.boolean "cancelado", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["interes_id"], name: "index_pagares_on_interes_id"
     t.index ["plazo_id"], name: "index_pagares_on_plazo_id"
     t.index ["socio_id"], name: "index_pagares_on_socio_id"
@@ -165,21 +164,21 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["usuario_id"], name: "index_pagares_on_usuario_id"
   end
 
-  create_table "plazos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "plazos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.integer "plazo"
   end
 
-  create_table "recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "recursos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
     t.bigint "tipo_recurso_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["tipo_recurso_id"], name: "index_recursos_on_tipo_recurso_id"
   end
 
-  create_table "referencia_personal_pagares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "referencia_personal_pagares", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "pagare_id"
     t.string "nombre"
     t.string "domicilio"
@@ -187,35 +186,35 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["pagare_id"], name: "index_referencia_personal_pagares_on_pagare_id"
   end
 
-  create_table "rol_accions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "rol_accions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "rol_id"
     t.bigint "recurso_id"
     t.bigint "accion_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["accion_id"], name: "index_rol_accions_on_accion_id"
     t.index ["recurso_id"], name: "index_rol_accions_on_recurso_id"
     t.index ["rol_id"], name: "index_rol_accions_on_rol_id"
   end
 
-  create_table "rols", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "rols", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "sexos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "sexos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
   end
 
-  create_table "socios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "socios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "codigo_socio"
     t.string "nombre"
     t.string "apellido"
     t.string "numero_cedula"
     t.date "fecha_nacimiento"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "sexo_id"
     t.bigint "escolaridad_id"
     t.string "profesion"
@@ -253,40 +252,40 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["tipo_domicilio_id"], name: "index_socios_on_tipo_domicilio_id"
   end
 
-  create_table "tasa_cambios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tasa_cambios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "tasa_cambio", precision: 10, scale: 2
     t.date "fecha"
   end
 
-  create_table "tipo_domicilios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tipo_domicilios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
   end
 
-  create_table "tipo_monedas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tipo_monedas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "simbolo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "tipo_pagos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tipo_pagos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
   end
 
-  create_table "tipo_recursos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tipo_recursos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "usuarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "usuarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "nombre"
     t.boolean "activo"
     t.bigint "rols_id"
@@ -297,7 +296,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_014504) do
     t.index ["rols_id"], name: "index_usuarios_on_rols_id"
   end
 
-  create_table "valor_leches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "valor_leches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "tasa_cambio", precision: 10, scale: 2
     t.date "fecha"
   end

@@ -28,6 +28,10 @@ class Pagare < ApplicationRecord
     validates_numericality_of :cantidad_solicitada, greater_than_or_equal_to: 0
     validates_numericality_of :cuota_pagar, greater_than_or_equal_to: 0
 
+    def self.ransackable_attributes(auth_object = nil)
+        ["aceptar_condiciones_diferentes", "cancelado", "cantidad_leche_entregada", "cantidad_solicitada", "created_at", "cuota_pagar", "destino_credito", "forma_pago", "garantia_hipotecaria", "garantias_ofrecidas", "id", "interes_id", "numero_pagare", "observaciones", "plazo_id", "socio_id", "tiene_credito_actualmente", "tipo_moneda_id", "tuvo_credito", "ubicacion_inversion", "updated_at", "usuario_id"]
+    end
+
     def obtener_numero
         (numero_pagare.nil?) ? Pagare.count + 1 : numero_pagare
     end
